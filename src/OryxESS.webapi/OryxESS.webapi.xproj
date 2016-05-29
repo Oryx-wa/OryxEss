@@ -6,8 +6,8 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>64840563-caf4-4f1d-8dd1-2c6e0104b5e3</ProjectGuid>
-    <RootNamespace>OryxESS.Entities</RootNamespace>
+    <ProjectGuid>0b460af6-f165-4e51-889d-f0211012ef23</ProjectGuid>
+    <RootNamespace>OryxESS.webapi</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
   </PropertyGroup>

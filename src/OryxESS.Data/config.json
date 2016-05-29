@@ -1,0 +1,7 @@
+﻿{
+	"Data": {
+    "DefaultConnection": {
+      "OryxESSConnectionString": "Server=localhost;Database=iou;Trusted_Connection=true;MultipleActiveResultSets=true"
+    }
+	}
+}
