@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
-using Microsoft.Extensions.Logging;
 using OryxESS.Data.Repositories;
 using OryxESS.Entities;
-using AutoMapper;
 using OryxESS.webapi.ViewModels;
 using System.Net;
 using OryxESS.webapi.Infrastructure.Core;
 using OryxESS.Data.Infrastructure;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,6 +15,8 @@ using OryxESS.Data.Infrastructure;
 namespace OryxESS.webapi.Controllers
 {
     [Route("api/[controller]")]
+    //[Authorize]
+    [Controller]
     public class EmployeeController : BaseController
     {
 

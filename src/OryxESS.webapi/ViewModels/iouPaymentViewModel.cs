@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OryxESS.Entities.iou;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace OryxESS.webapi.ViewModels
@@ -13,6 +14,17 @@ namespace OryxESS.webapi.ViewModels
         [Required]
         public Decimal Amount { get; set; }
         public int iouID { get; set; }
-        
+
+        public static iouPaymentViewModel FromEntity(iouPayment entity)
+        {
+            return new iouPaymentViewModel
+            {
+                ID = entity.ID,
+                DocDate = entity.DocDate,
+                DocNum = entity.DocNum,
+                Amount = entity.Amount,
+                iouID = entity.iouID
+            };
+        }
     }
 }

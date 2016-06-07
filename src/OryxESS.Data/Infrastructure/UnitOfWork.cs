@@ -17,6 +17,7 @@ namespace OryxESS.Data.Infrastructure
 
         public OryxESSContext DbContext
         {
+
             get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
 

@@ -10,12 +10,7 @@
     "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview1-final",
       "type": "build"
-    },
-    "OryxEss.Entities": "1.0.0",
-    "Microsoft.Extensions.Configuration": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-final",
-    "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0-rc2-final"
+    }
   },
   "tools": {
     "Microsoft.EntityFrameworkCore.Tools": {

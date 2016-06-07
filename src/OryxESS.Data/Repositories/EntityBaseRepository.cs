@@ -1,13 +1,10 @@
-﻿using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.ChangeTracking;
-using OryxESS.Data.Infrastructure;
+﻿using OryxESS.Data.Infrastructure;
 using OryxESS.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-using OryxESS.Data.Repositories;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace OryxESS.Data.Repositories
 {

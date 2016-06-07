@@ -1,23 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
+
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using OryxESS.Data.Repositories;
 using OryxESS.Entities;
 using Newtonsoft.Json.Serialization;
-using AutoMapper;
-using OryxESS.webapi.ViewModels;
 using OryxESS.Data;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using Microsoft.Data.Entity;
+//using Microsoft.Data.Entity;
 using OryxESS.Data.Infrastructure;
 using OryxESS.webapi.Controllers;
+//using System.IdentityModel.Tokens.Jwt;
+//using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Builder;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace OryxESS.webapi
 {
@@ -27,8 +28,12 @@ namespace OryxESS.webapi
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json");
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json")
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
                 
+                
+
 
             if (env.IsEnvironment("Development"))
             {
@@ -37,7 +42,7 @@ namespace OryxESS.webapi
             }
 
             builder.AddEnvironmentVariables();
-            Configuration = builder.Build().ReloadOnChanged("appsettings.json");
+            Configuration = builder.Build();
         }
 
         public IConfigurationRoot Configuration { get; set; }
@@ -49,19 +54,26 @@ namespace OryxESS.webapi
             services.AddApplicationInsightsTelemetry(Configuration);
 
            services.AddMvc(config =>
-      {
-#if !DEBUG
-        config.Filters.Add(new RequireHttpsAttribute());
-#endif
-      })
-      .AddJsonOptions(opt =>
-      {
-        opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-      });
-            services.AddEntityFramework()
-                .AddSqlServer()
-                .AddDbContext<OryxESSContext>(options =>
-            options.UseSqlServer(Configuration["Data:DefaultConnection:OryxESSConnectionString"]));
+          {
+            #if !DEBUG
+                    config.Filters.Add(new RequireHttpsAttribute());
+            #endif
+          })
+          .AddJsonOptions(opt =>
+          {
+            opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+          })
+          ;
+            string conString = Configuration["Data:DefaultConnection:OryxESSConnectionString"];
+            services.AddDbContext<OryxESSContext>(options => options.UseSqlServer(conString));
+
+            //services.AddEntityFramework()
+            //    .AddSqlServer()
+            //    .AddDbContext<OryxESSContext>(options =>
+            //options.UseSqlServer(Configuration["Data:DefaultConnection:OryxESSConnectionString"]));
+
+            services.AddDbContext<OryxESSContext>(options =>
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
 
 
             //services.AddTransient<IEntityBaseRepository<Employee>>();
@@ -74,6 +86,8 @@ namespace OryxESS.webapi
             services.AddTransient<IEntityBaseRepository<Error>, EntityBaseRepository<Error>>();
             services.AddTransient<SeedData>();
 
+            //services.AddTransient<ClaimsPrincipal>(
+            //    s => s.GetService<IHttpContextAccessor>().HttpContext.User);
 
 
             builder.RegisterType<DbFactory>()
@@ -101,7 +115,38 @@ namespace OryxESS.webapi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseIISPlatformHandler();
+            if (env.IsDevelopment())
+            {
+                app.UseBrowserLink();
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+
+                // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
+                try
+                {
+                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                        .CreateScope())
+                    {
+                        serviceScope.ServiceProvider.GetService<OryxESSContext>()
+                             .Database.Migrate();
+                    }
+                }
+                catch { }
+            }
+
+            //app.UseIISPlatformHandler();
+
+            app.UseCors(policy =>
+            {
+                policy.WithOrigins("http://localhost:28895", "http://localhost:7017");
+                policy.AllowAnyHeader();
+                policy.AllowAnyMethod();
+            });
+
 
             app.UseApplicationInsightsRequestTelemetry();
 
@@ -109,12 +154,23 @@ namespace OryxESS.webapi
 
             app.UseStaticFiles();
 
-            Mapper.Initialize(config =>
-            {
-                config.CreateMap<Employee, EmployeeViewModel>().ReverseMap();
-                config.CreateMap<Employee, EmployeeListViewModel>().ReverseMap();
+            //Mapper.Initialize(config =>
+            //{
+            //    config.CreateMap<Employee, EmployeeViewModel>().ReverseMap();
+            //    config.CreateMap<Employee, EmployeeListViewModel>().ReverseMap();
 
+            //});
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            {
+                Authority = "http://localhost:5000",
+                RequireHttpsMetadata = false,
+                ScopeName = "OryxESS.webapi",
+                AutomaticAuthenticate = true
             });
+
 
             app.UseMvc(config =>
             {
@@ -129,6 +185,6 @@ namespace OryxESS.webapi
         }
 
         // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+        //public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

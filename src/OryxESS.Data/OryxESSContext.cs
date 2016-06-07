@@ -1,19 +1,20 @@
-﻿using Microsoft.Data.Entity;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using OryxESS.Entities;
 using OryxESS.Entities.iou;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OryxESS.Data
 {
     public class OryxESSContext:DbContext
     {
-        public OryxESSContext()
+        public OryxESSContext(DbContextOptions<OryxESSContext> options)
+        : base(options)
         {
-            Database.EnsureCreated();
+
         }
+        
+
 
         #region EntitySets
         public DbSet<Employee> EmployeeSet { get; set; }
@@ -25,6 +26,18 @@ namespace OryxESS.Data
         public virtual void Commit()
         {
             base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            // Customize the ASP.NET Identity model and override the defaults if needed.
+            // For example, you can rename the ASP.NET Identity table names and more.
+            // Add your customizations after calling base.OnModelCreating(builder);
+            foreach (var entity in builder.Model.GetEntityTypes())
+            {
+                entity.Relational().TableName = entity.DisplayName();
+            }
         }
 
 

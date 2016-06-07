@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OryxESS.Entities.iou;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace OryxESS.webapi.ViewModels
@@ -17,5 +18,18 @@ namespace OryxESS.webapi.ViewModels
         public DateTime StatusDate { get; set; }
         [StringLength(255,MinimumLength = 5)]
         public string Remark { get; set; }
+
+        public static iouStatusViewModel FromEntity(iouStatus entity)
+        {
+            return new iouStatusViewModel
+            {
+                ID = entity.ID,
+                iouID = entity.iouID,
+                EmployeeID = entity.EmployeeID,
+                Status = entity.Status,
+                StatusDate = entity.StatusDate,
+                Remark = entity.Remark            
+            };
+        }
     }
 }
