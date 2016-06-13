@@ -18,8 +18,8 @@
     },
     "OryxMCI.webapi": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "http://localhost:5000/api/values",
+      "launchBrowser": false,
+      "launchUrl": "http://localhost:5005/api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

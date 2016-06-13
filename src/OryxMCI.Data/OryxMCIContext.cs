@@ -5,18 +5,19 @@ using System;
 
 namespace OryxMCI.Data
 {
-    public class OryxMCIContext: DbContext
+    public class OryxMCIContext : DbContext
     {
-        public OryxMCIContext(DbContextOptions<OryxMCIContext> options )
+        public OryxMCIContext(DbContextOptions<OryxMCIContext> options)
         : base()
         {
-
+            Database.EnsureCreated();
         }
-        
+
+
 
 
         #region EntitySets
-     
+
 
         public DbSet<Agent> AgentSet { get; set; }
         public DbSet<Audit> AuditSet { get; set; }
@@ -34,6 +35,16 @@ namespace OryxMCI.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+            // Agent
+            builder.Entity<Agent>().HasKey(m => m.Id);
+            builder.Entity<Agent>().Property(m => m.Code).IsRequired().HasMaxLength(10);
+            builder.Entity<Agent>().Property(m => m.Name).IsRequired().HasMaxLength(100);
+
+
+
+
+
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
@@ -49,7 +60,7 @@ namespace OryxMCI.Data
         {
             try
             {
-                var connString = "Server = localhost; Database = iou2; Trusted_Connection = true; MultipleActiveResultSets = true";
+                var connString = "Server = localhost; Database = MCI; Trusted_Connection = true; MultipleActiveResultSets = true";
 
                 optionsBuilder.UseSqlServer(connString);
 

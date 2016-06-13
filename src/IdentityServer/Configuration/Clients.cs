@@ -64,8 +64,35 @@ namespace Host.Configuration
                         "https://localhost:44311",
                         "http://localhost:44311"
                     }
-                }
-               ,
+                },
+                new Client
+                {
+                    ClientId = "OryxMCI.webapi",
+                    ClientName = "MCI",
+                    Enabled = true,
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
+                    },
+                    RedirectUris = new List<string>
+                    {
+                        "https://www.getpostman.com/oauth2/callback"
+                    },
+                    AllowedScopes = new List<string>
+                    {
+                        StandardScopes.OpenId.Name,
+                        StandardScopes.Profile.Name,
+                        StandardScopes.OfflineAccess.Name,
+                        "read",
+                        "OryxMCI.webapi"
+                    },
+                    AllowedCorsOrigins = new List<string>
+                    {
+                        "https://localhost:44311",
+                        "http://localhost:44311"
+                    }
+                },
                 new Client
                 {
                     ClientId = "socialnetwork",

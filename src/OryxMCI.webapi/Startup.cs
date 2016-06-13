@@ -162,22 +162,7 @@ namespace OryxMCI.webapi
 
             app.UseStaticFiles();
 
-            //Mapper.Initialize(config =>
-            //{
-            //    config.CreateMap<Employee, EmployeeViewModel>().ReverseMap();
-            //    config.CreateMap<Employee, EmployeeListViewModel>().ReverseMap();
-
-            //});
-
-            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-
-            //app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-            //{
-            //    Authority = "http://localhost:5000",
-            //    RequireHttpsMetadata = false,
-            //    ScopeName = "OryxESS.webapi",
-            //    AutomaticAuthenticate = true
-            //});
+           
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
