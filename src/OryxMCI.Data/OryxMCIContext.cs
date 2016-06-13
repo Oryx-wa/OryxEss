@@ -35,15 +35,7 @@ namespace OryxMCI.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
-            // Agent
-            builder.Entity<Agent>().HasKey(m => m.Id);
-            builder.Entity<Agent>().Property(m => m.Code).IsRequired().HasMaxLength(10);
-            builder.Entity<Agent>().Property(m => m.Name).IsRequired().HasMaxLength(100);
-
-
-
-
+            ModelConfiguration(ref builder);
 
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
@@ -55,6 +47,13 @@ namespace OryxMCI.Data
             }
         }
 
+        private void ModelConfiguration(ref ModelBuilder builder)
+        {
+            // Agent
+            builder.Entity<Agent>().HasKey(m => m.Id);
+            builder.Entity<Agent>().Property(m => m.Code).IsRequired().HasMaxLength(10);
+            builder.Entity<Agent>().Property(m => m.Name).IsRequired().HasMaxLength(100);
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
