@@ -19,6 +19,10 @@ using OryxESS.webapi.Controllers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
 using System.IdentityModel.Tokens.Jwt;
+//using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 
 namespace OryxESS.webapi
 {
@@ -31,8 +35,8 @@ namespace OryxESS.webapi
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
-                
-                
+
+
 
 
             if (env.IsEnvironment("Development"))
@@ -53,30 +57,46 @@ namespace OryxESS.webapi
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-           services.AddMvc(config =>
-          {
-            #if !DEBUG
+            var guestPolicy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .RequireClaim("scope", "OryxESS.webapi")
+                .Build();
+
+            services.AddAuthorization(options =>
+            {
+
+                options.AddPolicy("OryxESSAdmin", policyAdmin =>
+                {
+                    policyAdmin.RequireClaim("role", "OryxESS.admin");
+                });
+                options.AddPolicy("OryxESSUser", policyUser =>
+                {
+                    policyUser.RequireClaim("role", "OryxESS.user");
+                });
+
+            });
+
+
+
+
+            services.AddMvcCore(config =>
+            {
+                #if !DEBUG
                     config.Filters.Add(new RequireHttpsAttribute());
-            #endif
-          })
-          .AddJsonOptions(opt =>
-          {
-            opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-          })
-          ;
+                #endif
+                config.Filters.Add(new AuthorizeFilter(guestPolicy));
+            })
+           .AddJsonFormatters(opt =>
+           {
+               opt.ContractResolver = new CamelCasePropertyNamesContractResolver();
+           });
+
+            services.AddCors();
+
             string conString = Configuration["Data:DefaultConnection:OryxESSConnectionString"];
             services.AddDbContext<OryxESSContext>(options => options.UseSqlServer(conString));
 
-            //services.AddEntityFramework()
-            //    .AddSqlServer()
-            //    .AddDbContext<OryxESSContext>(options =>
-            //options.UseSqlServer(Configuration["Data:DefaultConnection:OryxESSConnectionString"]));
-
-            services.AddDbContext<OryxESSContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
-
-
-            //services.AddTransient<IEntityBaseRepository<Employee>>();
+            
             services.AddTransient<EmployeeController>();
 
             var builder = new ContainerBuilder();
@@ -142,7 +162,7 @@ namespace OryxESS.webapi
 
             app.UseCors(policy =>
             {
-                policy.WithOrigins("http://localhost:28895", "http://localhost:7017");
+                policy.WithOrigins("http://localhost:5000", "http://localhost:7017");
                 policy.AllowAnyHeader();
                 policy.AllowAnyMethod();
             });
@@ -161,22 +181,38 @@ namespace OryxESS.webapi
 
             //});
 
+            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+
+            //app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            //{
+            //    Authority = "http://localhost:5000",
+            //    RequireHttpsMetadata = false,
+            //    ScopeName = "OryxESS.webapi",
+            //    AutomaticAuthenticate = true
+            //});
+
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
             {
                 Authority = "http://localhost:5000",
+                Audience = "http://localhost:5000/resources",
                 RequireHttpsMetadata = false,
-                ScopeName = "OryxESS.webapi",
-                AutomaticAuthenticate = true
-            });
 
+                AutomaticAuthenticate = true,
+
+                TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "name",
+                    RoleClaimType = "role"
+                }
+            });
 
             app.UseMvc(config =>
             {
                 config.MapRoute(
                   name: "Default",
-                  template: "{controller}/{action}/{id?}"                  
+                  template: "{controller}/{action}/{id?}"
                   );
             });
 

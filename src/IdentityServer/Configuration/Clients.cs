@@ -1,0 +1,89 @@
+﻿using IdentityServer4.Core.Models;
+using System.Collections.Generic;
+
+namespace Host.Configuration
+{
+    public class Clients
+    {
+        public static IEnumerable<Client> Get()
+        {
+            return new List<Client>
+            {
+                new Client
+                {
+                    ClientId = "mvc",
+                    ClientName = "MVC Hybrid Client",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+
+                    RedirectUris = new List<string>
+                    {
+                        "http://localhost:3308/signin-oidc"
+                    },
+
+                    PostLogoutRedirectUris = new List<string>
+                    {
+                        "http://localhost:3308/"
+                    },
+
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    AllowedScopes = new List<string>
+                    {
+                        StandardScopes.OpenId.Name,
+                        StandardScopes.Profile.Name,
+                        "api1"
+                    }
+                },
+                new Client
+                {
+                    ClientId = "OryxESS.webapi",
+                    ClientName = "Oyrx Self Service",
+                    Enabled = true,
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
+                    },
+                    RedirectUris = new List<string>
+                    {
+                        "https://www.getpostman.com/oauth2/callback"
+                    },
+                    AllowedScopes = new List<string>
+                    {
+                        StandardScopes.OpenId.Name,
+                        StandardScopes.Profile.Name,
+                        StandardScopes.OfflineAccess.Name,
+                        "read",
+                        "OryxESS.webapi"
+                    },
+                    AllowedCorsOrigins = new List<string>
+                    {
+                        "https://localhost:44311",
+                        "http://localhost:44311"
+                    }
+                }
+               ,
+                new Client
+                {
+                    ClientId = "socialnetwork",
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    ClientName = "SocialNetwork",
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    AllowedScopes = new List<string>
+                    {
+                        StandardScopes.OpenId.Name,
+                        "read"
+                    },
+                    Enabled = true
+                }
+
+            };
+        }
+    }
+}

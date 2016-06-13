@@ -8,6 +8,7 @@ using OryxESS.webapi.Infrastructure.Core;
 using OryxESS.Data.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
@@ -15,7 +16,7 @@ using Microsoft.Extensions.Logging;
 namespace OryxESS.webapi.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     [Controller]
     public class EmployeeController : BaseController
     {
@@ -36,13 +37,14 @@ namespace OryxESS.webapi.Controllers
         [HttpGet]
         public override JsonResult Get()
         {
+
             try
             {
                 var Employees = _repository.GetAll();
 
                 var EmployeesVm = Employees.Select(x => EmployeeViewModel.FromEntity(x));
-                
-                if(EmployeesVm == null)
+
+                if (EmployeesVm == null)
                 {
                     return Json(null);
                 }
@@ -60,6 +62,7 @@ namespace OryxESS.webapi.Controllers
         }
 
         // GET api/values/5
+        [Authorize(Roles = "OryxESS.admin")]
         [HttpGet("{id}")]
         public override JsonResult Get(int id)
         {

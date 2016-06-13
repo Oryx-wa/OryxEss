@@ -6,10 +6,10 @@ using System;
 
 namespace OryxESS.Data
 {
-    public class OryxESSContext:DbContext
+    public class OryxESSContext: DbContext
     {
-        public OryxESSContext(DbContextOptions<OryxESSContext> options)
-        : base(options)
+        public OryxESSContext(DbContextOptions<OryxESSContext> options )
+        : base()
         {
 
         }
