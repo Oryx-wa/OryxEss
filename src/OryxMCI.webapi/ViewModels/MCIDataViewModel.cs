@@ -72,6 +72,22 @@ namespace OryxMCI.webapi.ViewModels
                 AgentId = entity.AgentId,
                 Agent = entity.Agent,
                 DateInspected = entity.DateInspected,
+                WasteCollectionNoteYear = entity.WasteCollectionNoteYear,
+                WasteCollectionNoteNo = entity.WasteCollectionNoteNo,
+                WasteCollectionNote = entity.WasteCollectionNote,
+                WasteTransferNoteOil = entity.WasteTransferNoteOil,
+                WasteTransferNoteGarbage = entity.WasteTransferNoteGarbage,
+                Waste = entity.Waste,
+                Type = entity.Type,
+                Archive = entity.Archive,
+                NEXTWTNNO = entity.NEXTWTNNO,
+                InspectorId = entity.InspectorId,
+                Inspector = entity.Inspector,
+                MissingReason = entity.MissingReason,
+                Notes = entity.Notes,
+                GarbageQty = entity.GarbageQty,
+                OilQty = entity.OilQty,
+                Processed = entity.Processed
             };
         }
 
@@ -79,9 +95,34 @@ namespace OryxMCI.webapi.ViewModels
         {
             return new MCIData
             {
-                Code = Code,
                 Id = Id,
-                Name = Name
+                MCINumber = MCINumber,
+                PortId = PortId,
+                Port = Port,
+                VesselId = VesselId,
+                VesselName = VesselName,
+                GrossTonnage = GrossTonnage,
+                CargoTonnage = CargoTonnage,
+                CargoOut = CargoOut,
+                AgentId = AgentId,
+                Agent = Agent,
+                DateInspected = DateInspected,
+                WasteCollectionNoteYear = WasteCollectionNoteYear,
+                WasteCollectionNoteNo = WasteCollectionNoteNo,
+                WasteCollectionNote = WasteCollectionNote,
+                WasteTransferNoteOil = WasteTransferNoteOil,
+                WasteTransferNoteGarbage = WasteTransferNoteGarbage,
+                Waste = Waste,
+                Type = Type,
+                Archive = Archive,
+                NEXTWTNNO = NEXTWTNNO,
+                InspectorId = InspectorId,
+                Inspector = Inspector,
+                MissingReason = MissingReason,
+                Notes = Notes,
+                GarbageQty = GarbageQty,
+                OilQty = OilQty,
+                Processed = Processed
             };
         }
     }
