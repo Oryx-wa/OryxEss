@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OryxMCI.webapi.ViewModels
 {
-    public class AgentViewModel
+    public class BerthViewModel
     {
         public int Id { get; set; }
 
@@ -14,9 +14,9 @@ namespace OryxMCI.webapi.ViewModels
         [StringLength(255, MinimumLength = 5)]
         public string Name { get; set; }
 
-        public static AgentViewModel FromEntity(Agent entity)
+        public static BerthViewModel FromEntity(Berth entity)
         {
-            return new AgentViewModel
+            return new BerthViewModel
             {
                 Id = entity.Id,
                 Code = entity.Code,
@@ -24,9 +24,9 @@ namespace OryxMCI.webapi.ViewModels
             };
         }
 
-        public Agent ToEntity()
+        public Berth ToEntity()
         {
-            return new Agent
+            return new Berth
             {
                 Code = Code,
                 Id = Id,
