@@ -27,16 +27,22 @@
     <Content Include="app\assets\images\logo.jpg" />
     <Content Include="app\home\welcome.component.html" />
     <Content Include="app\home\welcome.component.js" />
+    <Content Include="app\iou\iouheader-list.component.html" />
     <Content Include="app\main.js" />
     <Content Include="app\shared\star.component.css" />
     <Content Include="app\shared\star.component.html" />
     <Content Include="index.html" />
+    <Content Include="systemjs.config.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\home\welcome.component.ts" />
+    <TypeScriptCompile Include="app\iou\iouHeader-list.component.ts" />
+    <TypeScriptCompile Include="app\iou\iouHeader.service.ts" />
+    <TypeScriptCompile Include="app\iou\iouHeader.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\services\api.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
