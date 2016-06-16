@@ -51,6 +51,7 @@
     <Content Include="api\products\products.json" />
     <Content Include="app\home\welcome.component.js.map" />
     <Content Include="app\main.js.map" />
+    <Content Include="api\iou\iouHeader.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
