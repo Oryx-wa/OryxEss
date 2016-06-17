@@ -2,18 +2,16 @@
 .oryx-title-bar {
     background-color: white;
     padding: 0 20px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #fff;
 }
 
 .oryx-logo-area {
-    /*text-align: center;*/
+   display: inline-block;
 }
 
 .oryx-title-area {
     display: inline-block;
 }
-
-
 
 .oryx-icon {
     display: inline-block;
@@ -21,7 +19,7 @@
     height: 50px;
     margin: 8px;
     vertical-align: top;
-    border: 1px solid #999;
+    border: 1px solid #FFF;
 }
 
 .oryx-logo-title {
@@ -34,7 +32,7 @@
     font-size: 13px;
     margin-top: -13px;
 }
-
+/*
 @media screen and (max-width: 430px) {
     .oryx-icon {
         display: none;
@@ -76,3 +74,4 @@
     color: #777;
 }
 
+*/
