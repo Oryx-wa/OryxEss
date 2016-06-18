@@ -1,16 +1,16 @@
 ﻿import { Component, OnInit }  from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { IIouHeader } from './iouHeader';
+import { IIouHeader } from './iouheader';
 //import { ProductFilterPipe } from './product-filter.pipe';
 //import { StarComponent } from '../shared/star.component';
-import { iouHeaderService } from './iouHeader.service';
+import { iouHeaderService } from './iouheader.service';
 
 @Component({
-    templateUrl: 'app/iou/iouheader.component.html',
+    templateUrl: 'app/iou/iouheader-list.component.html',
     directives: [ ROUTER_DIRECTIVES]
 })
-export class ProductListComponent implements OnInit {
+export class IouListComponent implements OnInit {
     pageTitle: string = 'My iou List';
     imageWidth: number = 50;
     imageMargin: number = 2;

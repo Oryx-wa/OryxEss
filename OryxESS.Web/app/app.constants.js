@@ -11,27 +11,26 @@ System.register(['@angular/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var WelcomeComponent;
+    var Configuration;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            WelcomeComponent = (function () {
-                function WelcomeComponent() {
-                    this.pageTitle = "Welcome";
+            Configuration = (function () {
+                function Configuration() {
+                    this.apiServer = "https://localhost:5300/";
+                    this.idServer = "https://localhost:5000/";
                 }
-                WelcomeComponent = __decorate([
-                    core_1.Component({
-                        templateUrl: 'app/home/welcome.component.html'
-                    }), 
+                Configuration = __decorate([
+                    core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
-                ], WelcomeComponent);
-                return WelcomeComponent;
+                ], Configuration);
+                return Configuration;
             }());
-            exports_1("WelcomeComponent", WelcomeComponent);
+            exports_1("Configuration", Configuration);
         }
     }
 });
-//# sourceMappingURL=welcome.component.js.map
+//# sourceMappingURL=app.constants.js.map

@@ -1,13 +1,13 @@
 ﻿/*Defines the iouHeader Interface */
 export interface IIouHeader {
-       ID: number;
-       DocDate: Date;
-       DueDate: Date;
-       Status: string;
-       RequestAmount: number;
-       EmployeeID: number;
-       ProjectCode: string;
-       SiteCode: string;
-       Comments: string;    
+       id: number;
+       docDate: Date;
+       dueDate: Date;
+       status: string;
+       requestAmount: number;
+       employeeID: number;
+       projectCode: string;
+       siteCode: string;
+       comments: string;    
 }
 
