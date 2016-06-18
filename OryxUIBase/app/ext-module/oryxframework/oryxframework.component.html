@@ -1,10 +1,16 @@
 <div class="oryx-title-bar">
-    <div class="oryx-logo-area">
-        <img src="{{ iconfile }}" class="oryx-icon" />
-        <div class="oryx-logo-area">
-          <p class="oryx-logo-title">{{ title }}</p>
-          <p class="oryx-logo-subtitle">{{ subtitle }}</p>
+    <div class="row">
+        <div class="oryx-logo-area col-sm-6" col-xs-12>
+            <img src="{{ iconfile }}" class="oryx-icon" />
+            <div class="oryx-logo-area">
+                <p class="oryx-logo-title">{{ title }}</p>
+                <p class="oryx-logo-subtitle">{{ subtitle }}</p>
+            </div>
         </div>
-    </div>  
-    <div class="oryx-right-side-controls"><div>
-</div> 
+        <div class="oryx-right-side-controls col-sm-6">
+            <button class="btn btn-danger">Button 1</button>
+            <button class="btn btn-success">Button 1</button>
+            <button class="btn btn-message">Button 1</button>
+        </div>
+    </div>
+</div>

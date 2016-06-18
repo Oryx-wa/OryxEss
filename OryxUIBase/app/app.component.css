@@ -2,3 +2,7 @@ body {
     background-color: #fff;
     font-family: "Open Sans", Arial, sans-serif;
 }
+
+.container-fluid{
+    padding: 0;
+}
