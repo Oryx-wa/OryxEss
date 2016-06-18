@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,28 +10,35 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var WelcomeComponent;
+    var core_1, common_1;
+    var ForbiddenComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
             }],
         execute: function() {
-            WelcomeComponent = (function () {
-                function WelcomeComponent() {
-                    this.pageTitle = "Welcome";
+            ForbiddenComponent = (function () {
+                function ForbiddenComponent() {
+                    this.message = "ForbiddenComponent constructor";
                 }
-                WelcomeComponent = __decorate([
+                ForbiddenComponent.prototype.ngOnInit = function () {
+                };
+                ForbiddenComponent = __decorate([
                     core_1.Component({
-                        templateUrl: 'app/home/welcome.component.html'
+                        selector: 'forbidden',
+                        templateUrl: 'app/forbidden/forbidden.component.html',
+                        directives: [common_1.CORE_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], WelcomeComponent);
-                return WelcomeComponent;
+                ], ForbiddenComponent);
+                return ForbiddenComponent;
             }());
-            exports_1("WelcomeComponent", WelcomeComponent);
+            exports_1("ForbiddenComponent", ForbiddenComponent);
         }
     }
 });
-//# sourceMappingURL=welcome.component.js.map
+//# sourceMappingURL=forbidden.component.js.map
