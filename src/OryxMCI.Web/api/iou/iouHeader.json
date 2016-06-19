@@ -1,0 +1,15 @@
+﻿[
+  {
+    "id": 1,
+    "docDate": "2016-05-28T20:47:33.037",
+    "dueDate": "2016-05-28T20:47:33.038",
+    "status": "N",
+    "requestAmount": 10000,
+    "employeeID": 1,
+    "projectCode": "P001",
+    "siteCode": "",
+    "comments": "New iou",
+    "iouPayments": null,
+    "iouStatuses": null
+  }
+]

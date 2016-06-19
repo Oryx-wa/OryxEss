@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './home/welcome.component'], function(exports_1, context_1) {
+System.register(['@angular/core', 'rxjs/Rx', '@angular/router', './forbidden/forbidden.component', './unauthorized/unauthorized.component', './iou/iouheader.service', './home/welcome.component', './iou/iouheader-list.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,41 +10,51 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, welcome_component_1;
+    var core_1, router_1, forbidden_component_1, unauthorized_component_1, iouheader_service_1, welcome_component_1, iouheader_list_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (http_1_1) {
-                http_1 = http_1_1;
-            },
             function (_1) {},
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (forbidden_component_1_1) {
+                forbidden_component_1 = forbidden_component_1_1;
+            },
+            function (unauthorized_component_1_1) {
+                unauthorized_component_1 = unauthorized_component_1_1;
+            },
+            function (iouheader_service_1_1) {
+                iouheader_service_1 = iouheader_service_1_1;
+            },
             function (welcome_component_1_1) {
                 welcome_component_1 = welcome_component_1_1;
+            },
+            function (iouheader_list_component_1_1) {
+                iouheader_list_component_1 = iouheader_list_component_1_1;
             }],
         execute: function() {
-            //import { ProductDetailComponent } from './products/product-detail.component';
             AppComponent = (function () {
                 function AppComponent() {
-                    this.pageTitle = 'Oryx MCI';
+                    this.pageTitle = 'Oryx Employee Self Service';
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'pm-app',
-                        template: "\n    <div>\n        <nav class='navbar navbar-default'>\n            <div class='container-fluid'>\n                <a class='navbar-brand'>{{pageTitle}}</a>\n                <ul class='nav navbar-nav'>\n                    <li><a [routerLink]=\"['Welcome']\">Home</a></li>\n                    <li><a [routerLink]=\"['Products']\">Product List</a></li>\n                </ul>\n            </div>\n        </nav>\n        <div class='container'>\n            <router-outlet></router-outlet>\n        </div>\n     </div>\n     ",
+                        templateUrl: 'app/app.component.html',
+                        styleUrls: ['app/app.component.css'],
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [
-                            //ProductService,
-                            http_1.HTTP_PROVIDERS,
-                            router_1.ROUTER_PROVIDERS]
+                        providers: [iouheader_service_1.iouHeaderService]
                     }),
-                    router_1.RouteConfig([
-                        { path: '/welcome', name: 'Welcome', component: welcome_component_1.WelcomeComponent, useAsDefault: true },
+                    router_1.Routes([
+                        { path: '/', component: welcome_component_1.WelcomeComponent },
+                        { path: '/welcome', component: welcome_component_1.WelcomeComponent },
+                        { path: '/Forbidden', component: forbidden_component_1.ForbiddenComponent },
+                        { path: '/Unauthorized', component: unauthorized_component_1.UnauthorizedComponent },
+                        { path: '/iou', component: iouheader_list_component_1.IouListComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
