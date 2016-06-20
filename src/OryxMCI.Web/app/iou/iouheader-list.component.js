@@ -57,4 +57,4 @@ System.register(['@angular/core', '@angular/router', './iouheader.service'], fun
         }
     }
 });
-//# sourceMappingURL=iouheader-list.component.js.map
+//# sourceMappingURL=iouHeader-list.component.js.map

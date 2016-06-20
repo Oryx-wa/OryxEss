@@ -80,9 +80,10 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Rx', '@angular/router',
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'pm-app',
-                        template: "\n    <div>\n        <nav class='navbar navbar-default'>\n            <div class='container-fluid'>\n                <a class='navbar-brand'>{{pageTitle}}</a>\n                <ul class='nav navbar-nav'>\n                    <li><a [routerLink]=\"['/welcome']\">Home</a></li>\n                    <li><a [routerLink]=\"['/vessels']\">Vessel List</a></li>\n                    <li><a [routerLink]=\"['/ports']\">Port List</a></li>\n                    <li><a [routerLink]=\"['/agent']\">Agent List</a></li>\n                    <li><a [routerLink]=\"['/berths']\">Berth List</a></li>\n                    <li><a [routerLink]=\"['/inspectors']\">Inspector List</a></li>\n                </ul>\n            </div>\n        </nav>\n        <div class='container'>\n            <router-outlet></router-outlet>\n        </div>\n     </div>\n     ",
+                        templateUrl: 'app/app.component.html',
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [agent_service_1.AgentService, vessel_service_1.VesselService, inspector_service_1.InspectorService, berth_service_1.BerthService, port_service_1.PortService, http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS]
+                        providers: [agent_service_1.AgentService, vessel_service_1.VesselService, inspector_service_1.InspectorService,
+                            berth_service_1.BerthService, port_service_1.PortService, http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS]
                     }),
                     router_1.Routes([
                         { path: '/', component: welcome_component_1.WelcomeComponent },

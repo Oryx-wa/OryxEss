@@ -1,49 +1,47 @@
 <div class="oryx-title-bar">
-    <div class="row">
-        <div class="oryx-logo-area col-sm-6" col-xs-12>
-            <img src="app/assets/images/logo2.png" class="oryx-icon" />
-            <div class="oryx-logo-area">
-                <p class="oryx-logo-title">App Title</p>
-                <p class="oryx-logo-subtitle">Oryx Framework</p>
-            </div>
-        </div>
-        <div class="oryx-right-side-controls col-sm-6">
-        </div>
+  <div class="row">
+    <div class="oryx-logo-area col-sm-6" col-xs-12>
+      <img src="app/assets/images/logo2.png" class="oryx-icon" />
+      <div class="oryx-logo-area">
+        <p class="oryx-logo-title">App Title</p>
+        <p class="oryx-logo-subtitle">Oryx Framework</p>
+      </div>
     </div>
+    <div class="oryx-right-side-controls col-sm-6">
+    </div>
+  </div>
 </div>
-<nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
+
+<nav class="navbar navbar-inverse sidebar" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>      
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+   </button>
     </div>
-    <div class="navbar-collapse collapse" id="bs-sidebar-navbar-collapse-1" aria-expanded="false" style="height: 1px;">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a [routerLink]="['/welcome']">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+        <li><a href="#">MCI DATA<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Usuarios <span class="caret"></span>
-          <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span>
+          <span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
           <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="">Crear</a></li>
-            <li><a href="#">Modificar</a></li>
-            <li><a href="#">Reportar</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Informes</a></li>
+            <li><a [routerLink]="['/vessels']">Vessel List<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+            <li><a [routerLink]="['/ports']">Port List<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+
+            <li><a [routerLink]="['/agent']">Agent List<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+            <li><a [routerLink]="['/berths']">Berth List<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+            <li><a [routerLink]="['/inspectors']">Inspector List<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
           </ul>
-        </li>          
-        <li><a href="#">Libros<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-th-list"></span></a></li>        
-        <li><a href="#">Tags<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a></li>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
-<div class="main">
-    <!-- Content Here -->
-    <router-outlet></router-outlet>
-</div>
+<div class="main"><router-outlet></router-outlet></div>
