@@ -162,7 +162,7 @@ namespace OryxESS.webapi
 
             app.UseCors(policy =>
             {
-                policy.WithOrigins("http://localhost:5000", "http://localhost:7017");
+                policy.WithOrigins("http://localhost:5000", "http://localhost:3000");
                 policy.AllowAnyHeader();
                 policy.AllowAnyMethod();
             });

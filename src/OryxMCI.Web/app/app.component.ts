@@ -1,13 +1,26 @@
-import { Component } from 'angular2/core';
-import { HTTP_PROVIDERS } from 'angular2/http';
+import { Component } from '@angular/core';
+import { HTTP_PROVIDERS } from '@angular/http';
 import 'rxjs/Rx';   // Load all features
-import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
+import { ROUTER_PROVIDERS, Routes, ROUTER_DIRECTIVES } from '@angular/router';
 
-//import { ProductListComponent } from './products/product-list.component';
-//import { ProductService } from './products/product.service';
+import { PortListComponent } from './port/port-list.component';
+import {AgentListComponent } from './agent/agent-list.component';
+import {BerthListComponent } from './berth/berth-list.component';
+import {InspectorListComponent } from './inspector/inspector-list.component';
+
+import { VesselService } from './vessel/vessel.service';
+import { PortService } from './port/port.service';
+import { AgentService } from './agent/agent.service';
+import { BerthService } from './berth/berth.service';
+import { InspectorService } from './inspector/inspector.service';
+
 import { WelcomeComponent } from './home/welcome.component';
-//import { ProductDetailComponent } from './products/product-detail.component';
-
+import { PortDetailComponent } from './port/port-detail.component';
+import { VesselListComponent } from './vessel/vessel-list.component';
+import { VesselDetailComponent } from './vessel/vessel-detail.component';
+import { AgentDetailComponent } from './agent/agent-detail.component';
+import { BerthDetailComponent } from './berth/berth-detail.component';
+import { InspectorDetailComponent } from './inspector/inspector-detail.component';
 @Component({
     selector: 'pm-app',
     template: `
@@ -16,8 +29,12 @@ import { WelcomeComponent } from './home/welcome.component';
             <div class='container-fluid'>
                 <a class='navbar-brand'>{{pageTitle}}</a>
                 <ul class='nav navbar-nav'>
-                    <li><a [routerLink]="['Welcome']">Home</a></li>
-                    <li><a [routerLink]="['Products']">Product List</a></li>
+                    <li><a [routerLink]="['/welcome']">Home</a></li>
+                    <li><a [routerLink]="['/vessels']">Vessel List</a></li>
+                    <li><a [routerLink]="['/ports']">Port List</a></li>
+                    <li><a [routerLink]="['/agent']">Agent List</a></li>
+                    <li><a [routerLink]="['/berths']">Berth List</a></li>
+                    <li><a [routerLink]="['/inspectors']">Inspector List</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,16 +44,22 @@ import { WelcomeComponent } from './home/welcome.component';
      </div>
      `,
     directives: [ROUTER_DIRECTIVES],
-    providers: [
-                //ProductService,
-                HTTP_PROVIDERS,
-                ROUTER_PROVIDERS]
+    providers: [AgentService, VesselService,InspectorService,BerthService, PortService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
 })
-@RouteConfig([
-    { path: '/welcome', name: 'Welcome', component: WelcomeComponent, useAsDefault: true },
-    //{ path: '/products', name: 'Products', component: ProductListComponent },
-    //{ path: '/product/:id', name: 'ProductDetail', component: ProductDetailComponent }
+@Routes([
+    { path: '/', component: WelcomeComponent },
+    { path: '/welcome', component: WelcomeComponent },
+    { path: '/ports', component: PortListComponent },
+    { path: '/vessels', component: VesselListComponent },
+     { path: '/berths', component: BerthListComponent },
+    { path: '/vessel/:id', component: VesselDetailComponent },
+    { path: '/port/:id', component: PortDetailComponent },
+    { path: '/berth/:id', component: BerthDetailComponent },
+    { path: '/inspector/:id', component: InspectorDetailComponent },
+    { path: '/agent/:id', component: AgentDetailComponent },
+    { path: '/agent', component: AgentListComponent },
+    { path: '/inspectors', component: InspectorListComponent },
 ])
 export class AppComponent {
-    pageTitle: string = 'Oryx MCI';
+    pageTitle: string = 'Acme Product Management';
 }

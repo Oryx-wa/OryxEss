@@ -22,7 +22,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app.css" />
     <Content Include="app\app.component.css" />
     <Content Include="app\app.component.html" />
     <Content Include="app\app.component.js" />
@@ -7747,10 +7746,8 @@
     <Content Include="node_modules\zone.js\dist\zone-node.js" />
     <Content Include="node_modules\zone.js\dist\zone.js" />
     <Content Include="node_modules\zone.js\dist\zone.min.js" />
-    <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\ext-module\oryxdashboard\oryxdashboard.component.ts" />
     <TypeScriptCompile Include="app\ext-module\oryxframework\oryxframework.component.ts" />
@@ -12901,12 +12898,6 @@
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />
     <Content Include="typings\npm-debug.log" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="node_modules\lite-server\node_modules\browser-sync\node_modules\localtunnel\node_modules\request\node_modules\har-validator\node_modules\is-my-json-valid\node_modules\generate-object-property\node_modules\" />

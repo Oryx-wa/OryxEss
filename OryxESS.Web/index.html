@@ -2,40 +2,62 @@
 <html>
 
 <head>
+    <base href="/">
     <title>Oryx Employee Self Service</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="app/app.component.css" rel="stylesheet" />
 
     <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
 
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 
-    <!-- 2. Configure SystemJS -->
+    <!-- Configure SystemJS -->
+
+    <script src="systemjs.config.js"></script>
     <script>
-        System.config({
-        packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('app/main')
-            .then(null, console.error.bind(console));
+      System.import('app').catch(function(err){ console.error(err);  });
+    </script>
+    <script>
+        function htmlbodyHeightUpdate(){
+		var height3 = $( window ).height()
+		var height1 = $('.nav').height()+50
+		height2 = $('.main').height()
+		if(height2 > height3){
+			$('html').height(Math.max(height1,height3,height2)+10);
+			$('body').height(Math.max(height1,height3,height2)+10);
+		}
+		else
+		{
+			$('html').height(Math.max(height1,height3,height2));
+			$('body').height(Math.max(height1,height3,height2));
+		}		
+	}
+	$(document).ready(function () {
+		htmlbodyHeightUpdate()
+		$( window ).resize(function() {
+			htmlbodyHeightUpdate()
+		});
+		$( window ).scroll(function() {
+			height2 = $('.main').height()
+  			htmlbodyHeightUpdate()
+		});
+	});
     </script>
 </head>
+<body class="container-fluid">
+    <pm-app>Loading App...</pm-app>
 
-<body>
-    Starter files for Angular2: Getting Started!
+    <!--loads libraries-->
+    <!--<script src="dist/vendor.bundle.js"></script> -->
+    <!--loads the application-->
+    <!--<script src="dist/app.bundle.js"></script> -->
 </body>
 
 </html>

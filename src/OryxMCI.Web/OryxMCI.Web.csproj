@@ -24,20 +24,40 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="app\app.component.css" />
+    <Content Include="app\app.component.html" />
+    <Content Include="app\app.component.js" />
     <Content Include="app\assets\images\logo.jpg" />
+    <Content Include="app\forbidden\forbidden.component.html" />
+    <Content Include="app\forbidden\forbidden.component.js" />
     <Content Include="app\home\welcome.component.html" />
     <Content Include="app\home\welcome.component.js" />
+    <Content Include="app\iou\iouheader-list.component.html" />
+    <Content Include="app\iou\iouheader-list.component.js" />
+    <Content Include="app\iou\iouheader.js" />
+    <Content Include="app\iou\iouheader.service.js" />
     <Content Include="app\main.js" />
+    <Content Include="app\services\api.service.js" />
+    <Content Include="app\services\security.service.js" />
     <Content Include="app\shared\star.component.css" />
     <Content Include="app\shared\star.component.html" />
+    <Content Include="app\unauthorized\unauthorized.component.html" />
+    <Content Include="app\unauthorized\unauthorized.component.js" />
     <Content Include="index.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.constants.ts" />
+    <TypeScriptCompile Include="app\forbidden\forbidden.component.ts" />
     <TypeScriptCompile Include="app\home\welcome.component.ts" />
+    <TypeScriptCompile Include="app\iou\iouHeader-list.component.ts" />
+    <TypeScriptCompile Include="app\iou\iouHeader.service.ts" />
+    <TypeScriptCompile Include="app\iou\iouHeader.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\services\api.service.ts" />
+    <TypeScriptCompile Include="app\services\security.service.ts" />
+    <TypeScriptCompile Include="app\unauthorized\unauthorized.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
@@ -46,6 +66,14 @@
     <Content Include="api\products\products.json" />
     <Content Include="app\home\welcome.component.js.map" />
     <Content Include="app\main.js.map" />
+    <Content Include="app\forbidden\forbidden.component.js.map" />
+    <Content Include="app\iou\iouheader-list.component.js.map" />
+    <Content Include="app\iou\iouheader.js.map" />
+    <Content Include="app\iou\iouheader.service.js.map" />
+    <Content Include="app\services\api.service.js.map" />
+    <Content Include="app\services\security.service.js.map" />
+    <Content Include="app\unauthorized\unauthorized.component.js.map" />
+    <Content Include="app\app.component.js.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

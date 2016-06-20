@@ -1,0 +1,31 @@
+<div class='panel panel-primary' *ngIf='port'>
+    <div class='panel-heading' style='font-size:large'>
+        {{pageTitle + ': ' + port.Name }}
+    </div>
+
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-6'>
+                 <div class='row'>
+                    <div class='col-md-3'>Id:</div>
+                    <div class='col-md-6'>{{port.Id}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Code:</div>
+                    <div class='col-md-6'>{{port.Code}}</div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-3'>Name:</div>
+                    <div class='col-md-6'>{{port.Name}}</div>
+                </div>                
+            </div>  
+            <div class='col-md-6'></div>         
+        </div>
+    </div>
+
+    <div class='panel-footer'>
+        <a class='btn btn-default' (click)='onBack()' style='width:80px'>
+            <i class='glyphicon glyphicon-chevron-left'></i> Back
+        </a>
+    </div>
+</div>

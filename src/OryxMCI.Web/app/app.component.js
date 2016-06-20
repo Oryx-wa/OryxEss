@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router', './home/welcome.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/Rx', '@angular/router', './port/port-list.component', './agent/agent-list.component', './berth/berth-list.component', './inspector/inspector-list.component', './vessel/vessel.service', './port/port.service', './agent/agent.service', './berth/berth.service', './inspector/inspector.service', './home/welcome.component', './port/port-detail.component', './vessel/vessel-list.component', './vessel/vessel-detail.component', './agent/agent-detail.component', './berth/berth-detail.component', './inspector/inspector-detail.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, welcome_component_1;
+    var core_1, http_1, router_1, port_list_component_1, agent_list_component_1, berth_list_component_1, inspector_list_component_1, vessel_service_1, port_service_1, agent_service_1, berth_service_1, inspector_service_1, welcome_component_1, port_detail_component_1, vessel_list_component_1, vessel_detail_component_1, agent_detail_component_1, berth_detail_component_1, inspector_detail_component_1;
     var AppComponent;
     return {
         setters:[
@@ -24,27 +24,79 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', 'angular2/router',
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (port_list_component_1_1) {
+                port_list_component_1 = port_list_component_1_1;
+            },
+            function (agent_list_component_1_1) {
+                agent_list_component_1 = agent_list_component_1_1;
+            },
+            function (berth_list_component_1_1) {
+                berth_list_component_1 = berth_list_component_1_1;
+            },
+            function (inspector_list_component_1_1) {
+                inspector_list_component_1 = inspector_list_component_1_1;
+            },
+            function (vessel_service_1_1) {
+                vessel_service_1 = vessel_service_1_1;
+            },
+            function (port_service_1_1) {
+                port_service_1 = port_service_1_1;
+            },
+            function (agent_service_1_1) {
+                agent_service_1 = agent_service_1_1;
+            },
+            function (berth_service_1_1) {
+                berth_service_1 = berth_service_1_1;
+            },
+            function (inspector_service_1_1) {
+                inspector_service_1 = inspector_service_1_1;
+            },
             function (welcome_component_1_1) {
                 welcome_component_1 = welcome_component_1_1;
+            },
+            function (port_detail_component_1_1) {
+                port_detail_component_1 = port_detail_component_1_1;
+            },
+            function (vessel_list_component_1_1) {
+                vessel_list_component_1 = vessel_list_component_1_1;
+            },
+            function (vessel_detail_component_1_1) {
+                vessel_detail_component_1 = vessel_detail_component_1_1;
+            },
+            function (agent_detail_component_1_1) {
+                agent_detail_component_1 = agent_detail_component_1_1;
+            },
+            function (berth_detail_component_1_1) {
+                berth_detail_component_1 = berth_detail_component_1_1;
+            },
+            function (inspector_detail_component_1_1) {
+                inspector_detail_component_1 = inspector_detail_component_1_1;
             }],
         execute: function() {
-            //import { ProductDetailComponent } from './products/product-detail.component';
             AppComponent = (function () {
                 function AppComponent() {
-                    this.pageTitle = 'Oryx MCI';
+                    this.pageTitle = 'Acme Product Management';
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'pm-app',
-                        template: "\n    <div>\n        <nav class='navbar navbar-default'>\n            <div class='container-fluid'>\n                <a class='navbar-brand'>{{pageTitle}}</a>\n                <ul class='nav navbar-nav'>\n                    <li><a [routerLink]=\"['Welcome']\">Home</a></li>\n                    <li><a [routerLink]=\"['Products']\">Product List</a></li>\n                </ul>\n            </div>\n        </nav>\n        <div class='container'>\n            <router-outlet></router-outlet>\n        </div>\n     </div>\n     ",
+                        template: "\n    <div>\n        <nav class='navbar navbar-default'>\n            <div class='container-fluid'>\n                <a class='navbar-brand'>{{pageTitle}}</a>\n                <ul class='nav navbar-nav'>\n                    <li><a [routerLink]=\"['/welcome']\">Home</a></li>\n                    <li><a [routerLink]=\"['/vessels']\">Vessel List</a></li>\n                    <li><a [routerLink]=\"['/ports']\">Port List</a></li>\n                    <li><a [routerLink]=\"['/agent']\">Agent List</a></li>\n                    <li><a [routerLink]=\"['/berths']\">Berth List</a></li>\n                    <li><a [routerLink]=\"['/inspectors']\">Inspector List</a></li>\n                </ul>\n            </div>\n        </nav>\n        <div class='container'>\n            <router-outlet></router-outlet>\n        </div>\n     </div>\n     ",
                         directives: [router_1.ROUTER_DIRECTIVES],
-                        providers: [
-                            //ProductService,
-                            http_1.HTTP_PROVIDERS,
-                            router_1.ROUTER_PROVIDERS]
+                        providers: [agent_service_1.AgentService, vessel_service_1.VesselService, inspector_service_1.InspectorService, berth_service_1.BerthService, port_service_1.PortService, http_1.HTTP_PROVIDERS, router_1.ROUTER_PROVIDERS]
                     }),
-                    router_1.RouteConfig([
-                        { path: '/welcome', name: 'Welcome', component: welcome_component_1.WelcomeComponent, useAsDefault: true },
+                    router_1.Routes([
+                        { path: '/', component: welcome_component_1.WelcomeComponent },
+                        { path: '/welcome', component: welcome_component_1.WelcomeComponent },
+                        { path: '/ports', component: port_list_component_1.PortListComponent },
+                        { path: '/vessels', component: vessel_list_component_1.VesselListComponent },
+                        { path: '/berths', component: berth_list_component_1.BerthListComponent },
+                        { path: '/vessel/:id', component: vessel_detail_component_1.VesselDetailComponent },
+                        { path: '/port/:id', component: port_detail_component_1.PortDetailComponent },
+                        { path: '/berth/:id', component: berth_detail_component_1.BerthDetailComponent },
+                        { path: '/inspector/:id', component: inspector_detail_component_1.InspectorDetailComponent },
+                        { path: '/agent/:id', component: agent_detail_component_1.AgentDetailComponent },
+                        { path: '/agent', component: agent_list_component_1.AgentListComponent },
+                        { path: '/inspectors', component: inspector_list_component_1.InspectorListComponent },
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
