@@ -23,35 +23,17 @@ import { BerthDetailComponent } from './berth/berth-detail.component';
 import { InspectorDetailComponent } from './inspector/inspector-detail.component';
 @Component({
     selector: 'pm-app',
-    template: `
-    <div>
-        <nav class='navbar navbar-default'>
-            <div class='container-fluid'>
-                <a class='navbar-brand'>{{pageTitle}}</a>
-                <ul class='nav navbar-nav'>
-                    <li><a [routerLink]="['/welcome']">Home</a></li>
-                    <li><a [routerLink]="['/vessels']">Vessel List</a></li>
-                    <li><a [routerLink]="['/ports']">Port List</a></li>
-                    <li><a [routerLink]="['/agent']">Agent List</a></li>
-                    <li><a [routerLink]="['/berths']">Berth List</a></li>
-                    <li><a [routerLink]="['/inspectors']">Inspector List</a></li>
-                </ul>
-            </div>
-        </nav>
-        <div class='container'>
-            <router-outlet></router-outlet>
-        </div>
-     </div>
-     `,
+    templateUrl: 'app/app.component.html',
     directives: [ROUTER_DIRECTIVES],
-    providers: [AgentService, VesselService,InspectorService,BerthService, PortService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
+    providers: [AgentService, VesselService, InspectorService,
+        BerthService, PortService, HTTP_PROVIDERS, ROUTER_PROVIDERS]
 })
 @Routes([
     { path: '/', component: WelcomeComponent },
     { path: '/welcome', component: WelcomeComponent },
     { path: '/ports', component: PortListComponent },
     { path: '/vessels', component: VesselListComponent },
-     { path: '/berths', component: BerthListComponent },
+    { path: '/berths', component: BerthListComponent },
     { path: '/vessel/:id', component: VesselDetailComponent },
     { path: '/port/:id', component: PortDetailComponent },
     { path: '/berth/:id', component: BerthDetailComponent },
