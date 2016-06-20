@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./ext-module/oryxframework/oryxframework.component"], function(exports_1, context_1) {
+System.register(["angular2/core", './ext-module/oryxframework/oryxframework.component', "./inspector/inspector-form.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "./ext-module/oryxframework/oryxframework.comp
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, oryxframework_component_1;
+    var core_1, oryxframework_component_1, inspector_form_component_1;
     var AppComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(["angular2/core", "./ext-module/oryxframework/oryxframework.comp
             },
             function (oryxframework_component_1_1) {
                 oryxframework_component_1 = oryxframework_component_1_1;
+            },
+            function (inspector_form_component_1_1) {
+                inspector_form_component_1 = inspector_form_component_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
@@ -28,8 +31,10 @@ System.register(["angular2/core", "./ext-module/oryxframework/oryxframework.comp
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'mci-app',
+                        // template: '<div><h3>{{pageTittle}}</h3></div>',
                         templateUrl: 'app/app.component.html',
-                        directives: [oryxframework_component_1.oryxFrameworkComponent]
+                        //template:'<inspector-form></inspector-form>',
+                        directives: [oryxframework_component_1.oryxFrameworkComponent, inspector_form_component_1.InspectorFormComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
