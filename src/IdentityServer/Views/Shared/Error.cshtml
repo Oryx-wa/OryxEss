@@ -1,14 +1,30 @@
-﻿@{
-    ViewData["Title"] = "Error";
+﻿@model IdentityServer.Models.ErrorViewModels.ErrorViewModel
+
+@{
+    var error_description = Model?.Error?.ErrorDescription ?? "Sorry, there was an unexpected error.";
+    var error_code = Model?.Error?.ErrorCode;
+    var request_id = Model?.Error?.RequestId;
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<div class="error-page">
 
-<h3>Development Mode</h3>
-<p>
-    Swapping to <strong>Development</strong> environment will display more detailed information about the error that occurred.
-</p>
-<p>
-    <strong>Development environment should not be enabled in deployed applications</strong>, as it can result in sensitive information from exceptions being displayed to end users. For local debugging, development environment can be enabled by setting the <strong>ASPNETCORE_ENVIRONMENT</strong> environment variable to <strong>Development</strong>, and restarting the application.
-</p>
+    <div class="page-header">
+        <h1>Error</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="alert alert-danger">
+                <strong hide-if-null="error_code">
+                    <em>
+                        @Model.Error.ErrorCode
+                    </em>
+                </strong>
+
+                @error_description
+            </div>
+
+            <div hide-if-null="request_id" class="request-id">Request Id: @request_id</div>
+        </div>
+    </div>
+</div>

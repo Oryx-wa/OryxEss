@@ -114,7 +114,7 @@ namespace Host
             //app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>
             {
-                routes.MapRoute("Login", Constants.RoutePaths.Login,
+                routes.MapRoute("ui/login", Constants.RoutePaths.Login,
                new { controller = "Login", action = "Login" });
                 routes.MapRoute("Logout", Constants.RoutePaths.Logout,
                     new { controller = "Login", action = "LogOff" });
