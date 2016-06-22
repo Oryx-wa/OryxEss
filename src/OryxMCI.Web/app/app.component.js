@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/http', 'rxjs/Rx', '@angular/router', './port/port-list.component', './agent/agent-list.component', './berth/berth-list.component', './inspector/inspector-list.component', './vessel/vessel.service', './port/port.service', './agent/agent.service', './berth/berth.service', './inspector/inspector.service', './home/welcome.component', './port/port-detail.component', './vessel/vessel-list.component', './vessel/vessel-detail.component', './agent/agent-detail.component', './berth/berth-detail.component', './inspector/inspector-detail.component'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/http', 'rxjs/Rx', '@angular/router', './port/port-list.component', './agents/agent-list.component', './berth/berth-list.component', './inspector/inspector-list.component', './agents/agent-form.component', './vessel/vessel.service', './port/port.service', './agents/agent.service', './berth/berth.service', './inspector/inspector.service', './home/welcome.component', './port/port-detail.component', './vessel/vessel-list.component', './vessel/vessel-detail.component', './agents/agent-detail.component', './berth/berth-detail.component', './inspector/inspector-detail.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Rx', '@angular/router',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, router_1, port_list_component_1, agent_list_component_1, berth_list_component_1, inspector_list_component_1, vessel_service_1, port_service_1, agent_service_1, berth_service_1, inspector_service_1, welcome_component_1, port_detail_component_1, vessel_list_component_1, vessel_detail_component_1, agent_detail_component_1, berth_detail_component_1, inspector_detail_component_1;
+    var core_1, http_1, router_1, port_list_component_1, agent_list_component_1, berth_list_component_1, inspector_list_component_1, agent_form_component_1, vessel_service_1, port_service_1, agent_service_1, berth_service_1, inspector_service_1, welcome_component_1, port_detail_component_1, vessel_list_component_1, vessel_detail_component_1, agent_detail_component_1, berth_detail_component_1, inspector_detail_component_1;
     var AppComponent;
     return {
         setters:[
@@ -35,6 +35,9 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Rx', '@angular/router',
             },
             function (inspector_list_component_1_1) {
                 inspector_list_component_1 = inspector_list_component_1_1;
+            },
+            function (agent_form_component_1_1) {
+                agent_form_component_1 = agent_form_component_1_1;
             },
             function (vessel_service_1_1) {
                 vessel_service_1 = vessel_service_1_1;
@@ -96,8 +99,9 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Rx', '@angular/router',
                         { path: '/berth/:id', component: berth_detail_component_1.BerthDetailComponent },
                         { path: '/inspector/:id', component: inspector_detail_component_1.InspectorDetailComponent },
                         { path: '/agent/:id', component: agent_detail_component_1.AgentDetailComponent },
-                        { path: '/agent', component: agent_list_component_1.AgentListComponent },
+                        { path: '/agents', component: agent_list_component_1.AgentListComponent },
                         { path: '/inspectors', component: inspector_list_component_1.InspectorListComponent },
+                        { path: '/addagent', component: agent_form_component_1.AgentFormComponent }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
