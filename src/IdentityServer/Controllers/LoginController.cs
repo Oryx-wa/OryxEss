@@ -18,8 +18,8 @@ using SignInResult = IdentityServer.Models.LoginViewModels.SignInResult;
 
 namespace IdentityServer.Controllers
 {
-    [Route("Login/[controller]")]
-    [Controller]
+   ///[Route("/[contro")]
+   // [Controller]
     [Authorize]
     public class LoginController : Controller
     {
@@ -49,7 +49,6 @@ namespace IdentityServer.Controllers
         }
 
         [HttpGet(Constants.RoutePaths.Login, Name = "Login")]
-        [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Login(string id = null, string returnUrl = null)
         {
@@ -85,6 +84,7 @@ namespace IdentityServer.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
+                    //await IssueCookie(user, "idsvr", "password");
                     return model.SignInId != null
                         ? new SignInResult(model.SignInId)
                         : RedirectToLocal(returnUrl);
@@ -142,15 +142,15 @@ namespace IdentityServer.Controllers
 
 
         //
-        // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogOff()
-        {
-            await _signInManager.SignOutAsync();
-            _logger.LogInformation(4, "User logged out.");
-            return RedirectToAction(nameof(HomeController.Index), "Home");
-        }
+        //// POST: /Account/LogOff
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> LogOff()
+        //{
+        //    await _signInManager.SignOutAsync();
+        //    _logger.LogInformation(4, "User logged out.");
+        //    return RedirectToAction(nameof(HomeController.Index), "Home");
+        //}
 
 
         private async Task IssueCookie(

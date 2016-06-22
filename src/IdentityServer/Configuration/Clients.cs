@@ -14,7 +14,7 @@ namespace Host.Configuration
                     ClientId = "mvc",
                     ClientName = "MVC Hybrid Client",
                     AllowedGrantTypes = GrantTypes.Hybrid,
-
+                    AllowAccessTokensViaBrowser = true,
                     RedirectUris = new List<string>
                     {
                         "http://localhost:3308/signin-oidc"
@@ -41,28 +41,34 @@ namespace Host.Configuration
                 {
                     ClientId = "OryxESS.webapi",
                     ClientName = "Oyrx Self Service",
-                    Enabled = true,
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                    ClientSecrets = new List<Secret>
+                    //Enabled = true,
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+                    //ClientSecrets = new List<Secret>
+                    //{
+                    //    new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
+                    //},
+                   RedirectUris = new List<string>
                     {
-                        new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
+                        "http://localhost:3000"
+
                     },
-                    RedirectUris = new List<string>
+                    PostLogoutRedirectUris = new List<string>
                     {
-                        "https://www.getpostman.com/oauth2/callback"
+                        "http://localhost:3000/Unauthorized.html"
                     },
                     AllowedScopes = new List<string>
                     {
-                        StandardScopes.OpenId.Name,
-                        StandardScopes.Profile.Name,
-                        StandardScopes.OfflineAccess.Name,
-                        "read",
+                         "openid",
+                        "email",
+                        "profile",
                         "OryxESS.webapi"
                     },
+                    //AllowAccessToAllScopes = true,
                     AllowedCorsOrigins = new List<string>
                     {
-                        "https://localhost:44311",
-                        "http://localhost:44311"
+                        
+                        "http://localhost:3000"
                     }
                 },
                 new Client
