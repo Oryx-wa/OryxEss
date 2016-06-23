@@ -7,6 +7,11 @@ import { IouCreateComponent } from './iouHeader-create.component';
 
 export const IouRoutes: RouterConfig = [
      { path: 'iou', component: IouListComponent},
-    { path:'iou/id', component: IouEditComponent }      
+    { path:'iou/:id', component: IouEditComponent,
+        children: [
+            {path:'edit', component: IouEditComponent}
+        
+        ]  
+    }    
     ];
 

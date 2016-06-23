@@ -40,9 +40,24 @@
     "zone.js": "^0.6.12",
 
     "angular2-in-memory-web-api": "0.0.12",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+
+    "@angular2-material/button": "^2.0.0-alpha.5-2",
+    "@angular2-material/card": "^2.0.0-alpha.5-2",
+    "@angular2-material/checkbox": "^2.0.0-alpha.5-2",
+    "@angular2-material/core": "^2.0.0-alpha.5-2",
+    "@angular2-material/input": "^2.0.0-alpha.5-2",
+    "@angular2-material/list": "^2.0.0-alpha.5-2",
+    "@angular2-material/progress-circle": "^2.0.0-alpha.5-2",
+    "@angular2-material/progress-bar": "^2.0.0-alpha.5-2",
+    "@angular2-material/radio": "^2.0.0-alpha.5-2",
+    "@angular2-material/sidenav": "^2.0.0-alpha.5-2",
+    "@angular2-material/toolbar": "^2.0.0-alpha.5-2",
+    "@angular2-material/tabs": "^2.0.0-alpha.5-2",
+    "@angular2-material/icon": "^2.0.0-alpha.5-2"
   },
   "devDependencies": {
+    "jquery": "2.2.4",
     "concurrently": "^2.0.0",
     "lite-server": "^2.2.0",
     "typescript": "^1.8.10",

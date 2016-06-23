@@ -18,32 +18,35 @@
         </div>
 
         <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
-
-        <div class='table-responsive'>
-            <table class='table' *ngIf='iouHeaders && iouHeaders.length'>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Document Date</th>
-                        <th>Amount Requested</th>
-                        <th>Project Code</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor='let iouHeader of iouHeaders '>
-                        <td>
-                            <a [routerLink]="['/iou/edit', iouHeader.id]">
-                                {{iouHeader.id}}
-                            </a>
-                        </td>
-                        <td>{{ iouHeader.docDate | lowercase }}</td>
-                        <td>{{ iouHeader.requestAmount | currency:'NGN':true:'1.2-2'  }}</td>
-                        <td>{{ iouHeader.projectCode }}</td>
-                        <td>{{ iouHeader.status }}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="row grid-container">
+            <div class="col-md-10">
+                <div class='table-responsive'>                    
+                    <table class="table table-striped table-hover" *ngIf='iouHeaders && iouHeaders.length'>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th (click)="sort('docDate')" > Document Date</th>
+                                <th (click)="sort('requestAmount')">Amount Requested</th>
+                                <th (click)="sort('projectCode')">Project Code</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let iouHeader of iouHeaders '>
+                                <td>
+                                    <a [routerLink]="['/iou/edit', iouHeader.id]">
+                                        {{iouHeader.id}}
+                                    </a>
+                                </td>
+                                <td>{{ iouHeader.docDate | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ iouHeader.requestAmount | currency:'NGN':true:'1.2-2'  }}</td>
+                                <td>{{ iouHeader.projectCode }}</td>
+                                <td>{{ iouHeader.status }}</td>
+                            </tr>
+                        </tbody>
+                    </table>                
+                </div>
+            </div>
+        
         </div>
-    </div>
 </div>
