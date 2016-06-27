@@ -50,12 +50,14 @@ namespace Host.Configuration
                     //},
                    RedirectUris = new List<string>
                     {
-                        "http://localhost:3000"
+                        "http://localhost:3000",
+                        "http://localhost:4200"
 
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
-                        "http://localhost:3000/Unauthorized.html"
+                        "http://localhost:3000/Unauthorized.html",
+                        "http://localhost:4200/Unauthorized.html",
                     },
                     AllowedScopes = new List<string>
                     {
@@ -68,7 +70,8 @@ namespace Host.Configuration
                     AllowedCorsOrigins = new List<string>
                     {
                         
-                        "http://localhost:3000"
+                        "http://localhost:3000",
+                        "http://localhost:4200"
                     }
                 },
                 new Client

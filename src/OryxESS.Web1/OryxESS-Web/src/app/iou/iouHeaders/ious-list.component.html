@@ -1,0 +1,56 @@
+
+<div class='panel panel-primary'>
+    <div class='panel-heading'>
+        {{pageTitle}}
+    </div>
+
+    <!-- Filter the List   -->
+    <div class='panel-body'>
+        <div class='row'>
+            <div class='col-md-2'>Filter by:</div>
+            <div class='col-md-4'>
+                <input type='text' [(ngModel)]='listFilter' />
+            </div>
+        </div>
+        <div class='row' *ngIf='listFilter'>
+            <div class='col-md-6'>
+                <h3>Filtered by: {{listFilter}} </h3>
+            </div>
+        </div>
+
+        <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
+
+        <div class='table-responsive'>
+            <table class='table' *ngIf='iouHeaders && iouHeaders.length'>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Document Date</th>
+                        <th>Amount Requested</th>
+                        <th>Project Code</th>
+                        <th>Status</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor='let iouHeader of iouHeaders '>
+                        <td>
+                            <a [routerLink]="['/iou/edit', iouHeader.id]">
+                                {{iouHeader.id}}
+                            </a>
+                        </td>
+                        <td>{{ iouHeader.docDate | date:"dd/MM/yyyy" }}</td>
+                        <td>{{ iouHeader.requestAmount | currency:'NGN':true:'1.2-2'  }}</td>
+                        <td>{{ iouHeader.projectCode }}</td>
+                        <td>{{ iouHeader.status }}</td>
+                        <td><a href="" [routerLink]="['/iou',iouHeader.id, 'details']">Details</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+</div>
+
+
+

@@ -78,6 +78,40 @@ namespace OryxESS.Data
                                             } }
 
                     };
+                    _context.Add(iou);
+                    iou = new iouHeader()
+                    {
+                        DocDate = DateTime.UtcNow,
+                        DueDate = DateTime.UtcNow,
+                        EmployeeID = 1,
+                        Comments = "New iou2",
+                        ProjectCode = "P002",
+                        RequestAmount = 20000,
+                        Status = "A",
+                        SiteCode = "",
+                        iouStatuses = new List<iouStatus> {
+                            new iouStatus { EmployeeID= 1, iouID = 2, Remark = "New",
+                             StatusDate = DateTime.UtcNow, Status = "N"
+                                            } }
+
+                    };
+                    _context.Add(iou);
+                    iou = new iouHeader()
+                    {
+                        DocDate = DateTime.UtcNow,
+                        DueDate = DateTime.UtcNow,
+                        EmployeeID = 2,
+                        Comments = "New iou3",
+                        ProjectCode = "P002",
+                        RequestAmount = 40000,
+                        Status = "A",
+                        SiteCode = "",
+                        iouStatuses = new List<iouStatus> {
+                            new iouStatus { EmployeeID= 1, iouID = 3, Remark = "New",
+                             StatusDate = DateTime.UtcNow, Status = "N"
+                                            } }
+
+                    };
 
                     _context.Add(iou);
                     _context.SaveChanges();
