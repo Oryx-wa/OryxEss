@@ -9,13 +9,14 @@ import { IouHeader } from '../models/iou-header';
   moduleId: module.id,
   selector: 'ious-card',
   templateUrl: 'ious-card.component.html',
-  styleUrls: ['ious-card.component.css'],
-   directives: [ROUTER_DIRECTIVES,MD_CARD_DIRECTIVES,MD_LIST_DIRECTIVES],
-   changeDetection: ChangeDetectionStrategy.OnPush 
+  directives: [ROUTER_DIRECTIVES,MD_CARD_DIRECTIVES,MD_LIST_DIRECTIVES],
+  changeDetection: ChangeDetectionStrategy.OnPush 
   
 })
 export class IousCardComponent implements OnInit {
-  @Input() iouHeaders: IouHeader[] = [];
+  
+  @Input() iouHeaders: any[] = [];
+
   constructor() {}
 
   ngOnInit() {

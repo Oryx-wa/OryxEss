@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm }    from '@angular/common';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-iou-edit',
+  selector: 'iou-edit-form',
   templateUrl: 'iou-edit.component.html',
-  styleUrls: ['iou-edit.component.css']
+  //styleUrls: ['iou-edit.component.css']
 })
 export class IouEditComponent implements OnInit {
 

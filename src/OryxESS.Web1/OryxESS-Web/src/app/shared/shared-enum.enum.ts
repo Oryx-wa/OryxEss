@@ -1,7 +1,8 @@
 export enum DisplayModeEnum {
     Details=0,
     Create=1,
-    Edit=2
+    Edit=2,
+    Form=3
 }
 
 export enum CardDisplayModeEnum {

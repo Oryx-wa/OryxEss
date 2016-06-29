@@ -26,6 +26,7 @@
     "@angular2-material/core": "^2.0.0-alpha.5-2",
     "@angular2-material/input": "^2.0.0-alpha.5-2",
     "@angular2-material/list": "^2.0.0-alpha.5-2",
+    "angular2-datatable": "^0.4.2",
     "bootstrap": "^3.3.6",
     "es6-shim": "0.35.1",
     "moment": "^2.13.0",

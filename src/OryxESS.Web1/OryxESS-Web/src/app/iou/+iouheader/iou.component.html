@@ -1,7 +1,7 @@
 <p>
   iou works!
 </p>
-<div class="orders view">
+<div class="view">
     <div class="container">
         <header>
             <h3><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;IOU Details</h3>
@@ -18,7 +18,7 @@
                 </li>
                 <li class="toolbar-item">
                     <a [routerLink]="['create']"
-                       (click)="displayMode = displayModeEnum.Orders" 
+                       (click)="displayMode = displayModeEnum.Create" 
                        [class.active]="displayMode === displayModeEnum.Create">
                         <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Add New IOU
                     </a>
@@ -30,13 +30,24 @@
                         <span class="glyphicon glyphicon-edit edit-icon"></span>&nbsp;&nbsp;Edit IOU
                     </a>
                 </li>
+                <li class="toolbar-item">
+                    <a [routerLink]="['form']"
+                       (click)="displayMode = displayModeEnum.Form" 
+                       [class.active]="displayMode === displayModeEnum.Form">
+                        <span class="glyphicon glyphicon-edit edit-icon"></span>&nbsp;&nbsp;IOU Details
+                    </a>
+                </li>
             </ul>
+            
         </div>
         <div class="container">
+            <iou-form [model]= "model" > </iou-form>
             <router-outlet></router-outlet>
             <br />
             <br />
             <a [routerLink]="['/iou']">View all My IOUs</a>
+            
+            
         </div>
     </div>
 </div>

@@ -1,22 +1,24 @@
 <p>
   iou-card works!
 </p>
-<md-card *ngFor="let iouHeader of iouHeaders" >
-      <md-card-subtitle>IOU No. {{ iouHeader.id }}</md-card-subtitle>
-      <md-card-title>IOU Amount {{ iouHeader.requestAmount | currency:'NGN':true:'1.2-2'  }}</md-card-title>
-      <md-card-content>
-        <p>Status {{ iouHeader.status }}</p>
-        <p>Date {{ iouHeader.docDate }}</p>
-        <p>Project {{ iouHeader.project }}</p>
-      </md-card-content>
-      <md-card-actions>
-        <button md-button>LIKE</button>
-        <button md-button>SHARE</button>
-      </md-card-actions>
-      <div *ngIf="!IouHeaders.length">
-            No IOUs Found
-    </div>
-    
- </md-card>
+<div  *ngIf='iouHeaders && iouHeaders.length'>
+
+  <md-card *ngFor="let iouHeader of iouHeaders" >
+        <md-card-subtitle>IOU No. {{ iouHeader.id }}</md-card-subtitle>
+        <md-card-title>IOU Amount {{ iouHeader.requestAmount | currency:'NGN':true:'1.2-2'  }}</md-card-title>
+        <md-card-content>
+          <p>Status {{ iouHeader.status }}</p>
+          <p>Date {{ iouHeader.docDate }}</p>
+          <p>Project {{ iouHeader.project }}</p>
+        </md-card-content>
+        <md-card-actions>
+          <button md-button>Details</button>
+          <button md-button>Edit</button>
+        </md-card-actions>
+        <div *ngIf="!iouHeaders.length">
+              No IOUs Found
+      </div>    
+  </md-card>
+</div>
 
    

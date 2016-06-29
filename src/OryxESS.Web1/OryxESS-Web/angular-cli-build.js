@@ -20,7 +20,8 @@ module.exports = function(defaults) {
       'bootstrap/dist/**',
       'bootstrap/dist/js/bootstrap.min.js',
       'jquery/dist/**',
-      '@angular2-material/**/*'
+      '@angular2-material/**/*',
+      'angular2-datatable/**/*'
     ]
   });
 };

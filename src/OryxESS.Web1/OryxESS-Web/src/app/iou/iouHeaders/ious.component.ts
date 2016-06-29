@@ -26,7 +26,7 @@ export class IousComponent implements OnInit {
 
     title: string;
     filterText: string;
-    public iouHeaders: IouHeader[] = [];
+    iouHeaders: IouHeader[] = [];
     //filteredCustomers: ICustomer[] = [];
     displayMode: DisplayModeEnum;
     displayModeEnum = DisplayModeEnum;
