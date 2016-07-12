@@ -1,34 +1,35 @@
-﻿using Host.Configuration;
-using Host.Extensions;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using IdentityServer4.Contrib.AspNetIdentity;
-using IdentityServer.Models;
-using IdentityServer.Data;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using IdentityServer4.Core;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using IdentityServer.Data;
+using IdentityServer.Models;
 using IdentityServer.Services;
+using IdentityServer4.Services;
+using IdentityModel;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Cryptography.X509Certificates;
+using System.IO;
+using IdentityServer.Configuration;
 
-namespace Host
+namespace IdentityServer
 {
     public class Startup
     {
-        private readonly IHostingEnvironment _environment;
-        public IConfigurationRoot Configuration { get; }
         public Startup(IHostingEnvironment env)
         {
-
             var builder = new ConfigurationBuilder()
-               .SetBasePath(env.ContentRootPath)
-               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-               .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             if (env.IsDevelopment())
             {
@@ -38,87 +39,89 @@ namespace Host
 
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
-            _environment = env;
+            Environment = env;
         }
 
+        public IConfigurationRoot Configuration { get; }
 
+        public IHostingEnvironment Environment { get; }
+
+        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var cert = new X509Certificate2(Path.Combine(Environment.ContentRootPath, "idsrvtest.pfx"), "idsrv3test");
+            var builder = services.AddIdentityServer(options =>
+            {
+                options.AuthenticationOptions = new IdentityServer4.Configuration.AuthenticationOptions
+                {
+                    PrimaryAuthenticationScheme = "Cookies"
+                };
+            })
+            .AddInMemoryClients(Clients.Get())
+            .AddInMemoryScopes(Scopes.Get())
+            .SetSigningCredential(cert);
+
+            services.AddTransient<IProfileService, AspIdProfileService>();
+
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-               .AddEntityFrameworkStores<ApplicationDbContext>()
-               .AddDefaultTokenProviders();
-
-            var cert = new X509Certificate2(Path.Combine(_environment.ContentRootPath, "idsrv3test.pfx"), "idsrv3test");
-
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            var builder = services.AddIdentityServer(options =>
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
-                options.SigningCertificate = cert;
-            });
+                options.Cookies.ApplicationCookie.AuthenticationScheme = "Cookies";
+                options.ClaimsIdentity.UserIdClaimType = JwtClaimTypes.Subject;
+                options.ClaimsIdentity.UserNameClaimType = JwtClaimTypes.Name;
+                options.ClaimsIdentity.RoleClaimType = JwtClaimTypes.Role;
+            })
+           .AddEntityFrameworkStores<ApplicationDbContext>()
+           .AddDefaultTokenProviders();
+            services.AddTransient<IUserClaimsPrincipalFactory<ApplicationUser>, IdentityServerUserClaimsPrincipalFactory>();
 
-            builder.AddInMemoryClients(Clients.Get());
-            builder.AddInMemoryScopes(Scopes.Get());
-            //builder.AddInMemoryUsers(Users.Get());
-            builder.ConfigureAspNetIdentity<ApplicationUser>();
-            builder.AddCustomGrantValidator<CustomGrantValidator>();
-
-            //services.AddMvc();
-            // for the UI
-            services
-                .AddMvc();
-            //.AddRazorOptions(razor =>
-            //{
-            //    razor.ViewLocationExpanders.Add(new UI.CustomViewLocationExpander());
-            //}
-            //);
-            //services.AddTransient<UI.Login.LoginService>();
+            services.AddMvc();
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
         }
 
-        //public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-
-
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-
-            app.UseDeveloperExceptionPage();
-
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            if (env.IsDevelopment())
             {
-                AuthenticationScheme = "Temp",
-                AutomaticAuthenticate = false,
-                AutomaticChallenge = false
-            });
-
-
-
-
-            //app.UseMvcWithDefaultRoute();
-
-            app.UseIdentity();
-            app.UseIdentityServer();
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+                app.UseBrowserLink();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
 
             app.UseStaticFiles();
 
-            //app.UseMvc();
-            //app.UseMvcWithDefaultRoute();
+            app.UseIdentity();
+
+            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+            app.UseIdentityServer();
+
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                Authority = "http://localhost:5000",
+                Audience = "http://localhost:5000/resources",
+                AutomaticAuthenticate = true,
+                AuthenticationScheme = "Bearer",
+                RequireHttpsMetadata = false
+            });
+
+
             app.UseMvc(routes =>
             {
-                routes.MapRoute("ui/login", Constants.RoutePaths.Login,
-               new { controller = "Login", action = "Login" });
-                routes.MapRoute("Logout", Constants.RoutePaths.Logout,
-                    new { controller = "Login", action = "LogOff" });
-
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

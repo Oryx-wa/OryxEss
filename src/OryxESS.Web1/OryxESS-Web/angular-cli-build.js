@@ -21,7 +21,11 @@ module.exports = function(defaults) {
       'bootstrap/dist/js/bootstrap.min.js',
       'jquery/dist/**',
       '@angular2-material/**/*',
-      'angular2-datatable/**/*'
+      'lodash/**/*.js',
+      'angular2-datatable/**/*.js',
+      'ng2-pagination/**/*.js',
+      'angular2-materialize/dist/*',
+      'materialize-css/dist/**/*',
     ]
   });
 };

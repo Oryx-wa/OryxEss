@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using OryxESS.Data.Repositories;
-using OryxESS.Entities;
 using Newtonsoft.Json.Serialization;
 using OryxESS.Data;
 using Autofac;
@@ -54,6 +53,8 @@ namespace OryxESS.webapi
         // This method gets called by the runtime. Use this method to add services to the container
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+
+            services.AddCors();
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
@@ -81,9 +82,9 @@ namespace OryxESS.webapi
 
             services.AddMvcCore(config =>
             {
-                #if !DEBUG
+#if !DEBUG
                     config.Filters.Add(new RequireHttpsAttribute());
-                #endif
+#endif
                 config.Filters.Add(new AuthorizeFilter(guestPolicy));
             })
            .AddJsonFormatters(opt =>
@@ -91,20 +92,20 @@ namespace OryxESS.webapi
                opt.ContractResolver = new CamelCasePropertyNamesContractResolver();
            });
 
-            services.AddCors();
+
 
             string conString = Configuration["Data:DefaultConnection:OryxESSConnectionString"];
-            services.AddDbContext<OryxESSContext>(options => options.UseSqlServer(conString));
+            services.AddDbContext<OryxESSContext>(options => options.UseSqlServer(conString), ServiceLifetime.Scoped);
 
-            
+
             services.AddTransient<EmployeeController>();
 
             var builder = new ContainerBuilder();
 
             services.AddLogging();
-            services.AddTransient<IEntityBaseRepository<Employee>, EntityBaseRepository<Employee>>();
-            services.AddTransient<IEntityBaseRepository<Error>, EntityBaseRepository<Error>>();
-            services.AddTransient<SeedData>();
+            //services.AddTransient<IEntityBaseRepository<Employee>, EntityBaseRepository<Employee>>();
+            //services.AddTransient<IEntityBaseRepository<Error>, EntityBaseRepository<Error>>();
+            //services.AddTransient<SeedData>();
 
             //services.AddTransient<ClaimsPrincipal>(
             //    s => s.GetService<IHttpContextAccessor>().HttpContext.User);
@@ -130,22 +131,28 @@ namespace OryxESS.webapi
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SeedData SeedData)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseCors(builder => builder.WithOrigins(
+                 "http://localhost:5000",
+                    "http://localhost:3000",
+                    "http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    );
+
+            
+
+           
 
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-
-                // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
                 try
                 {
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
@@ -153,22 +160,21 @@ namespace OryxESS.webapi
                     {
                         serviceScope.ServiceProvider.GetService<OryxESSContext>()
                              .Database.Migrate();
+                        serviceScope.ServiceProvider.GetService<OryxESSContext>().EnsureSeedData();
                     }
                 }
                 catch { }
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+
+                // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
+
+            }
 
             //app.UseIISPlatformHandler();
 
-            app.UseCors(policy =>
-            {
-                policy.WithOrigins(
-                    "http://localhost:5000",
-                    "http://localhost:3000",
-                    "http://localhost:4200");
-                policy.AllowAnyHeader();
-                policy.AllowAnyMethod();
-            });
 
 
             app.UseApplicationInsightsRequestTelemetry();
@@ -219,7 +225,7 @@ namespace OryxESS.webapi
                   );
             });
 
-            SeedData.EnsureSeedData();
+            //SeedData.EnsureSeedData();
 
         }
 

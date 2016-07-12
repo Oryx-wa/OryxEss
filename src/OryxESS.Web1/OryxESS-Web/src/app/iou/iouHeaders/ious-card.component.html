@@ -1,19 +1,21 @@
-<p>
-  iou-card works!
-</p>
+
 <div  *ngIf='iouHeaders && iouHeaders.length'>
 
   <md-card *ngFor="let iouHeader of iouHeaders" >
-        <md-card-subtitle>IOU No. {{ iouHeader.id }}</md-card-subtitle>
+        <md-card-subtitle>IOU No. {{ iouHeader.iouId }}</md-card-subtitle>
         <md-card-title>IOU Amount {{ iouHeader.requestAmount | currency:'NGN':true:'1.2-2'  }}</md-card-title>
         <md-card-content>
           <p>Status {{ iouHeader.status }}</p>
-          <p>Date {{ iouHeader.docDate }}</p>
-          <p>Project {{ iouHeader.project }}</p>
+          <p>Date {{ iouHeader.docDate  | date:"dd/MM/yyyy" }}</p>
+          <p>Project {{ iouHeader.projectCode }}</p>
         </md-card-content>
-        <md-card-actions>
-          <button md-button>Details</button>
-          <button md-button>Edit</button>
+        <md-card-actions >
+
+          <a  md-button [routerLink]="['/iou',iouHeader.iouId, 'form']" clase="btn-primary">Details</a>
+          <a md-button [routerLink]="['/iou',iouHeader.iouId, 'form2']">form 2</a>
+          <a md-button [routerLink]="['/iou',iouHeader.iouId, 'status']">Status</a>
+          
+        
         </md-card-actions>
         <div *ngIf="!iouHeaders.length">
               No IOUs Found

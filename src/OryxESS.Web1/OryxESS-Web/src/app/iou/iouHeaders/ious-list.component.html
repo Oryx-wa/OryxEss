@@ -1,4 +1,3 @@
-
 <div class='panel panel-primary'>
     <div class='panel-heading'>
         {{pageTitle}}
@@ -17,11 +16,9 @@
                 <h3>Filtered by: {{listFilter}} </h3>
             </div>
         </div>
-
         <div class='has-error' *ngIf='errorMessage'>{{errorMessage}}</div>
-
-        <div class='table-responsive'>
-            <table class='table' *ngIf='iouHeaders && iouHeaders.length'>
+        <div >
+            <table materialize class='responsive-table striped' *ngIf='iouHeaders && iouHeaders.length'>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -33,24 +30,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let iouHeader of iouHeaders '>
+                    <tr *ngFor='let iouHeader of iouHeaders | paginate: { itemsPerPage: 10, currentPage: page } '>
                         <td>
-                            <a [routerLink]="['/iou/edit', iouHeader.id]">
+                            <a [routerLink]="['/iou',iouHeader.iouId, 'form']">
                                 {{iouHeader.id}}
                             </a>
                         </td>
                         <td>{{ iouHeader.docDate | date:"dd/MM/yyyy" }}</td>
                         <td>{{ iouHeader.requestAmount | currency:'NGN':true:'1.2-2'  }}</td>
                         <td>{{ iouHeader.projectCode }}</td>
-                        <td>{{ iouHeader.status }}</td>
-                        <td><a href="" [routerLink]="['/iou',iouHeader.id, 'details']">Details</a></td>
+                        <td><a [routerLink]="['/iou',iouHeader.iouId, 'status']">{{ iouHeader.status }}</a></td>
+                        <td><a [routerLink]="['/iou',iouHeader.iouId, 'form']">Details</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        
+        <div class="is-text-centered">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
     </div>
 </div>
-
-
-

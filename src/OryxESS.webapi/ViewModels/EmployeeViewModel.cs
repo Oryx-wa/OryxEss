@@ -1,4 +1,4 @@
-﻿using OryxESS.Entities;
+﻿using OryxESS.Entities.hr;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -42,7 +42,7 @@ namespace OryxESS.webapi.ViewModels
         {
             return new EmployeeViewModel
             {
-                ID = entity.ID,
+                ID = entity.EmployeeId,
                 FirstName = entity.FirstName,
                 LastName = entity.LastName,
                 Email = entity.Email,
@@ -60,7 +60,7 @@ namespace OryxESS.webapi.ViewModels
         {
             return new Employee
             {
-                ID = ID,
+                EmployeeId = ID,
                 FirstName = FirstName,
                 LastName = LastName,
                 Email = Email,

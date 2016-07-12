@@ -1,0 +1,63 @@
+
+
+  <nav>
+      <div class="nav-wrapper  deep-purple darken-1">
+        <a href="#!" class="nav-wrapper">{{ title }}</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-med-and-down">
+          <li><a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">Card View</a></li>
+          <li><a (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">List View</a></li>
+          <li><a href="" [routerLink]="['workflow/trigger',-1, 'form']" >New IOU</a></li>
+        </ul> 
+        <ul class="side-nav" id="mobile-demo">
+           <li><a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">Card View</a></li>
+          <li><a (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">List View</a></li>
+          <li><a href="" [routerLink]="['workflow/trigger',-1, 'form']" >New IOU</a></li>
+        </ul>       
+      </div>
+    </nav>
+<div>
+   <app-workflow-trigger-list [WFTriggers]="wfTriggers" [hidden]="displayMode !== displayModeEnum.Grid" ></app-workflow-trigger-list>
+   <app-workflow-trigger-card [WFTriggers]="wfTriggers" [hidden]="displayMode !== displayModeEnum.Card"></app-workflow-trigger-card>
+</div>
+<!--
+<div class="customers view indent">
+    <div class="container">
+        <header>
+            <h3>
+                <span class="glyphicon glyphicon-user"></span>
+                {{ title }}
+            </h3>
+        </header>
+        <br />
+        <div class="row">
+            <div class="col-md-10">
+                <div class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="toolbar-item">
+                            <a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">
+                                <span class="glyphicon glyphicon-th-large"></span> Card View
+                            </a>
+                        </li>
+                        <li class="toolbar-item">
+                            <a (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">
+                                <span class="glyphicon glyphicon-align-justify"></span> List View
+                            </a>
+                        </li>
+                        <li class="toolbar-item">
+                            <a href="" [routerLink]="['workflow/trigger',-1, 'form']">
+                                <span class="glyphicon glyphicon-align-justify"></span> New IOU
+                            </a>
+                        </li>
+                    </ul>
+                    <filter-textbox class="navbar-right"
+                     (changed)="filterChanged($event)"></filter-textbox>
+                </div>
+            </div>
+        </div>
+-->      
+      
+        
+       
+        
+   

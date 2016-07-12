@@ -7,7 +7,7 @@ namespace OryxESS.webapi.ViewModels
     public class iouPaymentViewModel
     {
         [Required]
-        public int ID { get; set; }
+        public int LineId { get; set; }
         [Required]
         public DateTime DocDate { get; set; }
         public int DocNum { get; set; }
@@ -19,11 +19,11 @@ namespace OryxESS.webapi.ViewModels
         {
             return new iouPaymentViewModel
             {
-                ID = entity.ID,
+                LineId = entity.LineId,
                 DocDate = entity.DocDate,
                 DocNum = entity.DocNum,
                 Amount = entity.Amount,
-                iouID = entity.iouID
+                iouID = entity.IouId
             };
         }
     }

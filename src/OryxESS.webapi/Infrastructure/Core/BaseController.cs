@@ -3,13 +3,18 @@ using OryxESS.Data.Repositories;
 using OryxESS.Entities;
 using OryxESS.Data.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace OryxESS.webapi.Infrastructure.Core
 {
+    [Produces("application/json")]
     [Route("api/[controller]")]
+    [Controller]
+    [Authorize(ActiveAuthenticationSchemes = "Bearer")]
     public abstract class BaseController : Controller
     {
 
@@ -18,24 +23,20 @@ namespace OryxESS.webapi.Infrastructure.Core
 
         protected readonly IEntityBaseRepository<Error> _errorsRepository;
         protected readonly IUnitOfWork _unitOfWork;
+        protected ILogger<Controller> _logger;
 
 
-        public BaseController(IEntityBaseRepository<Error> errorsRepository, IUnitOfWork unitOfWork)
+        public BaseController(IEntityBaseRepository<Error> errorsRepository, IUnitOfWork unitOfWork,
+            ILogger<Controller> logger)
         {
             _errorsRepository = errorsRepository;
             _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
-        // GET: api/values
-        [HttpGet]
-        public abstract JsonResult Get();
-
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public abstract JsonResult Get(int id);
         
-        private void LogError(Exception ex)
+
+        protected void LogError(Exception ex)
         {
             try
             {

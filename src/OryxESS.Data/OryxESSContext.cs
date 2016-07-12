@@ -1,19 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using OryxESS.Entities;
+using OryxESS.Entities.ERP;
+using OryxESS.Entities.hr;
 using OryxESS.Entities.iou;
+using OryxESS.Entities.Workflow;
 using System;
 
 namespace OryxESS.Data
 {
-    public class OryxESSContext: DbContext
+    public  class OryxESSContext: DbContext
     {
         public OryxESSContext(DbContextOptions<OryxESSContext> options )
-        : base()
+        : base( options)
         {
 
         }
-        
 
 
         #region EntitySets
@@ -21,7 +22,19 @@ namespace OryxESS.Data
         public DbSet<iouHeader> iouHeaderSet { get; set; }
         public DbSet<iouPayment> iouPaymentSet { get; set; }
         public DbSet<iouStatus> iouStatusSet { get; set; }
+        public DbSet<WFStates> WFStateSet { get; set; }
+        public DbSet<WFTriggers> WFTriggerSet { get; set; }
+        public DbSet<WFPermittedTrigger> WFPermittedTriggerSet { get; set; }
+        public DbSet<Department> DepartmentSet { get; set; }
+
+        public DbSet<GLCode> GLCodeSet  { get; set; }
+        public DbSet<BP> BPSet { get; set; }
+        public DbSet<WorkFlow> WorkFlowSet { get; set; }
+        public DbSet<WorkFlowState> WorkFlowStateSet { get; set; }
+        public DbSet<WorkFlowStateApprover> WorkFlowStateApproverSet { get; set; }
+
         #endregion
+
 
         public virtual void Commit()
         {
@@ -31,7 +44,7 @@ namespace OryxESS.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
-            
+            OryxDataValidation.ModelConfiguration(ref builder);
 
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
@@ -50,10 +63,7 @@ namespace OryxESS.Data
         {
             try
             {
-                var connString = "Server = localhost; Database = iou2; Trusted_Connection = true; MultipleActiveResultSets = true";
-
-                optionsBuilder.UseSqlServer(connString);
-
+                
                 base.OnConfiguring(optionsBuilder);
             }
             catch (Exception ex)

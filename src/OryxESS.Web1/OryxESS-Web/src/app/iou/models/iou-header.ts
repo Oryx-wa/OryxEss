@@ -1,6 +1,10 @@
 /*Defines the iouHeader Interface */
-export class IouHeader {
-       id: number;
+import { IouPayment } from './iou-payment';
+import { IouStatus } from './iou-status';
+import {IModelBase} from '../../shared/imodel-base'
+
+export class IouHeader implements IModelBase {
+       iouId: number;
        docDate: Date;
        dueDate: Date;
        status: string;
@@ -8,6 +12,9 @@ export class IouHeader {
        employeeID: number;
        projectCode: string;
        siteCode: string;
-       comments: string;    
+       comments: string;
+       iouPayments: IouPayment; 
+       iouStatus: IouStatus;
+       userSign:number;   
 }
 

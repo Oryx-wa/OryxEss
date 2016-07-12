@@ -9,6 +9,8 @@ import { AuthGuard }          from './login/auth.guard';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
+import {PaginatePipe, PaginationControlsCmp, PaginationService} from 'ng2-pagination';
+import {ServiceBase} from './shared/service-base';
 
 
 export const APP_PROVIDERS = [
@@ -20,6 +22,11 @@ export const APP_PROVIDERS = [
     AuthGuard,
     MD_CARD_DIRECTIVES,
     MD_LIST_DIRECTIVES,
+    MD_INPUT_DIRECTIVES,
+    PaginationService,
+    ServiceBase
+   
+
     //DisplayEnum
     //bind(LocationStrategy).toClass(HashLocationStrategy)
 ];

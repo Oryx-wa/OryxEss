@@ -5,16 +5,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OryxESS.webapi.ViewModels
 {
-    public class iouHeaderViewModel
+    public class iouHeaderViewModel:BaseViewModel
     {
-        public int ID { get; set; }
+        public int IouId { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         public DateTime DocDate { get; set; } = DateTime.UtcNow;
         [DataType(DataType.Date)]
         public DateTime DueDate { get; set; } = DateTime.UtcNow;
-        [StringLength(4,MinimumLength =4)]
+        [StringLength(20,MinimumLength =1)]
         public string Status { get; set; }
         [Required]
         public Decimal RequestAmount { get; set; }
@@ -24,17 +24,20 @@ namespace OryxESS.webapi.ViewModels
         public string ProjectCode { get; set; }
         public string SiteCode { get; set; }
 
-        [StringLength(5, MinimumLength = 4)]
+        [StringLength(250, MinimumLength = 5)]
         public string Comments { get; set; }
 
         public IEnumerable<iouPaymentViewModel> iouPayments { get; set; }
         public IEnumerable<iouStatusViewModel> iouStatuses { get; set; }
 
+        public int UserSign { get; set; }
+        
+
         public static iouHeaderViewModel FromEntity(iouHeader entity)
         {
             return new iouHeaderViewModel
             {
-                ID = entity.ID,
+                IouId = entity.IouId,
                 DocDate = entity.DocDate,
                 DueDate = entity.DueDate,
                 Status = entity.Status,

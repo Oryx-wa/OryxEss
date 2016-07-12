@@ -1,7 +1,10 @@
-﻿using IdentityServer4.Core.Models;
+﻿using IdentityServer4.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Host.Configuration
+namespace IdentityServer.Configuration
 {
     public class Clients
     {
@@ -11,30 +14,18 @@ namespace Host.Configuration
             {
                 new Client
                 {
-                    ClientId = "mvc",
-                    ClientName = "MVC Hybrid Client",
-                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    ClientId = "spa",
+                    AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
                     RedirectUris = new List<string>
                     {
-                        "http://localhost:3308/signin-oidc"
+                        "http://localhost:1861/spa/callback.html"
                     },
-
-                    PostLogoutRedirectUris = new List<string>
-                    {
-                        "http://localhost:3308/"
-                    },
-
-                    ClientSecrets = new List<Secret>
-                    {
-                        new Secret("secret".Sha256())
-                    },
-
                     AllowedScopes = new List<string>
                     {
-                        StandardScopes.OpenId.Name,
-                        StandardScopes.Profile.Name,
-                        "api1"
+                        "openid", "profile",
+                        "api.todo"
                     }
                 },
                 new Client
@@ -44,6 +35,7 @@ namespace Host.Configuration
                     //Enabled = true,
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
                     //ClientSecrets = new List<Secret>
                     //{
                     //    new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
@@ -66,20 +58,20 @@ namespace Host.Configuration
                         "profile",
                         "OryxESS.webapi"
                     },
-                    //AllowAccessToAllScopes = true,
                     AllowedCorsOrigins = new List<string>
                     {
-                        
+
                         "http://localhost:3000",
                         "http://localhost:4200"
                     }
                 },
-                new Client
+                 new Client
                 {
                     ClientId = "OryxMCI.webapi",
                     ClientName = "MCI",
                     Enabled = true,
-                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    RequireConsent = false,
                     ClientSecrets = new List<Secret>
                     {
                         new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
@@ -102,22 +94,6 @@ namespace Host.Configuration
                         "http://localhost:44311"
                     }
                 },
-                new Client
-                {
-                    ClientId = "socialnetwork",
-                    ClientSecrets = new List<Secret>
-                    {
-                        new Secret("secret".Sha256())
-                    },
-                    ClientName = "SocialNetwork",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    AllowedScopes = new List<string>
-                    {
-                        StandardScopes.OpenId.Name,
-                        "read"
-                    },
-                    Enabled = true
-                }
 
             };
         }

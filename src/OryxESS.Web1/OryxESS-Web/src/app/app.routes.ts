@@ -10,6 +10,7 @@ import { IouRoutes} from './iou/+iouheader/iou.routes';
 import { AuthGuard }          from './login/auth.guard';
 import { CanDeactivateGuard } from './interfaces';
 import {LoginRoutes, AUTH_PROVIDERS} from './login/login.routes'
+import {WorkflowRoutes} from './workflow/shared/workflow.routes'
 
 
 const appRoutes: RouterConfig = [
@@ -19,7 +20,7 @@ const appRoutes: RouterConfig = [
      ...LoginRoutes,
      ...IousRoutes,
     ...IouRoutes,
-         
+    ...WorkflowRoutes,         
  
 ];
 

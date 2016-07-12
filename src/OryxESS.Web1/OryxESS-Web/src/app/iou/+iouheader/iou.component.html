@@ -1,53 +1,11 @@
-<p>
-  iou works!
-</p>
+
 <div class="view">
     <div class="container">
         <header>
             <h3><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;IOU Details</h3>
         </header>
-        <br />
-        <div class="navbar">
-            <ul class="nav navbar-nav">
-                <li class="toolbar-item">
-                    <a [routerLink]="['details']" 
-                       (click)="displayMode = displayModeEnum.Details" 
-                       [class.active]="displayMode === displayModeEnum.Details">
-                       <span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;IOU Details
-                    </a>
-                </li>
-                <li class="toolbar-item">
-                    <a [routerLink]="['create']"
-                       (click)="displayMode = displayModeEnum.Create" 
-                       [class.active]="displayMode === displayModeEnum.Create">
-                        <span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;Add New IOU
-                    </a>
-                </li>
-                <li class="toolbar-item">
-                    <a [routerLink]="['edit']"
-                       (click)="displayMode = displayModeEnum.Edit" 
-                       [class.active]="displayMode === displayModeEnum.Edit">
-                        <span class="glyphicon glyphicon-edit edit-icon"></span>&nbsp;&nbsp;Edit IOU
-                    </a>
-                </li>
-                <li class="toolbar-item">
-                    <a [routerLink]="['form']"
-                       (click)="displayMode = displayModeEnum.Form" 
-                       [class.active]="displayMode === displayModeEnum.Form">
-                        <span class="glyphicon glyphicon-edit edit-icon"></span>&nbsp;&nbsp;IOU Details
-                    </a>
-                </li>
-            </ul>
-            
-        </div>
-        <div class="container">
-            <iou-form [model]= "model" > </iou-form>
-            <router-outlet></router-outlet>
-            <br />
-            <br />
-            <a [routerLink]="['/iou']">View all My IOUs</a>
-            
-            
-        </div>
+        <!--<iou-form [model]= "model" > </iou-form>-->
+        <router-outlet></router-outlet>
+    
     </div>
 </div>

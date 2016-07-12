@@ -1,7 +1,10 @@
-﻿using IdentityServer4.Core.Models;
+﻿using IdentityServer4.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Host.Configuration
+namespace IdentityServer.Configuration
 {
     public class Scopes
     {
@@ -11,13 +14,16 @@ namespace Host.Configuration
             {
                 StandardScopes.OpenId,
                 StandardScopes.Profile,
-
                 new Scope
                 {
-                    Name = "api1",
-                    DisplayName = "API 1",
-                    Description = "API 1 features and data",
-                    Type = ScopeType.Resource
+                    Name = "api.todo",
+                    DisplayName = "TODO API",
+                    Description = "TODO features and data",
+                    Type = ScopeType.Resource,
+                    Claims = new List<ScopeClaim>
+                    {
+                        new ScopeClaim("role")
+                    }
                 },
                  new Scope
                 {
@@ -55,13 +61,6 @@ namespace Host.Configuration
                     }
 
                 },
-
-
-                new Scope
-                {
-                    Name = "read",
-                    DisplayName = "Read User Data"
-                }
             };
         }
     }

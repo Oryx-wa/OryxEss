@@ -1,122 +1,73 @@
-﻿using OryxESS.Entities;
-using OryxESS.Entities.iou;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
+using OryxESS.Data.Repositories.hr;
+using OryxESS.Data.Repositories.workflow;
+using OryxESS.Data.Repositories.iou;
+using OryxESS.Data.Repositories.erp;
 
 namespace OryxESS.Data
 {
-    
-    public class SeedData
+
+    public static class SeedData
     {
-        private OryxESSContext _context;
+        //private OryxESSContext context;
 
-        public SeedData(OryxESSContext context)
-        {
-            _context = context;
+        //public static void SeedData(OryxESSContext context)
+        //{
+        //    context = context;
 
-        }
+        //}
 
-        public  void EnsureSeedData()
+        public static void EnsureSeedData(this OryxESSContext context)
         {
             try
             {
-                if (!_context.EmployeeSet.Any())
+                if (!context.WFTriggerSet.Any())
                 {
-                    var emp = new Employee()
-                    {
-                        FirstName = "Tobi",
-                        LastName = "Adegbola",
-                        StaffNo = "001",
-                        Email = "tobi.adegbola@outlook.com",
-                        Status = "Active",
-                        Blocked = "N",
-                        Mobile1 = "014630603",
-                        Mobile2 = "02341232",
-                        Balance = 0,
-                        DepartmentID = 1
-                    };
-
-                    _context.EmployeeSet.Add(emp);
-
-                    emp = new Employee()
-                    {
-                        FirstName = "Yinka",
-                        LastName = "Adegbola",
-                        StaffNo = "002",
-                        Email = "Yinka.adegbola@outlook.com",
-                        Status = "Active",
-                        Blocked = "N",
-                        Mobile1 = "024630603",
-                        Mobile2 = "02341232",
-                        Balance = 0,
-                        DepartmentID = 2
-                    };
-
-                    _context.EmployeeSet.Add(emp);
-                    _context.SaveChanges();
-
-
+                    context.WFTriggerSet.AddRange(WFTriggerRepository.Generate());
+                    context.SaveChanges();
 
                 }
-                if (!_context.iouHeaderSet.Any())
+                if (!context.WFStateSet.Any())
                 {
-                    var iou = new iouHeader()
-                    {
-                        DocDate = DateTime.UtcNow,
-                        DueDate = DateTime.UtcNow,
-                        EmployeeID = 1,
-                        Comments = "New iou",
-                        ProjectCode = "P001",
-                        RequestAmount = 10000,
-                        Status = "N",
-                        SiteCode = "",
-                        iouStatuses = new List<iouStatus> {
-                            new iouStatus { EmployeeID= 3, iouID = 1, Remark = "New",
-                             StatusDate = DateTime.UtcNow, Status = "N"
-                                            } }
-
-                    };
-                    _context.Add(iou);
-                    iou = new iouHeader()
-                    {
-                        DocDate = DateTime.UtcNow,
-                        DueDate = DateTime.UtcNow,
-                        EmployeeID = 1,
-                        Comments = "New iou2",
-                        ProjectCode = "P002",
-                        RequestAmount = 20000,
-                        Status = "A",
-                        SiteCode = "",
-                        iouStatuses = new List<iouStatus> {
-                            new iouStatus { EmployeeID= 1, iouID = 2, Remark = "New",
-                             StatusDate = DateTime.UtcNow, Status = "N"
-                                            } }
-
-                    };
-                    _context.Add(iou);
-                    iou = new iouHeader()
-                    {
-                        DocDate = DateTime.UtcNow,
-                        DueDate = DateTime.UtcNow,
-                        EmployeeID = 2,
-                        Comments = "New iou3",
-                        ProjectCode = "P002",
-                        RequestAmount = 40000,
-                        Status = "A",
-                        SiteCode = "",
-                        iouStatuses = new List<iouStatus> {
-                            new iouStatus { EmployeeID= 1, iouID = 3, Remark = "New",
-                             StatusDate = DateTime.UtcNow, Status = "N"
-                                            } }
-
-                    };
-
-                    _context.Add(iou);
-                    _context.SaveChanges();
-
+                    context.WFStateSet.AddRange(WFStateRepository.Generate());
+                    context.SaveChanges();
                 }
+                if (!context.DepartmentSet.Any())
+                {
+                    context.DepartmentSet.AddRange(DepartmentRepository.Generate());
+                    context.SaveChanges();
+                }
+                if (!context.EmployeeSet.Any())
+                {
+                    context.EmployeeSet.AddRange(EmployeeRepository.Generate());
+                    context.SaveChanges();
+                }
+                
+                if (!context.iouHeaderSet.Any())
+                {
+                    context.iouHeaderSet.AddRange(IouRepository.Generate());
+                    context.SaveChanges();
+                }
+
+                if (!context.GLCodeSet.Any())
+                {
+                    context.GLCodeSet.AddRange(GLCodeRepository.Generate());
+                    context.SaveChanges();
+                }
+
+                if (!context.BPSet.Any())
+                {
+                    context.BPSet.AddRange(BPRepository.Generate());
+                    context.SaveChanges();
+                }
+
+                if (!context.WorkFlowSet.Any())
+                {
+                    context.WorkFlowSet.AddRange(WorkFlowRepository.Generate());
+                    context.SaveChanges();
+                }
+
             }
             catch (Exception ex)
             {

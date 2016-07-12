@@ -24,44 +24,44 @@ export class IouComponent implements OnInit {
   displayModeEnum = DisplayModeEnum;
 
   model: IouHeader;
+  mode: string = "";
   
   
 
 
   constructor(private router: Router, private route: ActivatedRoute, private _iouHeaderService: IouService,
-     public securityService: SecurityService ) { }
+     public securityService: SecurityService ) { 
+       
+     }
 
   ngOnInit() {
       //Next line needs a better technique. This is the easiest way
       //to get child route path that I've found so far.
       //Hoping this will be easier with later builds of router
-      const state = this.router.routerState;
-      const id: number  = state.firstChild(state.root).snapshot.params['id'];
-      this.getData(id);
+      //const state = this.router.routerState;
+      //const id: number  = state.firstChild(state.root).snapshot.params['id'];
+      //this.getData(id);
 
       const path = this.router.url.split('/')[3];
-      switch (path) {
-        case 'details':
-          this.displayMode = DisplayModeEnum.Details;
-          break;
-        case 'create':
-          this.displayMode = DisplayModeEnum.Create;
-          break;
-        case 'edit':
-          this.displayMode = DisplayModeEnum.Edit;
-          break;
-        case 'form':
-          this.displayMode = DisplayModeEnum.Form;
-          break;
-      }
+      console.log(path)
+      this.displayMode = DisplayModeEnum.Form;
+     
     }
     private getData(id: number) {
-        console.log('iou :getData starting...');
-        this._iouHeaderService
+        if(id == -1){
+          this.model = new IouHeader();
+          this.mode = "New"
+        }
+        else{
+           console.log('iou :getData starting...');
+          this._iouHeaderService
             .GetById(id)
             .subscribe(data => this.model = data,
             error => this.securityService.HandleError(error),
-            () => console.log('Get all completed'));
+            () => console.log('Get id completed'));
+            this.mode = "View"
           console.log("id completed successfully");
+        }
+       
     }
 }

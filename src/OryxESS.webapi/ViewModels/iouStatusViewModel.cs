@@ -7,7 +7,7 @@ namespace OryxESS.webapi.ViewModels
     public class iouStatusViewModel
     {
         [Required]
-        public int ID { get; set; }
+        public int LineID { get; set; }
         [Required]
         public int iouID { get; set; }
         [Required]
@@ -23,10 +23,10 @@ namespace OryxESS.webapi.ViewModels
         {
             return new iouStatusViewModel
             {
-                ID = entity.ID,
-                iouID = entity.iouID,
+                LineID = entity.LineId,
+                iouID = entity.IouId,
                 EmployeeID = entity.EmployeeID,
-                Status = entity.Status,
+                Status = entity.StateCode,
                 StatusDate = entity.StatusDate,
                 Remark = entity.Remark            
             };

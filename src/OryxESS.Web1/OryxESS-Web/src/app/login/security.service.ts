@@ -144,7 +144,7 @@ export class SecurityService {
 
         if (authResponseIsValid) {
             this.SetAuthorizationData(token, id_token);
-            console.log(this.retrieve("authorizationData"));
+            console.log("Response is not valid" + this.retrieve("authorizationData"));
 
             this._router.navigate(['home']);
         }
@@ -162,12 +162,13 @@ export class SecurityService {
 
     public HandleError(error: any) {
         console.log(error);
+         console.log(error.status);
         if (error.status == 403) {
-            this._router.navigate(['Forbidden'])
+            this._router.navigate(['/forbidden'])
         }
         else if (error.status == 401) {
             this.ResetAuthorizationData();
-            this._router.navigate(['Unauthorized'])
+            this._router.navigate(['/unauthorized'])
         }
     }
 

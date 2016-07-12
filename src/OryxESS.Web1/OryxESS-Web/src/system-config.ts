@@ -8,7 +8,14 @@
 /** Map relative paths to URLs. */
 const map: any = {
   'ng2-bootstrap': 'vendor/ng2-bootstrap',
-  '@angular2-material': 'vendor/@angular2-material'
+  '@angular2-material': 'vendor/@angular2-material',
+  'lodash':'vendor/lodash',
+  'angular2-datatable': 'vendor/angular2-datatable',
+  'ng2-pagination': 'vendor/ng2-pagination',
+  "materialize": "vendor/materialize-css",
+   "angular2-materialize": "vendor/angular2-materialize",
+   "jquery": "vendor/jquery"
+  
 };
 
 /** User packages configuration. */
@@ -17,6 +24,27 @@ const packages: any = {
     format: 'cjs',
     defaultExtension: 'js',
     main: 'ng2-bootstrap.js'
+  },
+   'angular2-datatable': {   
+    defaultExtension: 'js',
+    main: 'datatable.js'
+  },  
+   'lodash': {   
+    defaultExtension: 'js',
+    main: 'index.js'
+  },
+  'ng2-pagination': {   
+    defaultExtension: 'js',
+    main: 'index.js'
+  },
+  'materialize': {
+    "format": "global",
+    "main": "dist/js/materialize",
+    "defaultExtension": "js"
+  },
+  'angular2-materialize': {
+    "main": "dist/index",
+    "defaultExtension": "js"
   }
 };
 
@@ -26,6 +54,7 @@ const materialPkgs:string[] = [
   'button',
   'card',
   'list',
+  'input',
 ];
 
 materialPkgs.forEach((pkg) => {
@@ -55,12 +84,15 @@ const barrels: string[] = [
   'app/shared',
   'app/iou-retire',
   'app/iou',
-  'app/home',
+  'app/home', 
   'app/forbidden',
   'app/unauthorized',
   'app/services',
   'app/iou/+iouheader/+iou',
   'app/iou/+iou',
+  'app/workflow',
+  'app/workflow/+workflowtrigger',
+  
   /** @cli-barrel */
 ];
 
@@ -78,8 +110,10 @@ System.config({
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
     'main': 'main.js'
+    
   },
-  packages: cliSystemConfigPackages
+  packages: cliSystemConfigPackages  
+  
 });
 
 // Apply the user's configuration.

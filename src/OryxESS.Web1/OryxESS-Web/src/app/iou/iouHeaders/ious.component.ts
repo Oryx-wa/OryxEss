@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute,  ROUTER_DIRECTIVES } from '@angular/router';
-
 import { CORE_DIRECTIVES } from '@angular/common';
+import { AuthGuard }             from '../../login/auth.guard';
+
 //import {SecurityService} from '../services/security.service';
 import { IouService } from '../shared/iou.service';
-import { AuthGuard }             from '../../login/auth.guard';
-import { IouHeader } from '../models/iou-header';
 
+import { IouHeader } from '../models/iou-header';
+import {ServiceBase} from '../../shared/service-base'
 import {SecurityService} from '../../login/security.service';
 import {IousCardComponent} from './ious-card.component';
 import {IousListComponent} from './ious-list.component';
+import {IModelBase} from '../../shared/imodel-base'
 
 @Component({
   moduleId: module.id,
@@ -26,18 +28,21 @@ export class IousComponent implements OnInit {
 
     title: string;
     filterText: string;
-    iouHeaders: IouHeader[] = [];
+    iouHeaders: IModelBase[] = [];
     //filteredCustomers: ICustomer[] = [];
     displayMode: DisplayModeEnum;
     displayModeEnum = DisplayModeEnum;
   
    
-     constructor(private _iouHeaderService: IouService,
+     constructor(private _iouHeaderService: ServiceBase,
      public securityService: SecurityService        ) { }
 
     ngOnInit() {
 
-      this.title = 'My IOUS';
+      this.title = 'My IOUs';
+      
+
+      this._iouHeaderService.setActionUrl('iou');
       
       this.displayMode = DisplayModeEnum.Card;
       this.getData();

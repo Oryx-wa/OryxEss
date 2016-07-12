@@ -51,9 +51,10 @@ namespace OryxESS.Data.Repositories
             }
             return query;
         }
-        public T GetSingle(int id)
+        public virtual T GetSingle(int id)
         {
-            return GetAll().FirstOrDefault(x => x.ID == id);
+            //return GetAll().FirstOrDefault(x => x.ID == id);
+            return null;
         }
         public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
@@ -80,5 +81,14 @@ namespace OryxESS.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        //public virtual T[] Generate()
+        //{
+        //    return null;
+        //}
+
+
+
+
     }
 }
