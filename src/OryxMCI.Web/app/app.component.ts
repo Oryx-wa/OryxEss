@@ -7,7 +7,9 @@ import { PortListComponent } from './port/port-list.component';
 import {AgentListComponent } from './agents/agent-list.component';
 import {BerthListComponent } from './berth/berth-list.component';
 import {InspectorListComponent } from './inspector/inspector-list.component';
-import {AgentFormComponent } from './agents/agent-form.component';
+
+import {AddAgentFormComponent } from './agents/add-agent-form.component';
+import {EditAgentFormComponent } from './agents/add-agent-form.component';
 
 import { VesselService } from './vessel/vessel.service';
 import { PortService } from './port/port.service';
@@ -42,7 +44,8 @@ import { InspectorDetailComponent } from './inspector/inspector-detail.component
     { path: '/agent/:id', component: AgentDetailComponent },
     { path: '/agents', component: AgentListComponent },
     { path: '/inspectors', component: InspectorListComponent },
-    { path: '/addagent', component: AgentFormComponent }
+    { path: '/addagent', component: AddAgentFormComponent },
+     { path: '/editagent/:id', component: EditAgentFormComponent}
 ])
 export class AppComponent {
     pageTitle: string = 'Acme Product Management';

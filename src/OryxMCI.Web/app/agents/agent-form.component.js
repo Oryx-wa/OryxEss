@@ -1,4 +1,4 @@
-System.register(['@angular/core', './agent', './agent.service'], function(exports_1, context_1) {
+System.register(['@angular/core', './agent', './agent.service', '@angular/router'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', './agent', './agent.service'], function(export
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, agent_1, agent_service_1;
+    var core_1, agent_1, agent_service_1, router_1;
     var AgentFormComponent;
     return {
         setters:[
@@ -22,22 +22,36 @@ System.register(['@angular/core', './agent', './agent.service'], function(export
             },
             function (agent_service_1_1) {
                 agent_service_1 = agent_service_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }],
         execute: function() {
             AgentFormComponent = (function () {
-                function AgentFormComponent(_agentService) {
+                function AgentFormComponent(_router, _agentService) {
+                    this._router = _router;
                     this._agentService = _agentService;
+                    this.active = true;
                     this.model = new agent_1.Agent(0, ' ', ' ');
                     this.submitted = false;
-                    this.active = true;
                 }
-                AgentFormComponent.prototype.onSubmit = function () { this.submitted = true; };
+                AgentFormComponent.prototype.onSubmit = function () {
+                    this.submitted = true;
+                    this._router.navigate(['/agents']);
+                };
+                AgentFormComponent.prototype.newAgent = function () {
+                    var _this = this;
+                    this.model = new agent_1.Agent(0, '', '');
+                    this.active = false;
+                    setTimeout(function () { return _this.active = true; }, 0);
+                };
                 AgentFormComponent = __decorate([
                     core_1.Component({
                         selector: 'agent-form',
-                        templateUrl: 'app/agents/agent-form.component.html'
+                        templateUrl: 'app/agents/agent-form.component.html',
+                        styleUrls: ['app/agents/agent-form.css']
                     }), 
-                    __metadata('design:paramtypes', [agent_service_1.AgentService])
+                    __metadata('design:paramtypes', [router_1.Router, agent_service_1.AgentService])
                 ], AgentFormComponent);
                 return AgentFormComponent;
             }());

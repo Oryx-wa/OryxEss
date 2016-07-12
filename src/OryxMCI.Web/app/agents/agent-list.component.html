@@ -1,3 +1,4 @@
+
 <div class='panel panel-primary'>
     <div class='panel-heading'>
         {{pageTitle}}
@@ -30,6 +31,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    
                     <tr *ngFor='let agent of agents | agentFilter:listFilter'>
                         <td>{{ agent.Id  }}</td>
                         <td>{{ agent.Code  }}</td>
@@ -37,11 +39,13 @@
                             {{agent.Name}}
                             </a>
                         </td>
-                        <td><btn class="btn  btn-primary glyphicon glyphicon-pencil"> Edit</btn></td>                        
+                        <td><a [routerLink]="['/editagent', agent.Id]" class="btn  btn-primary glyphicon glyphicon-pencil"> Edit</a></td>                        
                     </tr>
                 </tbody>
             </table>
-             <a [routerLink]="['/addagent']" class="btn  btn-primary glyphicon glyphicon-user"> NewUser</a> 
+            <a [routerLink]="['/addagent']" class="btn  btn-primary glyphicon glyphicon-user" > NewUser</a> 
+         <!--   <button type="button" class="btn btn-default" (click)="newAgent()">New User</button>-->
+
         </div>
     </div>
 </div>

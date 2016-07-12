@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Http, Response,Headers,RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { IAgent } from './agent';
 
@@ -25,10 +25,28 @@ export class AgentService {
         return this.getagents();
     }
 
-    addAnAgent(newAgent) {
-        var path = '/api/agents';
+    addAnAgent(newAgent){
+              var path = 'api/agent/_agent.json';
+                console.log("Call save");
         return this._http.post(path, JSON.stringify(newAgent));
     }
+
+/*      addAgent (newAgent): Observable<IAgent> {
+    let body = JSON.stringify({ newAgent });
+    let headers = new Headers({ 'Content-Type': 'agent/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this._http.post(this._agentUrl, body, options)
+                    .map((response: Response) => <IAgent[]>response.json())
+                    .catch(this.handleError);
+  }*/
+
+
+
+   private clone(object: any){
+    // hack
+    return JSON.parse(JSON.stringify(object));
+  }
 
     private handleError(error: Response) {
         // in a real world app, we may send the server to some remote logging infrastructure
