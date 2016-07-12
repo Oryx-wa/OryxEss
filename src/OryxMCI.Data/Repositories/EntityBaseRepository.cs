@@ -51,9 +51,10 @@ namespace OryxMCI.Data.Repositories
             }
             return query;
         }
-        public T GetSingle(int id)
+        public virtual T GetSingle(int id)
         {
-            return GetAll().FirstOrDefault(x => x.Id == id);
+            //return GetAll().FirstOrDefault(x => x.Id == id);
+            return null;
         }
         public virtual IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {

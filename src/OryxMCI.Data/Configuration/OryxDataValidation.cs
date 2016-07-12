@@ -2,39 +2,23 @@
 using OryxMCI.Entities;
 using System;
 
-namespace OryxMCI.Data
+namespace OryxMCI.Data.Configuration
 {
     public class OryxDataValidation
     {
         public static void ModelConfiguration(ref ModelBuilder builder)
         {
-            // Agent
-            builder.Entity<Agent>().HasKey(m => m.Id);
-            builder.Entity<Agent>().Property(m => m.Code).IsRequired().HasMaxLength(10);
-            builder.Entity<Agent>().Property(m => m.Name).IsRequired().HasMaxLength(100);
+            //Defitem
+            builder.Entity<DefItem>().HasAlternateKey(m => m.Code);
+            builder.Entity<DefItem>().Property(m => m.CreateDate).HasDefaultValueSql("getDate()");
 
-            // Inspector
-            builder.Entity<Inspector>().HasKey(m => m.Id);
-            builder.Entity<Inspector>().Property(m => m.Code).IsRequired().HasMaxLength(10);
-            builder.Entity<Inspector>().Property(m => m.Name).IsRequired().HasMaxLength(100);
-
-            // Berth
-            builder.Entity<Berth>().HasKey(m => m.Id);
-            builder.Entity<Berth>().Property(m => m.Code).IsRequired().HasMaxLength(10);
-            builder.Entity<Berth>().Property(m => m.Name).IsRequired().HasMaxLength(100);
-
-            // Port
-            builder.Entity<Port>().HasKey(m => m.Id);
-            builder.Entity<Port>().Property(m => m.Code).IsRequired().HasMaxLength(10);
-            builder.Entity<Port>().Property(m => m.Name).IsRequired().HasMaxLength(100);
-
-            // Vessel
-            builder.Entity<Vessel>().HasKey(m => m.Id);
-            builder.Entity<Vessel>().Property(m => m.Code).IsRequired().HasMaxLength(10);
-            builder.Entity<Vessel>().Property(m => m.Name).IsRequired().HasMaxLength(100);
+            //Audit
+            builder.Entity<MCIAudit>().HasAlternateKey(m => m.Code);
+            builder.Entity<MCIAudit>().Property(m => m.Date).HasDefaultValueSql("getDate()");
+            builder.Entity<MCIAudit>().Property(m => m.CreateDate).HasDefaultValueSql("getDate()");
 
             // MCIData
-            builder.Entity<MCIData>().HasKey(m => m.Id);
+            builder.Entity<MCIData>().HasKey(m => m.MCIId);
             builder.Entity<MCIData>().Property(m => m.MCINumber).IsRequired();
             builder.Entity<MCIData>().Property(m => m.PortId).IsRequired();
             builder.Entity<MCIData>().Property(m => m.Port).IsRequired().HasMaxLength(100);

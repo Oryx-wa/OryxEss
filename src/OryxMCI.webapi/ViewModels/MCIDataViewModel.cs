@@ -6,7 +6,7 @@ namespace OryxMCI.webapi.ViewModels
 {
     public class MCIDataViewModel
     {
-        public int Id { get; set; }
+        public int MCIId { get; set; }
 
         [Required]
         public int MCINumber { get; set; }
@@ -60,7 +60,7 @@ namespace OryxMCI.webapi.ViewModels
         {
             return new MCIDataViewModel
             {
-                Id = entity.Id,
+                MCIId = entity.MCIId,
                 MCINumber = entity.MCINumber,
                 PortId = entity.PortId,
                 Port = entity.Port,
@@ -95,7 +95,7 @@ namespace OryxMCI.webapi.ViewModels
         {
             return new MCIData
             {
-                Id = Id,
+                MCIId = MCIId,
                 MCINumber = MCINumber,
                 PortId = PortId,
                 Port = Port,

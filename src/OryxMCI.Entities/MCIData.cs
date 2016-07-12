@@ -5,7 +5,7 @@ namespace OryxMCI.Entities
 {
     public class MCIData : IEntityBase
     {
-        public int Id { get; set; }
+        public int MCIId { get; set; }
         public int MCINumber { get; set; }
         public int PortId { get; set; }
         public string Port { get; set; }
@@ -33,5 +33,9 @@ namespace OryxMCI.Entities
         public string GarbageQty { get; set; }
         public string OilQty { get; set; }
         public string Processed { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime UpdateDate { get; set; }
+
+        public int UserSign { get; set; }
     }
 }

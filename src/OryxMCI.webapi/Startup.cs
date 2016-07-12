@@ -85,13 +85,13 @@ namespace OryxMCI.webapi
             services.AddDbContext<OryxMCIContext>(options => options.UseSqlServer(conString));
 
 
-            services.AddTransient<AgentController>();
+            //services.AddTransient<AgentController>();
 
             var builder = new ContainerBuilder();
 
             services.AddLogging();
-            services.AddTransient<IEntityBaseRepository<Agent>, EntityBaseRepository<Agent>>();
-            services.AddTransient<IEntityBaseRepository<Error>, EntityBaseRepository<Error>>();
+            //services.AddTransient<IEntityBaseRepository<Agent>, EntityBaseRepository<Agent>>();
+            //services.AddTransient<IEntityBaseRepository<Error>, EntityBaseRepository<Error>>();
             services.AddTransient<SeedData>();
 
             //services.AddTransient<ClaimsPrincipal>(
@@ -128,6 +128,17 @@ namespace OryxMCI.webapi
                 app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+
+                try
+                {
+                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                        .CreateScope())
+                    {
+                        serviceScope.ServiceProvider.GetService<OryxMCIContext>()
+                             .Database.Migrate();
+                    }
+                }
+                catch { }
             }
             else
             {
