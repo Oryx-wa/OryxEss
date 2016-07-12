@@ -1,6 +1,10 @@
 import { Component, OnInit }  from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
+import {AddAgentFormComponent} from './add-agent-form.component';
+import {EditAgentFormComponent} from './add-agent-form.component';
+
+
 import { IAgent } from './agent';
 import { AgentFilterPipe } from './agent-filter.pipe';
 import { AgentService } from './agent.service';
@@ -9,7 +13,7 @@ import { AgentService } from './agent.service';
     templateUrl: 'app/agents/agent-list.component.html',
     styleUrls: ['app/agents/agent-list.component.css'],
     pipes: [AgentFilterPipe],
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES,AddAgentFormComponent,EditAgentFormComponent]
 })
 export class AgentListComponent implements OnInit {
     pageTitle: string = 'Agent List';

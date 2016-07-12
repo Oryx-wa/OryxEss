@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/router', './agent-filter.pipe', './agent.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', './add-agent-form.component', './agent-filter.pipe', './agent.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/router', './agent-filter.pipe', './a
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, agent_filter_pipe_1, agent_service_1;
+    var core_1, router_1, add_agent_form_component_1, add_agent_form_component_2, agent_filter_pipe_1, agent_service_1;
     var AgentListComponent;
     return {
         setters:[
@@ -19,6 +19,10 @@ System.register(['@angular/core', '@angular/router', './agent-filter.pipe', './a
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (add_agent_form_component_1_1) {
+                add_agent_form_component_1 = add_agent_form_component_1_1;
+                add_agent_form_component_2 = add_agent_form_component_1_1;
             },
             function (agent_filter_pipe_1_1) {
                 agent_filter_pipe_1 = agent_filter_pipe_1_1;
@@ -43,7 +47,7 @@ System.register(['@angular/core', '@angular/router', './agent-filter.pipe', './a
                         templateUrl: 'app/agents/agent-list.component.html',
                         styleUrls: ['app/agents/agent-list.component.css'],
                         pipes: [agent_filter_pipe_1.AgentFilterPipe],
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        directives: [router_1.ROUTER_DIRECTIVES, add_agent_form_component_1.AddAgentFormComponent, add_agent_form_component_2.EditAgentFormComponent]
                     }), 
                     __metadata('design:paramtypes', [agent_service_1.AgentService])
                 ], AgentListComponent);

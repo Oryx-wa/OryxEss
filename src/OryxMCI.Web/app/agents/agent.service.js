@@ -43,8 +43,22 @@ System.register(['@angular/core', '@angular/http', 'rxjs/Observable'], function(
                     return this.getagents();
                 };
                 AgentService.prototype.addAnAgent = function (newAgent) {
-                    var path = '/api/agents';
+                    var path = 'api/agent/_agent.json';
+                    console.log("Call save");
                     return this._http.post(path, JSON.stringify(newAgent));
+                };
+                /*      addAgent (newAgent): Observable<IAgent> {
+                    let body = JSON.stringify({ newAgent });
+                    let headers = new Headers({ 'Content-Type': 'agent/json' });
+                    let options = new RequestOptions({ headers: headers });
+                
+                    return this._http.post(this._agentUrl, body, options)
+                                    .map((response: Response) => <IAgent[]>response.json())
+                                    .catch(this.handleError);
+                  }*/
+                AgentService.prototype.clone = function (object) {
+                    // hack
+                    return JSON.parse(JSON.stringify(object));
                 };
                 AgentService.prototype.handleError = function (error) {
                     // in a real world app, we may send the server to some remote logging infrastructure

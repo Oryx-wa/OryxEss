@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/common', '@angular/router', './agent-form.service'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/common', '@angular/router', './agent.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/common', '@angular/router', './agent
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, common_1, router_1, agent_form_service_1;
+    var core_1, common_1, router_1, agent_service_1;
     var AddAgentForm;
     return {
         setters:[
@@ -23,8 +23,8 @@ System.register(['@angular/core', '@angular/common', '@angular/router', './agent
             function (router_1_1) {
                 router_1 = router_1_1;
             },
-            function (agent_form_service_1_1) {
-                agent_form_service_1 = agent_form_service_1_1;
+            function (agent_service_1_1) {
+                agent_service_1 = agent_service_1_1;
             }],
         execute: function() {
             AddAgentForm = (function () {
@@ -33,24 +33,15 @@ System.register(['@angular/core', '@angular/common', '@angular/router', './agent
                     this._agentService = _agentService;
                     this._router = _router;
                 }
-                AddAgentForm.prototype.addAgent = function () {
-                    var _this = this;
-                    this._agentService.addAnAgent(this.addAgentForm.value)
-                        .map(function (r) { return r.json(); })
-                        .subscribe(function (result) {
-                        _this._router.navigate(['/agents']);
-                    });
-                };
                 AddAgentForm = __decorate([
                     core_1.Component({
                         selector: 'add',
                         templateUrl: '/agents/add-agent-form.html',
                         directives: [common_1.FORM_DIRECTIVES]
                     }), 
-                    __metadata('design:paramtypes', [common_1.FormBuilder, (typeof (_a = typeof agent_form_service_1.AgentService !== 'undefined' && agent_form_service_1.AgentService) === 'function' && _a) || Object, router_1.Router])
+                    __metadata('design:paramtypes', [common_1.FormBuilder, agent_service_1.AgentService, router_1.Router])
                 ], AddAgentForm);
                 return AddAgentForm;
-                var _a;
             }());
             exports_1("AddAgentForm", AddAgentForm);
         }
