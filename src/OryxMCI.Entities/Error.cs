@@ -2,7 +2,7 @@
 
 namespace OryxMCI.Entities
 {
-    public class Error : IEntityBase
+    public class Error 
     {
         public int Id { get; set; }
         public string Message { get; set; }
