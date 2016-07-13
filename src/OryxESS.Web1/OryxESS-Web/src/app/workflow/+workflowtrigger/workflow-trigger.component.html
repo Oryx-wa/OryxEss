@@ -1,21 +1,22 @@
 
-
+<div materialize>
   <nav>
       <div class="nav-wrapper  deep-purple darken-1">
-        <a href="#!" class="nav-wrapper">{{ title }}</a>
-        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <a href="#!" materialize="sideNav" class="nav-wrapper">{{ title }}</a>
+        <a  href="#" materialize="sideNav" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="left hide-on-med-and-down">
           <li><a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">Card View</a></li>
           <li><a (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">List View</a></li>
           <li><a href="" [routerLink]="['workflow/trigger',-1, 'form']" >New IOU</a></li>
         </ul> 
-        <ul class="side-nav" id="mobile-demo">
+        <ul class="side-nav deep-purple darken-1" id="mobile-demo" >
            <li><a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">Card View</a></li>
           <li><a (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">List View</a></li>
           <li><a href="" [routerLink]="['workflow/trigger',-1, 'form']" >New IOU</a></li>
         </ul>       
       </div>
     </nav>
+</div>
 <div>
    <app-workflow-trigger-list [WFTriggers]="wfTriggers" [hidden]="displayMode !== displayModeEnum.Grid" ></app-workflow-trigger-list>
    <app-workflow-trigger-card [WFTriggers]="wfTriggers" [hidden]="displayMode !== displayModeEnum.Card"></app-workflow-trigger-card>
