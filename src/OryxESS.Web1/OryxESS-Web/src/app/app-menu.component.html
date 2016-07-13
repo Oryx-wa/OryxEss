@@ -1,28 +1,6 @@
 
 
-<li><a materialize="dropdown" href="#! " data-activates='dropdown1'>
-            Workflow<i class="material-icons right ">arrow_drop_down</i>
-          </a>
-</li>
+<app-workflow-menu> </app-workflow-menu>
+<app-iou-menu> </app-iou-menu>
 
-<li><a materialize="dropdown" href="#! " data-activates='dropdown2'>
-            IOU<i class="material-icons right ">arrow_drop_down</i>
-          </a>
-</li>
-
-
-
-
-<ul id='dropdown1' class='dropdown-content'>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow Triggers</a></li>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow States</a></li>
-                    <li class="divider"></li>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow</a></li>
-</ul>
-<ul id='dropdown2' class='dropdown-content'>
-  <li><a [routerLink]="['/iou']">My IOU</a></li>
-  <li><a [routerLink]="['/iouretire']">IOU Retirement</a></li>
-  <li class="divider"></li>
-  <li><a [routerLink]="['/iouapprovals']">Pending Approvals</a></li>
-</ul>
 

@@ -1,3 +1,5 @@
+<!--
+
 <nav>
       <div class="nav-wrapper  deep-purple darken-1">
         <a href="#!" class="nav-wrapper">{{ title }}</a>
@@ -14,14 +16,38 @@
         </ul>       
       </div>
     </nav>
+  -->
 
-<div>
-        <ious-grid 
+<!-- Page Layout here -->
+
+    
+
+      <div class="col s12 m4 l3">
+        <!-- Grey navigation panel -->
+        <!--{{ title }}-->
+       
+          <ul id="slide-out" class="side-nav fixed">
+            <li><a (click)="changeDisplayMode(displayModeEnum.Card)" [class.active]="displayMode === displayModeEnum.Card">Card View</a></li>
+            <li><a (click)="changeDisplayMode(displayModeEnum.Grid)" [class.active]="displayMode === displayModeEnum.Grid">List View</a></li>
+            <li><a href="" [routerLink]="['iou',-1, 'form']" >New IOU</a></li>
+            
+          </ul>
+          <a href="#" data-activates="slide-out" class="button-collapse" ><i class="mdi-navigation-menu"></i></a>
+       
+      </div>
+
+      <div class="col s12 m8 l9">
+        <!-- Teal page content  -->
+         <ious-grid 
           [iouHeaders]="iouHeaders" 
           [hidden]="displayMode !== displayModeEnum.Grid"></ious-grid>
         
         <ious-card
           [iouHeaders]="iouHeaders" 
           [hidden]="displayMode !== displayModeEnum.Card"></ious-card>
+      </div>
+      <script>
    
-</div>
+  $(".button-collapse").sideNav();
+</script>
+

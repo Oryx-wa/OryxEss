@@ -1,3 +1,6 @@
+<div class="container">
+<div class="row">
+  <div class="col l9 s3 m6 offset-s3 offset-l3  offset-m3">
 <nav>
   <div class="nav-wrapper">
     <a href="#!" class="brand-logo right"> <img src="app/assets/images/logo2.png" class="oryx-icon" /> </a>
@@ -39,12 +42,18 @@
   <li class="divider"></li>
   <li><a [routerLink]="['/iouapprovals']">Pending Approvals</a></li>
 </ul>
+</div>
+
+</div>
 
 
 
 
-
-<div class="row">
+<div materialize class="row">
+  
   <!-- Content Here -->
-  <router-outlet></router-outlet>
+  <router-outlet>
+
+  </router-outlet>
+</div>
 </div>

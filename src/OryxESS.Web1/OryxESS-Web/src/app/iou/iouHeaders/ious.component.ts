@@ -4,6 +4,9 @@ import { Router, ActivatedRoute,  ROUTER_DIRECTIVES } from '@angular/router';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { AuthGuard }             from '../../login/auth.guard';
 
+//3rd Party imports
+import {MaterializeDirective} from "angular2-materialize";
+
 //import {SecurityService} from '../services/security.service';
 import { IouService } from '../shared/iou.service';
 
@@ -12,14 +15,15 @@ import {ServiceBase} from '../../shared/service-base'
 import {SecurityService} from '../../login/security.service';
 import {IousCardComponent} from './ious-card.component';
 import {IousListComponent} from './ious-list.component';
-import {IModelBase} from '../../shared/imodel-base'
+import {IModelBase} from '../../shared/imodel-base';
+
 
 @Component({
   moduleId: module.id,
   selector: 'ious',
   templateUrl: 'ious.component.html',
   directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES,
-              IousCardComponent, IousListComponent],
+              IousCardComponent, IousListComponent, MaterializeDirective],
   
   
 })
