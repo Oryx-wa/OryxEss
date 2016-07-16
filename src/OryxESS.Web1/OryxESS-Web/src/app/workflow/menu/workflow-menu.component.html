@@ -1,11 +1,24 @@
+
+<!--
 <li><a materialize="dropdown" href="#! " data-activates='dropdown1'>
             Workflow<i class="material-icons right ">arrow_drop_down</i>
           </a>
 </li>
-
-<ul id='dropdown1' class='dropdown-content'>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow Triggers</a></li>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow States</a></li>
-                    <li class="divider"></li>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow</a></li>
-</ul>
+-->
+<li class="no-padding">
+  <ul class="collapsible collapsible-accordion">
+          <li>
+            <a class="collapsible-header">Workflow<i class="mdi-navigation-arrow-drop-down"></i></a>
+              <div class="collapsible-body">
+                <ul>
+                                    <li><a [routerLink]="['/workflow/trigger']">Workflow Triggers</a></li>
+                                    <li><a [routerLink]="['/workflow/trigger']">Workflow States</a></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/workflow/trigger']">Workflow</a></li>
+                </ul>
+               
+            </div>
+          </li>
+        </ul>
+</li>
+<a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu">

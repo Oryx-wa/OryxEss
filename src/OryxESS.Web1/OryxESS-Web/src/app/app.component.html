@@ -1,59 +1,9 @@
-<div class="container">
-<div class="row">
-  <div class="col l9 s3 m6 offset-s3 offset-l3  offset-m3">
-<nav>
-  <div class="nav-wrapper">
-    <a href="#!" class="brand-logo right"> <img src="app/assets/images/logo2.png" class="oryx-icon" /> </a>
-    <a href="#" materialize="sideNav" data-activates="appmobile1" class="button-collapse"><i class="material-icons">menu</i></a>
-    <ul class="left hide-on-med-and-down">
-      <li>{{title}}</li>
-      <li><a [routerLink]="['/home']">Home<i class="small material-icons right">home</i></a></li>
-      <li><a *ngIf="!securityService.IsAuthorized" (click)="Login()">Login<i class="small material-icons right">lock open</i></a></li>
-      <li>
-        <a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout<i class="small material-icons right">lock</i></a>
-      </li>
-      
-      <app-app-menu> </app-app-menu>
-    </ul> 
-      
-  
- 
-  <ul class="side-nav" id="appmobile1">
-    <li>{{title}}</li>
-    <li><a [routerLink]="[ '/home'] "><i class="small material-icons">home</i></a></li>
-    <li><a *ngIf="!securityService.IsAuthorized" (click)="Login()">Login<i class="small material-icons right">lock open</i></a></li>
-    <li><a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout<i class="small material-icons right">lock</i></a></li>
-    <!-- Dropdown Trigger -->
-    <li><a materialize="dropdown" class="dropdown-button" href="#! " data-activates="workflow">Workflow <i class="material-icons right ">arrow_drop_down</i> </a>      </li>
-    <li><a materialize="dropdown" class="dropdown-button" href="#! " data-activates="iou">IOU<i class="material-icons right ">arrow_drop_down</i></a></li>
-  </ul>
-  </div>
-</nav>
+<app-app-menu> </app-app-menu>
 
-<ul id='workflow' class='dropdown-content'>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow Triggers</a></li>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow States</a></li>
-                    <li class="divider"></li>
-                    <li><a [routerLink]="['/workflow/trigger']">Workflow</a></li>
-</ul>
-<ul id='iou' class='dropdown-content'>
-  <li><a [routerLink]="['/iou']">My IOU</a></li>
-  <li><a [routerLink]="['/iouretire']">IOU Retirement</a></li>
-  <li class="divider"></li>
-  <li><a [routerLink]="['/iouapprovals']">Pending Approvals</a></li>
-</ul>
-</div>
-
-</div>
-
-
-
-
-<div materialize class="row">
+<div materialize class=" row container-fluid col l10 s10 m10 offset-s2 offset-l2 offset-m2">
   
   <!-- Content Here -->
   <router-outlet>
 
   </router-outlet>
-</div>
 </div>

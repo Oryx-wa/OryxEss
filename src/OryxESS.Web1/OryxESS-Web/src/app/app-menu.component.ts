@@ -4,6 +4,8 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 //3rd Party imports
 import {MaterializeDirective} from "angular2-materialize";
 
+//SecurityService
+import {SecurityService} from './login/security.service';
 //import menus 
 import {WorkflowMenuComponent} from './workflow/menu/workflow-menu.component';
 import {IouMenuComponent} from './iou/menu/iou-menu.component'
@@ -20,9 +22,21 @@ import {IouMenuComponent} from './iou/menu/iou-menu.component'
 })
 export class AppMenuComponent implements OnInit {
 
-  constructor() {}
+  constructor(public securityService: SecurityService) {}
 
   ngOnInit() {
-  }
+          
+    }
+    public Login() {
+        console.log("Do login logic");
+        this.securityService.Authorize(); 
+        console.log("login completed");
+    }
+
+    public Logout() {
+        console.log("Do logout logic");
+        this.securityService.Logoff();
+        console.log("Log out completed");
+    }
 
 }
