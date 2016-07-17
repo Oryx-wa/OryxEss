@@ -247,3 +247,13 @@ td,th {
     padding: 4px 8px;
 }
 tbody tr:nth-child(even)  td { background-color: #eee; }
+
+header, main, footer {
+      padding-left: 240px;
+    }
+
+    @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }

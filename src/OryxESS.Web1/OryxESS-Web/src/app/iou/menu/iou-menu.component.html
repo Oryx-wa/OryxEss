@@ -1,3 +1,5 @@
+<!--
+
 <li><a materialize="dropdown" href="#! " data-activates='dropdown2'>
             IOU<i class="material-icons right ">arrow_drop_down</i>
           </a>
@@ -9,3 +11,20 @@
   <li class="divider"></li>
   <li><a [routerLink]="['/iouapprovals']">Pending Approvals</a></li>
 </ul>
+-->
+
+<li class="bold no-padding">
+  <ul  materialize="collapsible" data-collapsible="accordion" id="slide-out1">
+    <li class="bold">
+      <a class="collapsible-header  waves-effect waves-purple">IOU</a>      
+      <div class="collapsible-body">
+        <ul>
+          <li><a [routerLink]="['/workflow/trigger']">Workflow Triggers</a></li>
+          <li><a [routerLink]="['/workflow/trigger']">Workflow States</a></li>
+          <li class="divider"></li>
+          <li><a [routerLink]="['/workflow/trigger']">Workflow</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</li>

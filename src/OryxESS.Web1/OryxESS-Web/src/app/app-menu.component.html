@@ -1,52 +1,59 @@
+<nav class="top-nav">
+  <div class="container">
+    <div class="nav-wrapper"><a class="page-title">Page Title</a></div>
+  </div>
+</nav>
+<div class="container" >
+  <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+    <i class="material-icons">menu</i>
+  </a>
+  <ul id="nav-mobile" class="side-nav fixed" >
+    <li class="logo">
+      <a id="logo-container" href="http://materializecss.com/" class="brand-logo">
+        <img src="app/assets/images/logo2.png" />
+         {{title}} 
+      </a>
+    </li>
+    <br>
+    <br>
+          <li class="search">
+            <div class="search-wrapper card">
+              <input id="search"><i class="material-icons">search</i>
+              <div class="search-results"></div>
+            </div>
+          </li>
+        <br>
+        <br>
+          <li class="bold"><a [routerLink]="['/home']" class="waves-effect waves-teal">Home</a></li>
 
-  
-    
-      <nav>
-        <div class="nav-wrapper card-panel deep-purple darken-2">
+          <li class="bold"><a [routerLink]="['/home']"><i class="fa fa-user fa-2x fa-fw">Home</i></a></li>
+          <li class="bold"><a *ngIf="!securityService.IsAuthorized" (click)="Login()">Login<i class="small material-icons right">lock open</i></a></li>
+          <li class="bold">
+            <a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout<i class="small material-icons right">lock</i></a>
+          </li>
+
+          <app-workflow-menu> </app-workflow-menu>
+          <app-iou-menu> </app-iou-menu>
           
-          <a href="#" materialize="sideNav" data-activates="appmobile1" class="button-collapse"><i class="material-icons">menu</i></a>
-          <ul class="side-nav fixed left hide-on-med-and-down">
-            <li><a href="#!" class="brand-logo left"> <img src="app/assets/images/logo2.png" class="oryx-icon" /> </a></li>
-            <li></li>
-            <li>/</li>
-            <li>{{title}}</li>
-            <li><a [routerLink]="['/home']">Home<i class="small material-icons right">home</i></a></li>
-            <li><a *ngIf="!securityService.IsAuthorized" (click)="Login()">Login<i class="small material-icons right">lock open</i></a></li>
-            <li>
-              <a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout<i class="small material-icons right">lock</i></a>
-            </li>
-            <app-workflow-menu> </app-workflow-menu>
-            <app-iou-menu> </app-iou-menu>
+  </ul>
+</div>
 
-          </ul>
-        
 
-          <ul class="side-nav" id="appmobile1">
-            <li>{{title}}</li>
-            <li><a [routerLink]="[ '/home'] "><i class="small material-icons">home</i></a></li>
-            <li><a *ngIf="!securityService.IsAuthorized" (click)="Login()">Login<i class="small material-icons right">lock open</i></a></li>
-            <li><a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout<i class="small material-icons right">lock</i></a></li>
-            <!-- Dropdown Trigger -->
-            <li><a materialize="dropdown" class="dropdown-button" href="#! " data-activates="workflow">Workflow <i class="material-icons right ">arrow_drop_down</i> </a>              </li>
-            <li><a materialize="dropdown" class="dropdown-button" href="#! " data-activates="iou">IOU<i class="material-icons right ">arrow_drop_down</i></a></li>
-          </ul>
-        </div>
-      </nav>
+<ul id="slide-out" class="side-nav green lighten-2">
+  <li>{{title}}</li>
+  <li><a [routerLink]="[ '/home'] "><i class="small material-icons">home</i></a></li>
+  <li><a *ngIf="!securityService.IsAuthorized" (click)="Login()">Login<i class="small material-icons right">lock open</i></a></li>
+  <li><a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout<i class="small material-icons right">lock</i></a></li>
+  <!-- Dropdown Trigger -->
+  <li><a materialize="dropdown" class="dropdown-button" href="#! " data-activates="workflow">Workflow <i class="material-icons right ">arrow_drop_down</i> </a>    </li>
+  <li><a materialize="dropdown" class="dropdown-button" href="#! " data-activates="iou">IOU<i class="material-icons right ">arrow_drop_down</i></a></li>
+</ul>
 
-      <ul id='workflow' class='dropdown-content'>
-        <li><a [routerLink]="['/workflow/trigger']">Workflow Triggers</a></li>
-        <li><a [routerLink]="['/workflow/trigger']">Workflow States</a></li>
-        <li class="divider"></li>
-        <li><a [routerLink]="['/workflow/trigger']">Workflow</a></li>
-      </ul>
-      <ul id='iou' class='dropdown-content'>
-        <li><a [routerLink]="['/iou']">My IOU</a></li>
-        <li><a [routerLink]="['/iouretire']">IOU Retirement</a></li>
-        <li class="divider"></li>
-        <li><a [routerLink]="['/iouapprovals']">Pending Approvals</a></li>
-      </ul>
-    
-    
-      <a href="#!" class="brand-logo right"> <img src="app/assets/images/logo2.png" class="oryx-icon" /> </a>
-        
-  
+
+<ul id='iou' class='dropdown-content'>
+  <!--<app-workflow-menu> </app-workflow-menu>-->
+  <li><a [routerLink]="['/iou']">My IOU</a></li>
+  <li><a [routerLink]="['/iouretire']">IOU Retirement</a></li>
+  <li class="divider"></li>
+  <li><a [routerLink]="['/iouapprovals']">Pending Approvals</a></li>
+</ul>

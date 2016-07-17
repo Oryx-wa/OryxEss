@@ -3,6 +3,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 //3rd Party imports
 import {MaterializeDirective} from "angular2-materialize";
+import { FaDirective } from 'angular2-fontawesome/directives';
 
 //SecurityService
 import {SecurityService} from './login/security.service';
@@ -18,7 +19,8 @@ import {IouMenuComponent} from './iou/menu/iou-menu.component'
   templateUrl: 'app-menu.component.html',
   styleUrls: ['app-menu.component.css'],
    directives: [ROUTER_DIRECTIVES, MaterializeDirective,
-     WorkflowMenuComponent, IouMenuComponent] ,
+     WorkflowMenuComponent, IouMenuComponent,FaDirective,]
+      
 })
 export class AppMenuComponent implements OnInit {
 

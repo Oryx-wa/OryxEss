@@ -14,7 +14,8 @@ const map: any = {
   'ng2-pagination': 'vendor/ng2-pagination',
   "materialize": "vendor/materialize-css",
    "angular2-materialize": "vendor/angular2-materialize",
-   "jquery": "vendor/jquery"
+   "jquery": "vendor/jquery",
+   "angular2-fontawesome": "vendor/angular2-fontawesome"
   
 };
 
@@ -45,7 +46,10 @@ const packages: any = {
   'angular2-materialize': {
     "main": "dist/index",
     "defaultExtension": "js"
-  }
+  },
+  'angular2-fontawesome': {
+    "defaultExtension": "js"
+  },
 };
 
 // put the names of any of your Material components here

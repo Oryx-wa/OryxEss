@@ -26,6 +26,7 @@ module.exports = function(defaults) {
       'ng2-pagination/**/*.js',
       'angular2-materialize/dist/*',
       'materialize-css/dist/**/*',
+      'angular2-fontawesome/**/*'
     ]
   });
 };
