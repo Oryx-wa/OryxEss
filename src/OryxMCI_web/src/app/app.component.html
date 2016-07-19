@@ -33,6 +33,11 @@ md-peekaboo [break]="190" breakAction="show" [ngClass]="{hide:over}" [style.left
                 <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
                 <span> <a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout</a></span>
             </md-list-item>
+            <md-list-item>
+                <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
+                <span><a [routerLink]="['/agents']" class = " ">Agents</a></span>
+            </md-list-item>
+    
         </md-list>
     </md-sidenav>
 

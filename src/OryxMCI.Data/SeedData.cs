@@ -71,14 +71,14 @@ namespace OryxESS.Data
                     var Ins = new Inspector()
                     {
                         Name = "Abubakar Suleiman",
-                        Code = "002"
+                        Code = "I002"
                     };
                     _context.InspectorSet.Add(Ins);
 
                     Ins = new Inspector()
                     {
                         Name = "Emmanuel Iwu",
-                        Code = "003"
+                        Code = "I003"
                     };
                     _context.InspectorSet.Add(Ins);
 
@@ -91,14 +91,14 @@ namespace OryxESS.Data
                     var Pr = new Port()
                     {
                         Name = "Calabar",
-                        Code = "002"
+                        Code = "P002"
                     };
                     _context.PortSet.Add(Pr);
 
                     Pr = new Port()
                     {
                         Name = "Lagos",
-                        Code = "003"
+                        Code = "P003"
                     };
                     _context.PortSet.Add(Pr);
 
