@@ -10,7 +10,6 @@
       "type": "platform"
     },
     "OryxEss.Entities": "1.0.0",
-    "OryxStateless.dll": "1.0.5",
     "System.Reflection.TypeExtensions": "4.1.0-rc2-24027"
   },
 
@@ -24,4 +23,3 @@
     }
   }
 }
-  
