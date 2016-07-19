@@ -43,13 +43,16 @@ namespace IdentityServer.Configuration
                    RedirectUris = new List<string>
                     {
                         "http://localhost:3000",
-                        "http://localhost:4200"
+                        "http://localhost:4200",
+                        "http://10.211.55.2:4200"
+                        
 
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
                         "http://localhost:3000/Unauthorized.html",
                         "http://localhost:4200/Unauthorized.html",
+                        "http://10.211.55.2:4200/Unauthorized.html",
                     },
                     AllowedScopes = new List<string>
                     {
@@ -62,7 +65,8 @@ namespace IdentityServer.Configuration
                     {
 
                         "http://localhost:3000",
-                        "http://localhost:4200"
+                        "http://localhost:4200",
+                        "http://10.211.55.2:4200"
                     }
                 },
                  new Client

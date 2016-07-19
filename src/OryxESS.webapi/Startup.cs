@@ -139,7 +139,8 @@ namespace OryxESS.webapi
             app.UseCors(builder => builder.WithOrigins(
                  "http://localhost:5000",
                     "http://localhost:3000",
-                    "http://localhost:4200")
+                    "http://localhost:4200",
+                    "http://10.211.55.2:4200")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     );
@@ -206,6 +207,21 @@ namespace OryxESS.webapi
             {
                 Authority = "http://localhost:5000",
                 Audience = "http://localhost:5000/resources",
+                RequireHttpsMetadata = false,
+
+                AutomaticAuthenticate = true,
+
+                TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "name",
+                    RoleClaimType = "role"
+                }
+            });
+
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                Authority = "http://10.211.55.5:5000",
+                Audience = "http://10.211.55.5:5000/resources",
                 RequireHttpsMetadata = false,
 
                 AutomaticAuthenticate = true,
