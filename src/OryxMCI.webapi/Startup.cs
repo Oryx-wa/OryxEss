@@ -48,31 +48,31 @@ namespace OryxMCI.webapi
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            var guestPolicy = new AuthorizationPolicyBuilder()
-                .RequireAuthenticatedUser()
-                .RequireClaim("scope", "OryxMCI.webapi")
-                .Build();
+            //var guestPolicy = new AuthorizationPolicyBuilder()
+            //    .RequireAuthenticatedUser()
+            //    .RequireClaim("scope", "OryxMCI.webapi")
+            //    .Build();
 
-            services.AddAuthorization(options =>
-            {
+            //services.AddAuthorization(options =>
+            //{
 
-                options.AddPolicy("OryxMCIAdmin", policyAdmin =>
-                {
-                    policyAdmin.RequireClaim("role", "OryxMCI.admin");
-                });
-                options.AddPolicy("OryxMCIUser", policyUser =>
-                {
-                    policyUser.RequireClaim("role", "OryxMCI.user");
-                });
+            //    options.AddPolicy("OryxMCIAdmin", policyAdmin =>
+            //    {
+            //        policyAdmin.RequireClaim("role", "OryxMCI.admin");
+            //    });
+            //    options.AddPolicy("OryxMCIUser", policyUser =>
+            //    {
+            //        policyUser.RequireClaim("role", "OryxMCI.user");
+            //    });
 
-            });
+            //});
 
             services.AddMvcCore(config =>
             {
 #if !DEBUG
                     config.Filters.Add(new RequireHttpsAttribute());
 #endif
-                config.Filters.Add(new AuthorizeFilter(guestPolicy));
+               // config.Filters.Add(new AuthorizeFilter(guestPolicy));
             })
            .AddJsonFormatters(opt =>
            {
@@ -176,22 +176,22 @@ namespace OryxMCI.webapi
 
            
 
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            app.UseJwtBearerAuthentication(new JwtBearerOptions
-            {
-                Authority = "http://localhost:5000",
-                Audience = "http://localhost:5000/resources",
-                RequireHttpsMetadata = false,
+            //app.UseJwtBearerAuthentication(new JwtBearerOptions
+            //{
+            //    Authority = "http://localhost:5000",
+            //    Audience = "http://localhost:5000/resources",
+            //    RequireHttpsMetadata = false,
 
-                AutomaticAuthenticate = true,
+            //    AutomaticAuthenticate = true,
 
-                TokenValidationParameters = new TokenValidationParameters
-                {
-                    NameClaimType = "name",
-                    RoleClaimType = "role"
-                }
-            });
+            //    TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        NameClaimType = "name",
+            //        RoleClaimType = "role"
+            //    }
+            //});
 
             app.UseMvc(config =>
             {
