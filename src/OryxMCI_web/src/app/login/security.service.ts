@@ -81,7 +81,7 @@ export class SecurityService {
         var scope = "OryxMCI.webapi openid";
         var nonce = "N" + Math.random() + "" + Date.now();
         var state = Date.now() + "" + Math.random();
-        var grant_Type = "Password";
+        //var grant_Type = "Password";
         //var client_secret = "F621F470-9731-4A25-80EF-67A6F7C5F4B8";
 
         this.store("authStateControl", state);
@@ -98,6 +98,8 @@ export class SecurityService {
             "state=" + encodeURI(state);
 
         window.location.href = url;
+        console.log(url.toString());
+        
     }
 
     public AuthorizedCallback() {

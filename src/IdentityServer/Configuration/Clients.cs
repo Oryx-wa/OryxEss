@@ -50,9 +50,9 @@ namespace IdentityServer.Configuration
                     },
                     PostLogoutRedirectUris = new List<string>
                     {
-                        "http://localhost:3000/Unauthorized.html",
-                        "http://localhost:4200/Unauthorized.html",
-                        "http://10.211.55.2:4200/Unauthorized.html",
+                        "http://localhost:3000/unauthorized.html",
+                        "http://localhost:4200/unauthorized.html",
+                        "http://10.211.55.2:4200/unauthorized.html",
                     },
                     AllowedScopes = new List<string>
                     {
@@ -75,11 +75,11 @@ namespace IdentityServer.Configuration
                     ClientName = "MCI",
                     Enabled = true,
                     AllowedGrantTypes = GrantTypes.Implicit,
-                    RequireConsent = false,
-                    ClientSecrets = new List<Secret>
-                    {
-                        new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
-                    },
+                    //RequireConsent = false,
+                    //ClientSecrets = new List<Secret>
+                    //{
+                    //    new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
+                    //},
                     
                     AllowedScopes = new List<string>
                     {

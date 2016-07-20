@@ -112,8 +112,8 @@ namespace IdentityServer
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
             app.UseJwtBearerAuthentication(new JwtBearerOptions
             {
-                Authority = "http://0.0.0.0:5000",
-                Audience = "http://0.0.0.0:5000/resources",
+                Authority = "http://localhost:5000",
+                Audience = "http://localhost:5000/resources",
                 AutomaticAuthenticate = true,
                 AuthenticationScheme = "Bearer",
                 RequireHttpsMetadata = false
