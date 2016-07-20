@@ -1,17 +1,16 @@
 <div layout="column" style="height:600px">
   <md-toolbar color="primary">
-    <div>
-    <span><i class="material-icons">menu</i></span>
-    </div>
     <span>
-          <h3>
-          Agents
-        </h3>
-        </span>
-
+        <md-button id="button-id" (click)="menu.open()"
+                 class="md-primary"
+                 md-ripple-size="auto"
+                 md-no-ink="true" aria-label="button-label">
+          <i class="material-icons">menu</i>
+      </md-button>
+      </span>
+    <span><h3>Agents</h3></span>
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
-
     <a [routerLink]="['/agentsList']"><span><i class="material-icons">list</i></span> </a>
     <a [routerLink]="['/agentCreate']"><span><i class="material-icons">add</i></span></a>
     <span><i class="material-icons">search</i></span>
