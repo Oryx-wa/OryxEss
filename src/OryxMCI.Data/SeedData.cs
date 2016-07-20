@@ -20,7 +20,7 @@ namespace OryxESS.Data
         {
             try
             {
-                if (!_context.AgentSet.Any())
+                if (!_context.Agent.Any())
                 {
                     var Ag = new Agent()
                     {
@@ -28,98 +28,98 @@ namespace OryxESS.Data
                         Code = "001"
                     };
 
-                    _context.AgentSet.Add(Ag);
+                    _context.Agent.Add(Ag);
 
                     Ag = new Agent()
                     {
                         Name = "Bayo",
                         Code = "002"
                     };
-                    _context.AgentSet.Add(Ag);
+                    _context.Agent.Add(Ag);
                     Ag = new Agent()
                     {
                         Name = "Janta",
                         Code = "003"
                     };
-                    _context.AgentSet.Add(Ag);
+                    _context.Agent.Add(Ag);
 
                     _context.SaveChanges();
 
                 }
 
-                if (!_context.BerthSet.Any())
+                if (!_context.Berth.Any())
                 {
                     var Be = new Berth()
                     {
                         Name = "NNPC",
                         Code = "NN"
                     };
-                    _context.BerthSet.Add(Be);
+                    _context.Berth.Add(Be);
 
                     Be = new Berth()
                     {
                         Name = "NigerDock",
                         Code = "NGR"
                     };
-                    _context.BerthSet.Add(Be);
+                    _context.Berth.Add(Be);
 
                     _context.SaveChanges();
                 }
 
-                if (!_context.InspectorSet.Any())
+                if (!_context.Inspector.Any())
                 {
                     var Ins = new Inspector()
                     {
                         Name = "Abubakar Suleiman",
                         Code = "I002"
                     };
-                    _context.InspectorSet.Add(Ins);
+                    _context.Inspector.Add(Ins);
 
                     Ins = new Inspector()
                     {
                         Name = "Emmanuel Iwu",
                         Code = "I003"
                     };
-                    _context.InspectorSet.Add(Ins);
+                    _context.Inspector.Add(Ins);
 
                     _context.SaveChanges();
                 }
 
 
-                if (!_context.PortSet.Any())
+                if (!_context.Port.Any())
                 {
                     var Pr = new Port()
                     {
                         Name = "Calabar",
                         Code = "P002"
                     };
-                    _context.PortSet.Add(Pr);
+                    _context.Port.Add(Pr);
 
                     Pr = new Port()
                     {
                         Name = "Lagos",
                         Code = "P003"
                     };
-                    _context.PortSet.Add(Pr);
+                    _context.Port.Add(Pr);
 
                     _context.SaveChanges();
                 }
 
-                if (!_context.VesselSet.Any())
+                if (!_context.Vessel.Any())
                 {
                     var Ve = new Vessel()
                     {
                         Name = "Voyager",
-                        Code = "002"
+                        Code = "V002"
                     };
-                    _context.VesselSet.Add(Ve);
+                    _context.Vessel.Add(Ve);
 
                     Ve = new Vessel()
                     {
                         Name = "TORM FREYA",
-                        Code = "003"
+                        Code = "V003"
                     };
-                    _context.VesselSet.Add(Ve);
+                    _context.Vessel.Add(Ve);
 
                     _context.SaveChanges();
                 }

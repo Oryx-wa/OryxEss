@@ -8,7 +8,7 @@ using OryxMCI.Data;
 namespace OryxMCI.Data.Migrations
 {
     [DbContext(typeof(OryxMCIContext))]
-    [Migration("20160712140924_OryxMCI")]
+    [Migration("20160719194211_OryxMCI")]
     partial class OryxMCI
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,7 @@ namespace OryxMCI.Data.Migrations
 
                     b.HasAlternateKey("Code");
 
-                    b.ToTable("DefItemSet");
+                    b.ToTable("DefItem");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("DefItem");
                 });
@@ -86,7 +86,7 @@ namespace OryxMCI.Data.Migrations
 
                     b.HasAlternateKey("Code");
 
-                    b.ToTable("MCIAuditSet");
+                    b.ToTable("MCIAudit");
                 });
 
             modelBuilder.Entity("OryxMCI.Entities.MCIData", b =>
@@ -186,7 +186,7 @@ namespace OryxMCI.Data.Migrations
 
                     b.HasKey("MCIId");
 
-                    b.ToTable("MCIDataSet");
+                    b.ToTable("MCIData");
                 });
 
             modelBuilder.Entity("OryxMCI.Entities.Agent", b =>

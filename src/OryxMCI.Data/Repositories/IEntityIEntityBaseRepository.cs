@@ -13,6 +13,8 @@ namespace OryxMCI.Data.Repositories
         T GetSingle(int id);
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         IQueryable<T> GetChild(int id);
+
+        IQueryable<T> GetPaged(int pageNo = 1, int pageSize = 20, string orderBy="CreateDate");
         void Add(T entity);
         void Delete(T entity);
         void Edit(T entity);

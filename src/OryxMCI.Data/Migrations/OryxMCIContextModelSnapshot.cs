@@ -43,7 +43,7 @@ namespace OryxMCI.Data.Migrations
 
                     b.HasAlternateKey("Code");
 
-                    b.ToTable("DefItemSet");
+                    b.ToTable("DefItem");
 
                     b.HasDiscriminator<string>("Discriminator").HasValue("DefItem");
                 });
@@ -85,7 +85,7 @@ namespace OryxMCI.Data.Migrations
 
                     b.HasAlternateKey("Code");
 
-                    b.ToTable("MCIAuditSet");
+                    b.ToTable("MCIAudit");
                 });
 
             modelBuilder.Entity("OryxMCI.Entities.MCIData", b =>
@@ -185,7 +185,7 @@ namespace OryxMCI.Data.Migrations
 
                     b.HasKey("MCIId");
 
-                    b.ToTable("MCIDataSet");
+                    b.ToTable("MCIData");
                 });
 
             modelBuilder.Entity("OryxMCI.Entities.Agent", b =>

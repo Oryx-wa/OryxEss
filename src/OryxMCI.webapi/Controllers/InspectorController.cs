@@ -116,5 +116,12 @@ namespace OryxMCI.webapi.Controllers
                 return Json("Failed to get Inspector");
             }
         }
+
+       
+
+        public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
+        {
+            throw new NotImplementedException();
+        }
     }
 }

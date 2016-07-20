@@ -10,7 +10,7 @@ namespace OryxMCI.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "DefItemSet",
+                name: "DefItem",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -25,12 +25,12 @@ namespace OryxMCI.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DefItemSet", x => x.Id);
-                    table.UniqueConstraint("AK_DefItemSet_Code", x => x.Code);
+                    table.PrimaryKey("PK_DefItem", x => x.Id);
+                    table.UniqueConstraint("AK_DefItem_Code", x => x.Code);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MCIAuditSet",
+                name: "MCIAudit",
                 columns: table => new
                 {
                     AuditId = table.Column<int>(nullable: false)
@@ -47,12 +47,12 @@ namespace OryxMCI.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MCIAuditSet", x => x.AuditId);
-                    table.UniqueConstraint("AK_MCIAuditSet_Code", x => x.Code);
+                    table.PrimaryKey("PK_MCIAudit", x => x.AuditId);
+                    table.UniqueConstraint("AK_MCIAudit_Code", x => x.Code);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MCIDataSet",
+                name: "MCIData",
                 columns: table => new
                 {
                     MCIId = table.Column<int>(nullable: false)
@@ -90,20 +90,20 @@ namespace OryxMCI.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MCIDataSet", x => x.MCIId);
+                    table.PrimaryKey("PK_MCIData", x => x.MCIId);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "DefItemSet");
+                name: "DefItem");
 
             migrationBuilder.DropTable(
-                name: "MCIAuditSet");
+                name: "MCIAudit");
 
             migrationBuilder.DropTable(
-                name: "MCIDataSet");
+                name: "MCIData");
         }
     }
 }

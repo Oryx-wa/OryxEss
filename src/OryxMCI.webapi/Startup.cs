@@ -19,6 +19,7 @@ using System;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 
+
 namespace OryxMCI.webapi
 {
     public class Startup
@@ -110,6 +111,7 @@ namespace OryxMCI.webapi
                    .As(typeof(IEntityBaseRepository<>))
                    .InstancePerLifetimeScope();
 
+            
 
             builder.Populate(services);
 

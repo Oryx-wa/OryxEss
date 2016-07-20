@@ -30,6 +30,8 @@ namespace OryMCI.webapi.Infrastructure.Core
         [HttpGet]
         public abstract JsonResult Get();
 
+        public abstract JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate");
+
 
         // GET api/values/5
         [HttpGet("{id}")]

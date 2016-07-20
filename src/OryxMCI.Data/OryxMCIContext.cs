@@ -19,14 +19,14 @@ namespace OryxMCI.Data
 
         #region EntitySets
 
-        public DbSet<DefItem> DefItemSet { get; set; }
-        public DbSet<Agent> AgentSet { get; set; }
-        public DbSet<MCIAudit> MCIAuditSet { get; set; }
-        public DbSet<Berth> BerthSet { get; set; }
-        public DbSet<Inspector> InspectorSet { get; set; }
-        public DbSet<MCIData> MCIDataSet { get; set; }
-        public DbSet<Port> PortSet { get; set; }
-        public DbSet<Vessel> VesselSet { get; set; }
+        public DbSet<DefItem> DefItem { get; set; }
+        public DbSet<Agent> Agent { get; set; }
+        public DbSet<MCIAudit> MCIAudit { get; set; }
+        public DbSet<Berth> Berth { get; set; }
+        public DbSet<Inspector> Inspector { get; set; }
+        public DbSet<MCIData> MCIData { get; set; }
+        public DbSet<Port> Port { get; set; }
+        public DbSet<Vessel> Vessel { get; set; }
         #endregion
 
         public virtual void Commit()

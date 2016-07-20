@@ -70,6 +70,7 @@ namespace OryxMCI.webapi.Controllers
         {
         }
 
+        [HttpGet]
         public override JsonResult Get()
         {
 
@@ -96,6 +97,7 @@ namespace OryxMCI.webapi.Controllers
             }
         }
 
+        [HttpGet("{id}")]
         public override JsonResult Get(int id)
         {
             try
@@ -116,6 +118,36 @@ namespace OryxMCI.webapi.Controllers
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json("Failed to get Agent");
             }
+        }
+        [HttpGet]
+        public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy="CreateDate")
+        {
+            try
+            {
+                var Agents = _repository.GetPaged(pageNo, pageSize, orderBy);
+
+                var AgentsVm = Agents.Select(x => AgentViewModel.FromEntity(x));
+
+
+                if (AgentsVm == null)
+                {
+                    return Json(null);
+                }
+
+                int total = Agents.Count();
+                return Json(new PagedResult<AgentViewModel>(AgentsVm, pageNo, pageSize, total));
+
+
+                //return new string[] { "value1", "value2" };
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError($"Failed to get Agents", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Failed to get Agents");
+            }
+
         }
     }
 }

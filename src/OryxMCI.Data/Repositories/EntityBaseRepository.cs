@@ -81,5 +81,22 @@ namespace OryxMCI.Data.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public virtual IQueryable<T> GetPaged(int pageNo = 1, int pageSize = 20, string orderBy = "CreateDate")
+        {
+            // Determine the number of records to skip
+            int skip = (pageNo - 1) * pageSize;
+
+            // Get total number of records
+            int total = DbContext.Set<T>().Count();
+            
+
+            IQueryable<T> query = DbContext.Set<T>()
+                .OrderBy(orderBy)
+                .Skip(skip)
+                .Take(pageSize);
+
+            return query;
+        }
     }
 }
