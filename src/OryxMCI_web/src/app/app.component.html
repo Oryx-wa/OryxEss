@@ -1,54 +1,82 @@
-<md-toolbar color="primary" class="fixed-toolbar" 
-md-peekaboo [break]="190" breakAction="show" [ngClass]="{hide:over}" [style.left]="sidenavWidth + 'px'"
-    [style.right]="scrollWidth + 'px'">
-</md-toolbar>
-<md-toolbar color="primary" class="fixed-toolbar" [ngClass]="{hide:over}" 
-[style.left]="sidenavWidth + 'px'" [style.right]="scrollWidth + 'px'">
-    <button md-button class="md-hamburger md-icon-button" hide-gt-lg (click)="menu.open($event)" aria-label="Home">
-    <i md-icon class="md-dark">menu</i>
-  </button>
-    <span md-peekaboo breakAction="show">
-    <span class="verbose-title" *ngIf="navigation?.currentTitle != site">Components <small>–</small>&nbsp;</span>
-    <span>Test</span>
-    </span>
-    <span flex></span>
-    <a md-peekaboo href="https://github.com/justindujardin/ng2-material/releases/tag/v{{version}}" target="_blank" breakAction="show"></a>
-</md-toolbar>
+
+
+
+
 
 <md-sidenav-layout layout="row" fullscreen>
     <md-sidenav #menu class="app-menu" mode="side" [opened] = "true">
         <md-toolbar>
-            <h3>ng2-material</h3>
+            <div class="row">
+            <img src="./app/assets/images/logo.png" class="img-responsive center-block"/>
+               <h3>ng2-material</h3>
+              </div>
         </md-toolbar>
         <md-list>
             <md-list-item>
+                 <div class="md-list-item-text">
                 <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
                 <span><a [routerLink]="['/home']" class = " ">Home</a></span>
+                 </div><br>
             </md-list-item>
+            <md-divider></md-divider>
             <md-list-item>
+                 <div class="md-list-item-text">
                 <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
                 <span><a *ngIf="!securityService.IsAuthorized" (click)="Login()">Login</a></span>
+                 </div>
+                   
             </md-list-item>
+             <md-divider></md-divider>
             <md-list-item>
+                 <div class="md-list-item-text">
                 <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
                 <span> <a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout</a></span>
+                </div>
             </md-list-item>
+            <md-divider></md-divider>
             <md-list-item>
+                <div class="md-list-item-text">
                 <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
                 <span><a [routerLink]="['/agents']" class = " ">Agents</a></span>
+                </div>
+                <md-divider></md-divider>
             </md-list-item>
+            <md-divider></md-divider>
     
         </md-list>
     </md-sidenav>
 
-    <md-content #content>
+ <md-content #content>
         <md-toolbar color="primary" class="hero">
             <h1 md-peekaboo breakAction="hide"></h1>
         </md-toolbar>
-        <main layout="row" layout-align="center center">
+       
+    </md-content>
+    
+
+<md-toolbar color="primary" class="fixed-toolbar" 
+md-peekaboo [break]="190" breakAction="show" [ngClass]="{hide:over}" [style.left]="sidenavWidth + 'px'"
+    [style.right]="scrollWidth + 'px'">
+    <span class="row">
+            <img src="./app/assets/images/logo.png" class="img-responsive center-block" />
+        </span>
+</md-toolbar>
+<md-toolbar color="primary" class="fixed-toolbar" [ngClass]="{hide:over}" 
+[style.left]="sidenavWidth + 'px'" [style.right]="scrollWidth + 'px'">
+    <button md-button class=" md-icon-button" hide-gt-lg (click)="menu.open($event)" aria-label="Home">
+    <i md-icon class="md-dark">menu</i>
+  </button>
+    <span md-peekaboo breakAction="show">
+    <span class="verbose-title" *ngIf="navigation?.currentTitle != site">Components <small>–</small>&nbsp;</span>
+     
+    <span>OryxFrame Work</span>
+    </span>
+    <span flex></span>
+    <a md-peekaboo href="https://github.com/justindujardin/ng2-material/releases/tag/v{{version}}" target="_blank" breakAction="show"></a>
+</md-toolbar>
+ <main layout="row" layout-align="center center">
             <md-content class="examples" md-scroll-y layout-padding>
                 <router-outlet></router-outlet>
             </md-content>
         </main>
-    </md-content>
-</md-sidenav-layout>
+        
