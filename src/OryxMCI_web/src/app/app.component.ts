@@ -1,10 +1,14 @@
 
 import {Component, OnInit, OnDestroy, Input, ViewChild, AfterViewInit} from '@angular/core';
-import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
+
 import { ROUTER_DIRECTIVES} from '@angular/router';
 import {MdToolbar} from '@angular2-material/toolbar';
 import { APP_PROVIDERS } from './app.providers';
 import {SecurityService} from './login/security.service';
+
+import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
+import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
+import {MATERIAL_DIRECTIVES} from 'ng2-material';
 
 @Component({
   moduleId: module.id,
@@ -12,7 +16,7 @@ import {SecurityService} from './login/security.service';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   providers: [ APP_PROVIDERS ],
-  directives: [ ROUTER_DIRECTIVES,  MD_SIDENAV_DIRECTIVES,  MdToolbar]
+  directives: [ ROUTER_DIRECTIVES,  MD_SIDENAV_DIRECTIVES, MATERIAL_DIRECTIVES, MdToolbar, MD_LIST_DIRECTIVES]
 })
 export class AppComponent {
   title = 'app works1!';
