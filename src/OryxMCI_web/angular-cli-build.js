@@ -16,7 +16,11 @@ module.exports = function(defaults) {
       'reflect-metadata/**/*.+(ts|js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
+      'jquery/dist/**',
       '@angular2-material/**/*',
+      'angular2-materialize/dist/*',
+      'materialize-css/dist/**/*',
+      'ng2-pagination/**/*.js',
     ]
   });
 };

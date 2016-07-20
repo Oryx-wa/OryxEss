@@ -6,7 +6,10 @@ import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
+import {PaginatePipe, PaginationControlsCmp, PaginationService} from 'ng2-pagination';
 
+import {ServiceBase} from './shared/service-base';
+ import {IModelBase} from './shared/imodel-base';
 
 import { Configuration } from './app.constants';
 import { DialogService }  from './services/dialog.service';
@@ -25,7 +28,10 @@ export const APP_PROVIDERS = [
     MD_INPUT_DIRECTIVES,
     SecurityService,
     Configuration,
-    AuthGuard
+    AuthGuard,
+    PaginationService,
+    ServiceBase,
+   
    
    
 

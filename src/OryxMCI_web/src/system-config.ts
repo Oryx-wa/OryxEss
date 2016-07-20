@@ -8,10 +8,27 @@
 /** Map relative paths to URLs. */
 const map: any = {
   '@angular2-material': 'vendor/@angular2-material',
+  "jquery": "vendor/jquery",
+  "materialize": "vendor/materialize-css",
+   "angular2-materialize": "vendor/angular2-materialize",
+   'ng2-pagination': 'vendor/ng2-pagination',
 };
 
 /** User packages configuration. */
 const packages: any = {
+  'ng2-pagination': {   
+    defaultExtension: 'js',
+    main: 'index.js'
+  },
+  'materialize': {
+    "format": "global",
+    "main": "dist/js/materialize",
+    "defaultExtension": "js"
+  },
+  'angular2-materialize': {
+    "main": "dist/index",
+    "defaultExtension": "js"
+  },
 };
 
 // put the names of any of your Material components here

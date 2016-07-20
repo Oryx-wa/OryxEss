@@ -1,21 +1,30 @@
-<div layout="column" style="height:600px">
-  <md-toolbar color="primary">
-    <div>
-    <span><i class="material-icons">menu</i></span>
-    </div>
-    <span>
-          <h3>
-          Agents
-        </h3>
-        </span>
 
-    <!-- This fills the remaining space of the current row -->
-    <span class="example-fill-remaining-space"></span>
-
-    <a [routerLink]="['/agentsList']"><span><i class="material-icons">list</i></span> </a>
-    <a [routerLink]="['/agentCreate']"><span><i class="material-icons">add</i></span></a>
-    <span><i class="material-icons">search</i></span>
-    <span><i class="material-icons">more_vert</i></span>
-  </md-toolbar>
-
+<div>
+  <table materialize class='responsive-table striped' *ngIf='agents && agents.length'>
+    <thead>
+      <tr>
+        
+        <th>Code</th>
+        <th>Name</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let agent of agents | paginate: { itemsPerPage: 10, currentPage: page } '>
+        <td>
+          <a [routerLink]="['/agent/details',agent.id]">
+                                {{agent.code}}
+                            </a>
+        </td>
+       
+        <td>{{ agent.name }}</td>
+        <td><a [routerLink]="['/agentDetails',agent.id]">Details</a></td>
+        <td><a [routerLink]="['/agentEdit',agent.id]">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="is-text-centered">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>

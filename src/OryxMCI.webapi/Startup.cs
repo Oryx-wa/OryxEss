@@ -45,6 +45,7 @@ namespace OryxMCI.webapi
         // This method gets called by the runtime. Use this method to add services to the container
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
@@ -79,7 +80,7 @@ namespace OryxMCI.webapi
                opt.ContractResolver = new CamelCasePropertyNamesContractResolver();
            });
 
-            services.AddCors();
+            
 
             string conString = Configuration["Data:DefaultConnection:OryxMCIConnectionString"];
             services.AddDbContext<OryxMCIContext>(options => options.UseSqlServer(conString));
@@ -162,7 +163,7 @@ namespace OryxMCI.webapi
 
             app.UseCors(policy =>
             {
-                policy.WithOrigins("http://localhost:5000", "http://localhost:7017");
+                policy.WithOrigins("http://localhost:5000", "http://localhost:4200");
                 policy.AllowAnyHeader();
                 policy.AllowAnyMethod();
             });

@@ -14,13 +14,16 @@ namespace OryxMCI.webapi.ViewModels
         [StringLength(255, MinimumLength = 5)]
         public string Name { get; set; }
 
+        public int UserSign { get; set; }
+
         public static AgentViewModel FromEntity(Agent entity)
         {
             return new AgentViewModel
             {
                 Id = entity.Id,
                 Code = entity.Code,
-                Name = entity.Name
+                Name = entity.Name,
+                UserSign = entity.UserSign
             };
         }
 

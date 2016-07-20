@@ -5,7 +5,7 @@ import { ROUTER_DIRECTIVES} from '@angular/router';
 import {MdToolbar} from '@angular2-material/toolbar';
 import { APP_PROVIDERS } from './app.providers';
 import {SecurityService} from './login/security.service';
-
+import {MaterializeDirective} from "angular2-materialize";
 import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 

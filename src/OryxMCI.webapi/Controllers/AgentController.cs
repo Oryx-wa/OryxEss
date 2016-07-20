@@ -120,6 +120,7 @@ namespace OryxMCI.webapi.Controllers
             }
         }
         [HttpGet]
+        [Route("api/agentgetpaged")]
         public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy="CreateDate")
         {
             try

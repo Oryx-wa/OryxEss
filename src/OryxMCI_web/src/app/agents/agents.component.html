@@ -11,10 +11,17 @@
     <span><h3>Agents</h3></span>
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
-    <a [routerLink]="['/agentsList']"><span><i class="material-icons">list</i></span> </a>
+    <a (click)="changeDisplayMode(displayModeEnum.Card)"  [class.active]="displayMode === displayModeEnum.Card"><span><i class="material-icons">list</i></span> </a>
+    <a (click)="changeDisplayMode(displayModeEnum.List)"  [class.active]="displayMode === displayModeEnum.List"><span><i class="material-icons">list</i></span> </a>
+    
+    <!--<a [routerLink]="['/agentsList']"><span><i class="material-icons">list</i></span> </a>
     <a [routerLink]="['/agentCreate']"><span><i class="material-icons">add</i></span></a>
+    -->
     <span><i class="material-icons">search</i></span>
     <span><i class="material-icons">more_vert</i></span>
   </md-toolbar>
+  <app-agents-list [agents]="agents" [hidden]="displayMode !== displayModeEnum.Grid"></app-agents-list>
+
+  <app-agents-card [agents]="agents" [hidden]="displayMode !== displayModeEnum.Card"></app-agents-card>
 
 </div>
