@@ -3,7 +3,7 @@ using OryxMCI.Entities;
 using System;
 using System.Linq;
 
-namespace OryxESS.Data
+namespace OryxMCI.Data
 {
 
     public class SeedData

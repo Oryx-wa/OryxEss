@@ -13,7 +13,6 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using OryxMCI.Data.Repositories;
 using OryxMCI.Entities;
-using OryxESS.Data;
 using OryxMCI.Data.Infrastructure;
 using System;
 using Microsoft.IdentityModel.Tokens;
