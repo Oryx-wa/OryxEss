@@ -1,21 +1,21 @@
-<div ng-controller="AppCtrl" layout="column" style="height:600px" ng-cloak>
-  <md-toolbar md-scroll-shrink class="md-hue-2">
-    <md-button class="md-icon-button" aria-label="Settings" ng-disabled="true">
-          <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
-        </md-button>
-        <h2>
-          <span>Agents</span>
-        </h2>
-        <span flex></span>
-        <md-button class="md-icon-button" aria-label="Favorite">
-          <md-icon md-svg-icon="img/icons/favorite.svg" style="color: greenyellow;"></md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="More">
-          <md-icon md-svg-icon="img/icons/more_vert.svg"></md-icon>
-        </md-button>
+<div layout="column" style="height:600px">
+  <md-toolbar color="primary">
+    <div>
+    <span><i class="material-icons">menu</i></span>
+    </div>
+    <span>
+          <h3>
+          Agents
+        </h3>
+        </span>
 
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+
+    <a [routerLink]="['/agentsList']"><span><i class="material-icons">list</i></span> </a>
+    <a [routerLink]="['/agentCreate']"><span><i class="material-icons">add</i></span></a>
+    <span><i class="material-icons">search</i></span>
+    <span><i class="material-icons">more_vert</i></span>
   </md-toolbar>
-   <md-content flex>
 
-   </md-content>
 </div>

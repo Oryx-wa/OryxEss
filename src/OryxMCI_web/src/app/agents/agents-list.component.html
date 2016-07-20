@@ -1,3 +1,21 @@
-<p>
-  agents-list works!
-</p>
+<div layout="column" style="height:600px">
+  <md-toolbar color="primary">
+    <div>
+    <span><i class="material-icons">menu</i></span>
+    </div>
+    <span>
+          <h3>
+          Agents
+        </h3>
+        </span>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="example-fill-remaining-space"></span>
+
+    <a [routerLink]="['/agentsList']"><span><i class="material-icons">list</i></span> </a>
+    <a [routerLink]="['/agentCreate']"><span><i class="material-icons">add</i></span></a>
+    <span><i class="material-icons">search</i></span>
+    <span><i class="material-icons">more_vert</i></span>
+  </md-toolbar>
+
+</div>

@@ -46,3 +46,17 @@ img-responsive center-block{
  width:4px;
  height: 2px;
 }
+HTMLJSCSS
+.toolbardemoScrollShrink .face {
+  width: 48px;
+  margin: 16px;
+  border-radius: 48px;
+  border: 1px solid #ddd; }
+
+  .toolbardemoBasicUsage md-toolbar md-icon.md-default-theme {
+  color: white; }
+
+  .example-fill-remaining-space {
+ 
+  flex: 1 1 auto;
+}

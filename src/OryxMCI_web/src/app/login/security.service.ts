@@ -75,10 +75,10 @@ export class SecurityService {
         console.log("BEGIN Authorize, no auth data");
 
         var authorizationUrl = this.idServerUrl+'connect/authorize';
-        var client_id = 'OryxESS.webapi';
+        var client_id = 'OryxMCI.webapi';
         var redirect_uri = this.returnUrl;
         var response_type = "id_token token";
-        var scope = "OryxESS.webapi openid";
+        var scope = "OryxMCI.webapi openid";
         var nonce = "N" + Math.random() + "" + Date.now();
         var state = Date.now() + "" + Math.random();
         var grant_Type = "Password";

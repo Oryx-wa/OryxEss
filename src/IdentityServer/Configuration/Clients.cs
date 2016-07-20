@@ -80,10 +80,7 @@ namespace IdentityServer.Configuration
                     {
                         new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
                     },
-                    RedirectUris = new List<string>
-                    {
-                        "https://www.getpostman.com/oauth2/callback"
-                    },
+                    
                     AllowedScopes = new List<string>
                     {
                         StandardScopes.OpenId.Name,
@@ -92,10 +89,25 @@ namespace IdentityServer.Configuration
                         "read",
                         "OryxMCI.webapi"
                     },
-                    AllowedCorsOrigins = new List<string>
+                     RedirectUris = new List<string>
                     {
-                        "https://localhost:44311",
-                        "http://localhost:44311"
+                        "http://localhost:3000",
+                        "http://localhost:4200",
+                        "http://10.211.55.2:4200"
+
+                    },
+                     PostLogoutRedirectUris = new List<string>
+                    {
+                        "http://localhost:3000/Unauthorized.html",
+                        "http://localhost:4200/Unauthorized.html",
+                        "http://10.211.55.2:4200/Unauthorized.html",
+                    },
+                     AllowedCorsOrigins = new List<string>
+                    {
+
+                        "http://localhost:3000",
+                        "http://localhost:4200",
+                        "http://10.211.55.2:4200"
                     }
                 },
 

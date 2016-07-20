@@ -8,7 +8,7 @@ import {SecurityService} from './login/security.service';
 
 import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {MATERIAL_DIRECTIVES} from 'ng2-material';
+
 
 @Component({
   moduleId: module.id,
@@ -16,7 +16,7 @@ import {MATERIAL_DIRECTIVES} from 'ng2-material';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   providers: [ APP_PROVIDERS ],
-  directives: [ ROUTER_DIRECTIVES,  MD_SIDENAV_DIRECTIVES, MATERIAL_DIRECTIVES, MdToolbar, MD_LIST_DIRECTIVES]
+  directives: [ ROUTER_DIRECTIVES,  MD_SIDENAV_DIRECTIVES,  MdToolbar, MD_LIST_DIRECTIVES]
 })
 export class AppComponent {
   title = 'app works1!';

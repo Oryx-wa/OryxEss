@@ -47,7 +47,7 @@ const barrels: string[] = [
   '@angular/platform-browser-dynamic',
 
   // Thirdparty barrels.
-  'rxjs', 'ng2-material',
+  'rxjs', 
 
   // App specific barrels.
   'app',
@@ -67,8 +67,7 @@ declare var System: any;
 System.config({
   map: {
     '@angular': 'vendor/@angular',
-    'rxjs': 'vendor/rxjs',
-    'ng2-material': 'vendor/ng2-material',
+    'rxjs': 'vendor/rxjs',    
     'main': 'main.js'
   },
   packages: cliSystemConfigPackages

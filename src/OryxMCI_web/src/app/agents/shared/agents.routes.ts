@@ -9,7 +9,7 @@ import { AuthGuard }             from '../../login/auth.guard';
 
 export const AgentsRoutes: RouterConfig = [
     { path: 'agents', component: AgentsComponent, terminal: true, },
-    { path: 'agentsList', component: AgentsListComponent, canActivate: [AuthGuard] },
+    { path: 'agentsList', component: AgentsListComponent },
     { path: 'agentsCard', component: AgentsCardComponent, canActivate: [AuthGuard] },
     { path: 'agentCreate', component: AgentsCreateComponent, canActivate: [AuthGuard] },
     { path: 'agentEdit/:id', component: AgentsEditComponent, canActivate: [AuthGuard] },
