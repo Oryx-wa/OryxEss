@@ -105,4 +105,24 @@ md-sidenav-layout {
         padding-left: 0;
       }
     }
-    
+   .cart{
+     font-style: bold;
+   } 
+   ul li span {
+    display: initial;
+    float: left;
+    margin-top: .2rem;
+    text-align: center;
+}
+ul li a i {
+    font-size: 2em;
+    display: inline-block;
+    float: left;
+    margin: 1rem .9rem 0 1.8rem;
+}
+li ul li a i {
+    font-size: 2em;
+    display: inline-block;
+    float: left;
+    margin: 1rem .9rem 0 1.8rem;
+}
