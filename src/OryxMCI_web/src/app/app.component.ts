@@ -16,7 +16,8 @@ import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.css'],
   providers: [ APP_PROVIDERS ],
-  directives: [ ROUTER_DIRECTIVES,  MD_SIDENAV_DIRECTIVES,  MdToolbar, MD_LIST_DIRECTIVES]
+  directives: [ ROUTER_DIRECTIVES,  MD_SIDENAV_DIRECTIVES,  MaterializeDirective,
+  MdToolbar, MD_LIST_DIRECTIVES]
 })
 export class AppComponent {
   title = 'app works1!';

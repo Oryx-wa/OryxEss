@@ -71,6 +71,7 @@ changeDisplayMode(mode: DisplayModeEnum) {
   
 
 }
+}
 
 enum DisplayModeEnum {
   Card = 0,

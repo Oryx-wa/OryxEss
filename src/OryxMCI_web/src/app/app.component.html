@@ -1,36 +1,53 @@
-<md-sidenav-layout layout="row" fullscreen>
-    <md-sidenav #menu class="app-menu" mode="side" [opened]="true">
-        <md-toolbar>
-            <h3>Oryx MCI</h3>
-        </md-toolbar>
-        <md-list>
-            <md-list-item>
-                <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
-                <span><a [routerLink]="['/home']" class = " ">Home</a></span>
-            </md-list-item>
-            <md-divider md-inset></md-divider>
-            <md-list-item>
-                <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
-                <span><a *ngIf="!securityService.IsAuthorized" (click)="Login()">Login</a></span>
-            </md-list-item>
-            <md-divider md-inset></md-divider>
-            <md-list-item>
-                <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
-                <span> <a *ngIf="securityService.IsAuthorized" (click)="Logout()">Logout</a></span>
-            </md-list-item>
-            <md-divider md-inset></md-divider>
-            <md-list-item>
-                <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
-                <span><a [routerLink]="['/agents']" class = " ">Agents</a></span>
-            </md-list-item>
-            <md-divider md-inset></md-divider>
-        </md-list>
-    </md-sidenav>
-    <md-content #content>
-        <main layout="row" layout-align="center center">
-            <md-content class="examples" md-scroll-y layout-padding>
-                <router-outlet></router-outlet>
-            </md-content>
-        </main>
-    </md-content>
-</md-sidenav-layout>
+<header role="banner">
+    <div class="container">
+        <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul id="nav-mobile" class="side-nav fixed">
+            <li class="logo">
+                <a id="logo-container" href="http://materializecss.com/" class="brand-logo">
+                    <img src="app/assets/images/logo2.png" />
+
+                </a>
+            </li>
+            <br>
+
+            <li class="search">
+                <div class="search-wrapper card">
+                    <input id="search"><i class="material-icons">search</i>
+                    <div class="search-results"></div>
+                </div>
+            </li>
+            <li><a [routerLink]="['/home']" class=" waves-effect waves-purple"><i class="" aria-hidden="true">&nbsp; Home</i></a></li>
+            <li><a [routerLink]="['/MCI']" class=" waves-effect waves-purple"><i class="" aria-hidden="true">&nbsp; MCI Form</i></a></li>
+            <li class="divider"></li>
+            <li class="">
+                <ul materialize="collapsible" data-collapsible="accordion" id="slide-out1">
+                    <li class="">
+                        <a class="collapsible-header  waves-effect waves-purple"><i class="">Settings</i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a [routerLink]="['/agents']">Agents</a></li>
+                                <li><a [routerLink]="['/vessels']">Vessels</a></li>
+                                <li><a [routerLink]="['/berth']">Berth</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+        <a materialize="collapsible" [materializeParams]="[{edge:'left', closeOnClick: true }]" href="#" data-activates="slide-out1"
+            class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </div>
+</header>
+
+
+<main>
+    <div class="row">
+        <div class="col s12 m9 l10">
+
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</main>
