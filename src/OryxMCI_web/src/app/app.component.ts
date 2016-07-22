@@ -46,45 +46,5 @@ export class AppComponent {
         console.log("Log out completed");
     }
   
-get pushed(): boolean { return this.menu && this.menu.mode === 'side'; }
 
-  get over(): boolean { return this.menu && this.menu.mode === 'over' && this.menu.opened; }
-
-   @Input()
-  get sidenavWidth(): number {
-    return this.pushed ? 281 : 0;
-  }
-
-
-  private _scrollWidth: number = -1;
-
-   @Input()
-  get scrollWidth(): number {
-    if (this._scrollWidth === -1) {
-      var inner = document.createElement('p');
-      inner.style.width = '100%';
-      inner.style.height = '200px';
-
-      var outer = document.createElement('div');
-      outer.style.position = 'absolute';
-      outer.style.top = '0px';
-      outer.style.left = '0px';
-      outer.style.visibility = 'hidden';
-      outer.style.width = '200px';
-      outer.style.height = '150px';
-      outer.style.overflow = 'hidden';
-      outer.appendChild(inner);
-
-      document.body.appendChild(outer);
-      var w1 = inner.offsetWidth;
-      outer.style.overflow = 'scroll';
-      var w2 = inner.offsetWidth;
-      if (w1 == w2) w2 = outer.clientWidth;
-
-      document.body.removeChild(outer);
-
-      this._scrollWidth = (w1 - w2);
-    }
-    return this._scrollWidth;
-  };
 }

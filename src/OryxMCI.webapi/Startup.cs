@@ -49,24 +49,24 @@ namespace OryxMCI.webapi
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            //var guestPolicy = new AuthorizationPolicyBuilder()
-            //    .RequireAuthenticatedUser()
-            //    .RequireClaim("scope", "OryxMCI.webapi")
-            //    .Build();
+            var guestPolicy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .RequireClaim("scope", "OryxMCI.webapi")
+                .Build();
 
-            //services.AddAuthorization(options =>
-            //{
+            services.AddAuthorization(options =>
+            {
 
-            //    options.AddPolicy("OryxMCIAdmin", policyAdmin =>
-            //    {
-            //        policyAdmin.RequireClaim("role", "OryxMCI.admin");
-            //    });
-            //    options.AddPolicy("OryxMCIUser", policyUser =>
-            //    {
-            //        policyUser.RequireClaim("role", "OryxMCI.user");
-            //    });
+                options.AddPolicy("OryxMCIAdmin", policyAdmin =>
+                {
+                    policyAdmin.RequireClaim("role", "OryxMCI.admin");
+                });
+                options.AddPolicy("OryxMCIUser", policyUser =>
+                {
+                    policyUser.RequireClaim("role", "OryxMCI.user");
+                });
 
-            //});
+            });
 
             services.AddMvcCore(config =>
             {

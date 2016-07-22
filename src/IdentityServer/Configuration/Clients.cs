@@ -98,9 +98,9 @@ namespace IdentityServer.Configuration
                     },
                      PostLogoutRedirectUris = new List<string>
                     {
-                        "http://localhost:3000/Unauthorized.html",
-                        "http://localhost:4200/Unauthorized.html",
-                        "http://10.211.55.2:4200/Unauthorized.html",
+                        "http://localhost:3000/unauthorized.html",
+                        "http://localhost:4200/unauthorized.html",
+                        "http://10.211.55.2:4200/unauthorized.html",
                     },
                      AllowedCorsOrigins = new List<string>
                     {

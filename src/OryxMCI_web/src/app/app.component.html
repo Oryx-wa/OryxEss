@@ -17,7 +17,13 @@
              <li class="divider"></li>
             <li class="cart"><a [routerLink]="['/MCI']" class=" waves-effect waves-purple"><i class="material-icons">perm_device_information</i><span> MCI Form</span></a></li>
            <li class="divider"></li>
-           <li class="divider"></li>
+           <li class="cart">
+            <a *ngIf="!securityService.IsAuthorized" (click)="Login()" class=" waves-effect waves-purple"><i class="material-icons">lock_open</i> <span> Login</span></a>
+            <a *ngIf="securityService.IsAuthorized" (click)="Logout()" class=" waves-effect waves-purple"><i class="material-icons">lock</i> <span> Logout</span></a>
+          </li>
+          <li class="divider"></li>
+          <li class="divider"></li>
+          <li>
             <li class="cart">
                 <ul materialize="collapsible" data-collapsible="accordion" id="slide-out1">
                     <li class="">
