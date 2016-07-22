@@ -8,6 +8,7 @@ import {SecurityService} from './login/security.service';
 import {MaterializeDirective} from "angular2-materialize";
 import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
+import {APP_PRECOMPILE} from './app.precompile'
 
 
 @Component({
