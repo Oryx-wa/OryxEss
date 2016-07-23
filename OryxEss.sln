@@ -30,8 +30,6 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IdentityServer", "src\Ident
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "OryxStateless", "src\OryxStateless\OryxStateless.xproj", "{931910BA-6BFE-4E8F-A82E-0687595F8886}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IdentityServer4", "src\IdentityServer4\IdentityServer4.xproj", "{C246E670-66AA-4A42-A018-186B258362EA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,10 +64,6 @@ Global
 		{931910BA-6BFE-4E8F-A82E-0687595F8886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{931910BA-6BFE-4E8F-A82E-0687595F8886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{931910BA-6BFE-4E8F-A82E-0687595F8886}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C246E670-66AA-4A42-A018-186B258362EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C246E670-66AA-4A42-A018-186B258362EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C246E670-66AA-4A42-A018-186B258362EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C246E670-66AA-4A42-A018-186B258362EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +79,5 @@ Global
 		{88781FBC-B2D8-4A75-93C8-150F6DB3C449} = {FFBA9AB5-F6BE-4767-820A-EF48023074E8}
 		{3C5C5607-4795-48CE-9C09-F621E7A7016D} = {FFBA9AB5-F6BE-4767-820A-EF48023074E8}
 		{931910BA-6BFE-4E8F-A82E-0687595F8886} = {FFBA9AB5-F6BE-4767-820A-EF48023074E8}
-		{C246E670-66AA-4A42-A018-186B258362EA} = {FFBA9AB5-F6BE-4767-820A-EF48023074E8}
 	EndGlobalSection
 EndGlobal

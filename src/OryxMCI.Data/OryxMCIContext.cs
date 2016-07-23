@@ -53,10 +53,6 @@ namespace OryxMCI.Data
         {
             try
             {
-                //var connString = "Server = localhost; Database = MCI; Trusted_Connection = true; MultipleActiveResultSets = true";
-
-                
-
                 base.OnConfiguring(optionsBuilder);
             }
             catch (Exception ex)

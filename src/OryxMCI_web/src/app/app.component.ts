@@ -8,7 +8,11 @@ import {SecurityService} from './login/security.service';
 import {MaterializeDirective} from "angular2-materialize";
 import {MD_SIDENAV_DIRECTIVES, MdSidenav} from '@angular2-material/sidenav';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
-import {APP_PRECOMPILE} from './app.precompile'
+import {APP_PRECOMPILE} from './app.precompile';
+import { Configuration } from './app.constants';
+
+import {HomeComponent} from './home'
+import {AgentsComponent} from './agents/agents.component'
 
 
 @Component({
@@ -18,13 +22,20 @@ import {APP_PRECOMPILE} from './app.precompile'
   styleUrls: ['app.component.css'],
   providers: [ APP_PROVIDERS ],
   directives: [ ROUTER_DIRECTIVES,  MD_SIDENAV_DIRECTIVES,  MaterializeDirective,
-  MdToolbar, MD_LIST_DIRECTIVES]
+  MdToolbar, MD_LIST_DIRECTIVES],
+  precompile: [APP_PRECOMPILE ]
 })
 export class AppComponent {
-  title = 'app works1!';
+    title = 'app works1!';
+    private returnUrl: string;
+    private idServerUrl: string;
 
   @ViewChild(MdSidenav) private menu: MdSidenav;
-  constructor(public securityService: SecurityService) {  
+  constructor(public securityService: SecurityService, 
+    
+    private _configuration: Configuration) {
+        this.returnUrl = _configuration.returnUrl;
+        this.idServerUrl = _configuration.idServer;   
     }
     ngOnInit() {
         console.log("ngOnInit _securityService.AuthorizedCallback");
@@ -37,14 +48,18 @@ export class AppComponent {
  public Login() {
         console.log("Do login logic");
         this.securityService.Authorize(); 
+        
+        
         console.log("login completed");
     }
 
     public Logout() {
         console.log("Do logout logic");
         this.securityService.Logoff();
+        
         console.log("Log out completed");
     }
-  
+
+   
 
 }

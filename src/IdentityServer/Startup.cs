@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,13 +8,12 @@ using Microsoft.Extensions.Logging;
 using IdentityServer.Data;
 using IdentityServer.Models;
 using IdentityServer.Services;
+using IdentityServer.Configuration;
 using IdentityServer4.Services;
 using IdentityModel;
-using System.IdentityModel.Tokens.Jwt;
 using Microsoft.AspNetCore.Identity;
-using System.Security.Cryptography.X509Certificates;
-using System.IO;
-using IdentityServer.Configuration;
+using System.IdentityModel.Tokens.Jwt;
+using IdentityServer4.Validation;
 
 namespace IdentityServer
 {
@@ -43,25 +38,22 @@ namespace IdentityServer
         }
 
         public IConfigurationRoot Configuration { get; }
-
         public IHostingEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var cert = new X509Certificate2(Path.Combine(Environment.ContentRootPath, "idsrvtest.pfx"), "idsrv3test");
             var builder = services.AddIdentityServer(options =>
             {
-                options.AuthenticationOptions = new IdentityServer4.Configuration.AuthenticationOptions
-                {
-                    PrimaryAuthenticationScheme = "Cookies"
-                };
+                options.AuthenticationOptions.AuthenticationScheme = "Cookies";
             })
             .AddInMemoryClients(Clients.Get())
             .AddInMemoryScopes(Scopes.Get())
-            .SetSigningCredential(cert);
+            .SetTemporarySigningCredential();
 
             services.AddTransient<IProfileService, AspIdProfileService>();
+            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
+            services.AddTransient<IProfileService, ResouceOwnerProfileService>();
 
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -74,8 +66,8 @@ namespace IdentityServer
                 options.ClaimsIdentity.UserNameClaimType = JwtClaimTypes.Name;
                 options.ClaimsIdentity.RoleClaimType = JwtClaimTypes.Role;
             })
-           .AddEntityFrameworkStores<ApplicationDbContext>()
-           .AddDefaultTokenProviders();
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
             services.AddTransient<IUserClaimsPrincipalFactory<ApplicationUser>, IdentityServerUserClaimsPrincipalFactory>();
 
             services.AddMvc();
@@ -95,18 +87,6 @@ namespace IdentityServer
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-                app.UseBrowserLink();
-
-                try
-                {
-                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-                        .CreateScope())
-                    {
-                        serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
-                             .Database.Migrate();
-                    }
-                }
-                catch { }
             }
             else
             {
@@ -118,6 +98,7 @@ namespace IdentityServer
             app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+
             app.UseIdentityServer();
 
             JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
@@ -125,12 +106,15 @@ namespace IdentityServer
             {
                 Authority = "http://localhost:5000",
                 Audience = "http://localhost:5000/resources",
-                AutomaticAuthenticate = true,
-                AuthenticationScheme = "Bearer",
                 RequireHttpsMetadata = false
             });
 
-           
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                Authority = "http://0.0.0.0:5000",
+                Audience = "http://0.0.0.0:5000/resources",
+                RequireHttpsMetadata = false
+            });
 
             app.UseMvc(routes =>
             {

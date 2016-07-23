@@ -4,5 +4,5 @@ import { Injectable } from '@angular/core';
 export class Configuration {
     public apiServer: string = "http://localhost:5500/api";
     public idServer: string = "http://localhost:5000/";
-    public returnUrl: string= "http://localhost:4200"
+    public returnUrl: string= "http://localhost:4200/"
 }

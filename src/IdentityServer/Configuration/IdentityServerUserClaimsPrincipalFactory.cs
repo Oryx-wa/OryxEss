@@ -26,10 +26,8 @@ namespace IdentityServer.Configuration
             var id = cp.Identities.First();
             var sub = cp.FindFirst(JwtClaimTypes.Subject);
 
-            id.AddClaim(new Claim(JwtClaimTypes.IdentityProvider, sub.Issuer == ClaimsIdentity.DefaultIssuer ? Constants.BuiltInIdentityProvider : sub.Issuer));
+            id.AddClaim(new Claim(JwtClaimTypes.IdentityProvider, sub.Issuer == ClaimsIdentity.DefaultIssuer ? Constants.LocalIdentityProvider : sub.Issuer));
             id.AddClaim(new Claim(JwtClaimTypes.AuthenticationTime, DateTime.UtcNow.ToEpochTime().ToString()));
-            id.AddClaim(new Claim(JwtClaimTypes.Email, user.Email));
-            id.AddClaim(new Claim(JwtClaimTypes.Id, user.Id));
 
             return cp;
         }

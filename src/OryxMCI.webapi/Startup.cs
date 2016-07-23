@@ -49,7 +49,7 @@ namespace OryxMCI.webapi
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            var guestPolicy = new AuthorizationPolicyBuilder()
+            var MCIPolicy = new AuthorizationPolicyBuilder()
                 .RequireAuthenticatedUser()
                 .RequireClaim("scope", "OryxMCI.webapi")
                 .Build();
@@ -69,37 +69,36 @@ namespace OryxMCI.webapi
             });
 
             services.AddMvcCore(config =>
-            {
-#if !DEBUG
-                    config.Filters.Add(new RequireHttpsAttribute());
-#endif
-               // config.Filters.Add(new AuthorizeFilter(guestPolicy));
+            {                
+               config.Filters.Add(new AuthorizeFilter(MCIPolicy));
             })
            .AddJsonFormatters(opt =>
            {
                opt.ContractResolver = new CamelCasePropertyNamesContractResolver();
            });
 
-            
+            services.AddMvc();
 
             string conString = Configuration["Data:DefaultConnection:OryxMCIConnectionString"];
+           
             services.AddDbContext<OryxMCIContext>(options => options.UseSqlServer(conString));
 
-
-            //services.AddTransient<AgentController>();
+            
 
             var builder = new ContainerBuilder();
 
-            services.AddLogging();
-            //services.AddTransient<IEntityBaseRepository<Agent>, EntityBaseRepository<Agent>>();
-            //services.AddTransient<IEntityBaseRepository<Error>, EntityBaseRepository<Error>>();
-            services.AddTransient<SeedData>();
+            services.AddLogging();            
+            //services.AddTransient<SeedData>();
 
-            //services.AddTransient<ClaimsPrincipal>(
-            //    s => s.GetService<IHttpContextAccessor>().HttpContext.User);
+            var opt1 = new DbContextOptionsBuilder();
+            opt1.UseSqlServer(conString);
 
+            builder.RegisterType<OryxMCIContext>()
+            .As<DbContext>()
+            .WithParameter("options", opt1)
+            .InstancePerLifetimeScope();
 
-            builder.RegisterType<DbFactory>()
+            builder.RegisterType<DbFactory>( )
                 .As<IDbFactory>()
                 .InstancePerLifetimeScope();
 
@@ -111,7 +110,7 @@ namespace OryxMCI.webapi
                    .As(typeof(IEntityBaseRepository<>))
                    .InstancePerLifetimeScope();
 
-            
+            builder.RegisterType<SeedData>();         
 
             builder.Populate(services);
 
@@ -175,24 +174,24 @@ namespace OryxMCI.webapi
 
             app.UseStaticFiles();
 
-           
 
-            //JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            //app.UseJwtBearerAuthentication(new JwtBearerOptions
-            //{
-            //    Authority = "http://localhost:5000",
-            //    Audience = "http://localhost:5000/resources",
-            //    RequireHttpsMetadata = false,
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
 
-            //    AutomaticAuthenticate = true,
+            app.UseJwtBearerAuthentication(new JwtBearerOptions
+            {
+                Authority = "http://localhost:5000",
+                Audience = "http://localhost:5000/resources",
+                RequireHttpsMetadata = false,
 
-            //    TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        NameClaimType = "name",
-            //        RoleClaimType = "role"
-            //    }
-            //});
+                AutomaticAuthenticate = true,
+
+                TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = "name",
+                    RoleClaimType = "role"
+                }
+            });
 
             app.UseMvc(config =>
             {

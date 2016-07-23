@@ -8,7 +8,8 @@ import {AgentsDetailsComponent} from '../agents-details.component';
 import { AuthGuard }             from '../../login/auth.guard';
 
 export const AgentsRoutes: RouterConfig = [
-    { path: 'agents', component: AgentsComponent, terminal: true, },
+    { path: '', component: AgentsComponent },
+    { path: 'agents', component: AgentsComponent },
     //{ path: 'agentsList', component: AgentsListComponent },
     //{ path: 'agentsCard', component: AgentsCardComponent, canActivate: [AuthGuard] },
     { path: 'agentCreate', component: AgentsCreateComponent },

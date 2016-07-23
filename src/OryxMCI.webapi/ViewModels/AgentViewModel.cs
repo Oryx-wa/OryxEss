@@ -33,7 +33,8 @@ namespace OryxMCI.webapi.ViewModels
             {
                 Code = Code,
                 Id = Id,
-                Name = Name
+                Name = Name,
+                UserSign = UserSign
             };
         }
     }

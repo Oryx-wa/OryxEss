@@ -33,7 +33,7 @@ namespace IdentityServer.Configuration
                     ClientId = "OryxESS.webapi",
                     ClientName = "Oyrx Self Service",
                     //Enabled = true,
-                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowedGrantTypes = GrantTypes.Hybrid,
                     AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
                     //ClientSecrets = new List<Secret>
@@ -42,10 +42,10 @@ namespace IdentityServer.Configuration
                     //},
                    RedirectUris = new List<string>
                     {
-                        "http://localhost:3000",
-                        "http://localhost:4200",
-                        "http://10.211.55.2:4200"
-                        
+                        "http://localhost:3000/",
+                        "http://localhost:4200/",
+                        "http://10.211.55.2:4200/"
+
 
                     },
                     PostLogoutRedirectUris = new List<string>
@@ -74,26 +74,28 @@ namespace IdentityServer.Configuration
                     ClientId = "OryxMCI.webapi",
                     ClientName = "MCI",
                     Enabled = true,
-                    AllowedGrantTypes = GrantTypes.Implicit,
-                    //RequireConsent = false,
-                    //ClientSecrets = new List<Secret>
-                    //{
-                    //    new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
-                    //},
-                    
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                     AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
+                    },
+
                     AllowedScopes = new List<string>
                     {
-                        StandardScopes.OpenId.Name,
-                        StandardScopes.Profile.Name,
+                        "openid",
+                        "email",
+                        "profile",
                         StandardScopes.OfflineAccess.Name,
                         "read",
                         "OryxMCI.webapi"
                     },
                      RedirectUris = new List<string>
                     {
-                        "http://localhost:3000",
-                        "http://localhost:4200",
-                        "http://10.211.55.2:4200"
+                        "http://localhost:3000/",
+                        "http://localhost:4200/",
+                        "http://10.211.55.2:4200/"
 
                     },
                      PostLogoutRedirectUris = new List<string>

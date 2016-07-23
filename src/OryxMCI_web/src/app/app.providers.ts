@@ -1,6 +1,7 @@
 import { bind } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { FORM_PROVIDERS, LocationStrategy, HashLocationStrategy } from '@angular/common';
+
 import {SecurityService} from './login/security.service';
 import {MD_CARD_DIRECTIVES} from '@angular2-material/card';
 import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
@@ -21,6 +22,7 @@ import { AuthGuard }          from './login/auth.guard';
 
 
 export const APP_PROVIDERS = [
+    
     FORM_PROVIDERS,
     HTTP_PROVIDERS,    
     MD_CARD_DIRECTIVES,

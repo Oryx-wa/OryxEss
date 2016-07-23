@@ -21,6 +21,8 @@ module.exports = function(defaults) {
       'angular2-materialize/dist/*',
       'materialize-css/dist/**/*',
       'ng2-pagination/**/*.js',
+      
+     
     ]
   });
 };

@@ -10,12 +10,15 @@ using OryxMCI.Entities;
 using OryxMCI.Data.Infrastructure;
 using OryxMCI.webapi.ViewModels;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace OryxMCI.webapi.Controllers
 {
+    
     [Route("api/[controller]")]
+    [AllowAnonymous]
     public class AgentController : BaseController
     {
         private ILogger<AgentController> _logger;

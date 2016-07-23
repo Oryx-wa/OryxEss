@@ -1,14 +1,16 @@
 export interface IAgent {
-    Id: number;
-    Code: string;
-    Name: string;   
+    id: number;
+    code: string;
+    name: string;  
+    userSign:number; 
 }
 
 export class Agent {
   constructor(
     public id: number,
     public code: string,
-    public name: string
+    public name: string,
+    public userSign: number
   
   ) {  }
 }
