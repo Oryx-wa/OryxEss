@@ -10,6 +10,10 @@ namespace IdentityServer.Configuration
     {
         public static IEnumerable<Client> Get()
         {
+            IEnumerable<string> gType = new  List<string>
+            {
+                "Implicit", "Hybrid", "ResourceOwnerPassword"
+            };
             return new List<Client>
             {
                 new Client
@@ -74,8 +78,51 @@ namespace IdentityServer.Configuration
                     ClientId = "OryxMCI.webapi",
                     ClientName = "MCI",
                     Enabled = true,
+                    AllowedGrantTypes = GrantTypes.Implicit,
+                    AllowAccessTokensViaBrowser = true,
+                    RequireConsent = false,
+                    //ClientSecrets = new List<Secret>
+                    //{
+                    //    new Secret("F621F470-9731-4A25-80EF-67A6F7C5F4B8".Sha256())
+                    //},
+
+                    AllowedScopes = new List<string>
+                    {
+                        "openid",
+                        "email",
+                        "profile",
+                        StandardScopes.OfflineAccess.Name,
+                        "read",
+                        "OryxMCI.webapi"
+                    },
+                     RedirectUris = new List<string>
+                    {
+                        "http://localhost:3000/",
+                        "http://localhost:4200/",
+                        "http://10.211.55.2:4200/"
+
+                    },
+                     PostLogoutRedirectUris = new List<string>
+                    {
+                        "http://localhost:3000/unauthorized.html",
+                        "http://localhost:4200/unauthorized.html",
+                        "http://10.211.55.2:4200/unauthorized.html",
+                    },
+                     AllowedCorsOrigins = new List<string>
+                    {
+
+                        "http://localhost:3000",
+                        "http://localhost:4200",
+                        "http://10.211.55.2:4200"
+                    }
+                },
+                new Client
+                {
+                    ClientId = "OryxMCIP.webapi",
+                    ClientName = "MCI",
+                    Enabled = true,
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                     AllowAccessTokensViaBrowser = true,
+                    AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
                     ClientSecrets = new List<Secret>
                     {
@@ -112,7 +159,6 @@ namespace IdentityServer.Configuration
                         "http://10.211.55.2:4200"
                     }
                 },
-
             };
         }
     }

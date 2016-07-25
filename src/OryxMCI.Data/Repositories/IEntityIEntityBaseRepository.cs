@@ -15,6 +15,8 @@ namespace OryxMCI.Data.Repositories
         IQueryable<T> GetChild(int id);
 
         IQueryable<T> GetPaged(int pageNo = 1, int pageSize = 20, string orderBy="CreateDate");
+
+        int Count();
         void Add(T entity);
         void Delete(T entity);
         void Edit(T entity);

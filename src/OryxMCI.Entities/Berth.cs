@@ -1,6 +1,6 @@
 ﻿namespace OryxMCI.Entities
 {
-    public class Berth : DefItem, IEntityBase
+    public class Berth : DefItem, IDefItem
     {
        
     }

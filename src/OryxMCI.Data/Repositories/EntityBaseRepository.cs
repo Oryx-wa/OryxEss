@@ -98,5 +98,12 @@ namespace OryxMCI.Data.Repositories
 
             return query;
         }
+
+        public virtual int Count()
+        {
+           
+            int total = DbContext.Set<T>().Count();
+            return total;
+        }
     }
 }

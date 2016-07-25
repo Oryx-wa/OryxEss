@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using OryMCI.webapi.Infrastructure.Core;
 using OryxMCI.Data.Infrastructure;
 using OryxMCI.Data.Repositories;
+using OryxMCI.Data.Repositories.defitem;
 using OryxMCI.Entities;
 using OryxMCI.webapi.ViewModels;
 using System;
@@ -21,7 +22,7 @@ namespace OryxMCI.webapi.Controllers
         private ILogger<VesselController> _logger;
         private IEntityBaseRepository<Vessel> _repository;
 
-        public VesselController(IEntityBaseRepository<Vessel> repository,
+        public VesselController(IDefItemRepository<Vessel> repository,
             IEntityBaseRepository<Error> _errorsRepository, IUnitOfWork _unitOfWork,
             ILogger<VesselController> logger)
             : base(_errorsRepository, _unitOfWork)
@@ -70,7 +71,7 @@ namespace OryxMCI.webapi.Controllers
         public void Delete(int id)
         {
         }
-
+        [HttpGet]
         public override JsonResult Get()
         {
             try
@@ -94,7 +95,7 @@ namespace OryxMCI.webapi.Controllers
                 return Json("Failed to get Vessels");
             }
         }
-
+        [HttpGet("{id}")]
         public override JsonResult Get(int id)
         {
             try
@@ -117,9 +118,27 @@ namespace OryxMCI.webapi.Controllers
             }
         }
 
-        public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
+        [HttpGet]
+        [Route("GetPaged")]
+        public override JsonResult GetPaged([FromQuery]int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
         {
-            throw new NotImplementedException();
+            try
+            {
+                int total = _repository.Count();
+                var Vessels = _repository.GetPaged(pageNo, pageSize, orderBy);
+                var VesselsVm = Vessels.Select(x => VesselViewModel.FromEntity(x));
+                if (VesselsVm == null)
+                {
+                    return Json(null);
+                }
+                return Json(new PagedResult<VesselViewModel>(VesselsVm.ToList(), pageNo, pageSize, total));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get Ports", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Failed to get Ports");
+            }
         }
     }
 }

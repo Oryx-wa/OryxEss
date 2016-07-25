@@ -3,18 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OryxMCI.webapi.ViewModels
 {
-    public class AgentViewModel
+    public class AgentViewModel :DefItemViewModel
     {
-        public int Id { get; set; }
-
-        [Required]
-        public string Code { get; set; }
-
-        [Required]
-        [StringLength(255, MinimumLength = 5)]
-        public string Name { get; set; }
-
-        public int UserSign { get; set; }
+        
 
         public static AgentViewModel FromEntity(Agent entity)
         {

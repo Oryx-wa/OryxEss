@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using OryMCI.webapi.Infrastructure.Core;
 using OryxMCI.Data.Infrastructure;
 using OryxMCI.Data.Repositories;
+using OryxMCI.Data.Repositories.defitem;
 using OryxMCI.Entities;
 using OryxMCI.webapi.ViewModels;
 using System;
@@ -18,13 +19,14 @@ namespace OryxMCI.webapi.Controllers
     [Route("api/[controller]")]
     public class BerthController : BaseController
     {
+
         private ILogger<BerthController> _logger;
         private IEntityBaseRepository<Berth> _repository;
 
-        public BerthController(IEntityBaseRepository<Berth> repository,
+        public BerthController(IDefItemRepository<Berth> repository,
             IEntityBaseRepository<Error> _errorsRepository, IUnitOfWork _unitOfWork,
             ILogger<BerthController> logger)
-            : base(_errorsRepository, _unitOfWork)
+            : base( _errorsRepository, _unitOfWork)
         {
             _repository = repository;
             _logger = logger;
@@ -71,43 +73,47 @@ namespace OryxMCI.webapi.Controllers
         {
         }
 
+        [HttpGet]
         public override JsonResult Get()
         {
+
             try
             {
-                var Berths = _repository.GetAll();
+                var Agents = _repository.GetAll();
 
-                var BerthsVm = Berths.Select(x => BerthViewModel.FromEntity(x));
+                var AgentsVm = Agents.Select(x => BerthViewModel.FromEntity(x));
 
-                if (BerthsVm == null)
+                if (AgentsVm == null)
                 {
                     return Json(null);
                 }
-                return Json(BerthsVm);
+                return Json(AgentsVm);
 
                 //return new string[] { "value1", "value2" };
             }
             catch (Exception ex)
             {
+
                 _logger.LogError($"Failed to get Berths", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json("Failed to get Berths");
             }
         }
 
+        [HttpGet("{id}")]
         public override JsonResult Get(int id)
         {
             try
             {
-                var Be = _repository.GetSingle(id);
-                var BeVm = BerthViewModel.FromEntity(Be);
+                var Ag = _repository.GetSingle(id);
+                var AgVm = BerthViewModel.FromEntity(Ag);
 
-                if (BeVm == null)
+                if (AgVm == null)
                 {
                     return Json(null);
                 }
 
-                return Json(BeVm);
+                return Json(AgVm);
             }
             catch (Exception ex)
             {
@@ -116,10 +122,38 @@ namespace OryxMCI.webapi.Controllers
                 return Json("Failed to get Berth");
             }
         }
-
-        public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
+        [HttpGet]
+        [Route("GetPaged")]
+        //[Route("api/Agent/{pageNo:int, pageSize:int, orderBy:string}")]
+        public override JsonResult GetPaged([FromQuery]int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                int total = _repository.Count();
+
+                var Agents = _repository.GetPaged(pageNo, pageSize, orderBy);
+
+                var AgentsVm = Agents.Select(x => BerthViewModel.FromEntity(x));
+
+
+                if (AgentsVm == null)
+                {
+                    return Json(null);
+                }
+                
+                return Json(new PagedResult<DefItemViewModel>(AgentsVm.ToList(), pageNo, pageSize, total));
+
+
+                //return new string[] { "value1", "value2" };
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError($"Failed to get Berths", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Failed to get Berths");
+            }
         }
     }
 }

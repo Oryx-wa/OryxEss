@@ -11,27 +11,29 @@ using OryxMCI.Data.Infrastructure;
 using OryxMCI.webapi.ViewModels;
 using System.Net;
 using Microsoft.AspNetCore.Authorization;
+using OryxMCI.Data.Repositories.defitem;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace OryxMCI.webapi.Controllers
 {
-    
+
     [Route("api/[controller]")]
-    [AllowAnonymous]
+    //[AllowAnonymous]
     public class AgentController : BaseController
     {
         private ILogger<AgentController> _logger;
         private IEntityBaseRepository<Agent> _repository;
 
-        public AgentController(IEntityBaseRepository<Agent> repository,
+        public AgentController(IDefItemRepository<Agent> repository,
             IEntityBaseRepository<Error> _errorsRepository, IUnitOfWork _unitOfWork,
             ILogger<AgentController> logger)
-            : base(_errorsRepository, _unitOfWork)
+        : base(_errorsRepository, _unitOfWork)
         {
             _repository = repository;
             _logger = logger;
         }
+
         // POST api/values
         [HttpPost]
         public JsonResult Post([FromBody]AgentViewModel vm)
@@ -123,35 +125,26 @@ namespace OryxMCI.webapi.Controllers
             }
         }
         [HttpGet]
-        [Route("api/agentgetpaged")]
-        public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy="CreateDate")
+        [Route("GetPaged")]
+        public override JsonResult GetPaged([FromQuery]int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
         {
             try
             {
+                int total = _repository.Count();
                 var Agents = _repository.GetPaged(pageNo, pageSize, orderBy);
-
                 var AgentsVm = Agents.Select(x => AgentViewModel.FromEntity(x));
-
-
                 if (AgentsVm == null)
                 {
                     return Json(null);
                 }
-
-                int total = Agents.Count();
-                return Json(new PagedResult<AgentViewModel>(AgentsVm, pageNo, pageSize, total));
-
-
-                //return new string[] { "value1", "value2" };
+                return Json(new PagedResult<AgentViewModel>(AgentsVm.ToList(), pageNo, pageSize, total));
             }
             catch (Exception ex)
             {
-
                 _logger.LogError($"Failed to get Agents", ex);
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 return Json("Failed to get Agents");
             }
-
         }
     }
 }

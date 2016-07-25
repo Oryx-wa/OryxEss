@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using OryMCI.webapi.Infrastructure.Core;
 using OryxMCI.Data.Infrastructure;
 using OryxMCI.Data.Repositories;
+using OryxMCI.Data.Repositories.defitem;
 using OryxMCI.Entities;
 using OryxMCI.webapi.ViewModels;
 using System;
@@ -21,7 +22,7 @@ namespace OryxMCI.webapi.Controllers
         private ILogger<PortController> _logger;
         private IEntityBaseRepository<Port> _repository;
 
-        public PortController(IEntityBaseRepository<Port> repository,
+        public PortController(IDefItemRepository<Port> repository,
             IEntityBaseRepository<Error> _errorsRepository, IUnitOfWork _unitOfWork,
             ILogger<PortController> logger)
             : base(_errorsRepository, _unitOfWork)
@@ -70,7 +71,7 @@ namespace OryxMCI.webapi.Controllers
         public void Delete(int id)
         {
         }
-
+        [HttpGet]
         public override JsonResult Get()
         {
             try
@@ -94,7 +95,7 @@ namespace OryxMCI.webapi.Controllers
                 return Json("Failed to get Ports");
             }
         }
-
+        [HttpGet("{id}")]
         public override JsonResult Get(int id)
         {
             try
@@ -116,10 +117,27 @@ namespace OryxMCI.webapi.Controllers
                 return Json("Failed to get Port");
             }
         }
-
-        public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
+        [HttpGet]
+        [Route("GetPaged")]
+        public override JsonResult GetPaged([FromQuery]int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
         {
-            throw new NotImplementedException();
+            try
+            {
+                int total = _repository.Count();
+                var Ports = _repository.GetPaged(pageNo, pageSize, orderBy);
+                var PortsVm = Ports.Select(x => PortViewModel.FromEntity(x));
+                if (PortsVm == null)
+                {
+                    return Json(null);
+                }
+                return Json(new PagedResult<PortViewModel>(PortsVm.ToList(), pageNo, pageSize, total));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get Ports", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Failed to get Ports");
+            }
         }
     }
 }

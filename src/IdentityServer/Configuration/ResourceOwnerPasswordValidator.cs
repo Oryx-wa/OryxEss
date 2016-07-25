@@ -15,7 +15,7 @@ namespace IdentityServer.Configuration
 
             if (userName == "tayo.adegbola@oryx-wa.com" && password == "Oryx@101")
             {
-                subject = "Oryx@101";
+                subject = "tayo.adegbola@oryx-wa.com";
             }
 
             if (subject == null)

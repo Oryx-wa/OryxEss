@@ -117,7 +117,12 @@ namespace OryxMCI.webapi.Controllers
             }
         }
 
-        public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
+        //public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public override JsonResult GetPaged(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
         {
             throw new NotImplementedException();
         }

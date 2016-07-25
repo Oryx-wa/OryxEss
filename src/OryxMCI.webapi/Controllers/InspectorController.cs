@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using OryMCI.webapi.Infrastructure.Core;
 using OryxMCI.Data.Infrastructure;
 using OryxMCI.Data.Repositories;
+using OryxMCI.Data.Repositories.defitem;
 using OryxMCI.Entities;
 using OryxMCI.webapi.ViewModels;
 using System;
@@ -21,7 +22,7 @@ namespace OryxMCI.webapi.Controllers
         private ILogger<InspectorController> _logger;
         private IEntityBaseRepository<Inspector> _repository;
 
-        public InspectorController(IEntityBaseRepository<Inspector> repository,
+        public InspectorController(IDefItemRepository<Inspector> repository,
             IEntityBaseRepository<Error> _errorsRepository, IUnitOfWork _unitOfWork,
             ILogger<InspectorController> logger)
             : base(_errorsRepository, _unitOfWork)
@@ -70,7 +71,7 @@ namespace OryxMCI.webapi.Controllers
         public void Delete(int id)
         {
         }
-
+        [HttpGet]
         public override JsonResult Get()
         {
             try
@@ -94,7 +95,7 @@ namespace OryxMCI.webapi.Controllers
                 return Json("Failed to get Inspectors");
             }
         }
-
+        [HttpGet("{id}")]
         public override JsonResult Get(int id)
         {
             try
@@ -117,11 +118,40 @@ namespace OryxMCI.webapi.Controllers
             }
         }
 
-       
-
-        public override JsonResult Get(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
+        [HttpGet]
+        [Route("GetPaged")]
+        //[Route("api/Agent/{pageNo:int, pageSize:int, orderBy:string}")]
+        public override JsonResult GetPaged([FromQuery]int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                int total = _repository.Count();
+
+                var Inspectors = _repository.GetPaged(pageNo, pageSize, orderBy);
+
+                var InspectorsVm = Inspectors.Select(x => InspectorViewModel.FromEntity(x));
+
+
+                if (InspectorsVm == null)
+                {
+                    return Json(null);
+                }
+
+
+                return Json(new PagedResult<InspectorViewModel>(InspectorsVm.ToList(), pageNo, pageSize, total));
+
+
+                //return new string[] { "value1", "value2" };
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError($"Failed to get Agents", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Failed to get Agents");
+            }
+
         }
     }
 }

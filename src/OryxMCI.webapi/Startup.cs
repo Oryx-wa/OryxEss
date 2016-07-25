@@ -12,6 +12,7 @@ using OryxMCI.webapi.Controllers;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using OryxMCI.Data.Repositories;
+using OryxMCI.Data.Repositories.defitem;
 using OryxMCI.Entities;
 using OryxMCI.Data.Infrastructure;
 using System;
@@ -81,7 +82,7 @@ namespace OryxMCI.webapi
 
             string conString = Configuration["Data:DefaultConnection:OryxMCIConnectionString"];
            
-            services.AddDbContext<OryxMCIContext>(options => options.UseSqlServer(conString));
+            services.AddDbContext<OryxMCIContext>(options => options.UseSqlServer(conString, opt => opt.UseRowNumberForPaging()));
 
             
 
@@ -109,6 +110,12 @@ namespace OryxMCI.webapi
             builder.RegisterGeneric(typeof(EntityBaseRepository<>))
                    .As(typeof(IEntityBaseRepository<>))
                    .InstancePerLifetimeScope();
+
+            builder.RegisterGeneric(typeof(DefItemRepository<>))
+                  .As(typeof(IDefItemRepository<>))
+                  .InstancePerLifetimeScope();
+
+
 
             builder.RegisterType<SeedData>();         
 

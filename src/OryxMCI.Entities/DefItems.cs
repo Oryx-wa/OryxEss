@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OryxMCI.Entities
 {
-    public class DefItem : IEntityBase
+    public class DefItem : IDefItem
     {
         [Key]
         public int Id { get; set; }

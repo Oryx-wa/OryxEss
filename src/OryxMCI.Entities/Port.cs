@@ -1,6 +1,6 @@
 ﻿namespace OryxMCI.Entities
 {
-    public class Port: DefItem, IEntityBase
+    public class Port: DefItem, IDefItem
     {
     }
 }
