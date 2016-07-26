@@ -6,7 +6,8 @@ import {MaterializeDirective} from "angular2-materialize";
  import {MdIcon, MdIconRegistry} from '@angular2-material/icon'; 
  import {MD_BUTTON_DIRECTIVES} from '@angular2-material/button';
  import {MD_TOOLBAR_DIRECTIVES} from '@angular2-material/toolbar';
- import {DisplayModeEnum} from '../shared-enum.enum'
+ import {DisplayModeEnum} from '../shared-enum.enum';
+ import { NgForm }    from '@angular/forms';
 
 @Component({
   moduleId: module.id,
@@ -24,13 +25,16 @@ export class OryxToolbarComponent implements OnInit {
   @Input() showVert: boolean = false;
   @Input() showCardorGrid: boolean = false;
   @Input() displayMode: DisplayModeEnum;
+  @Input() showSeach: boolean= true;
+
   //@Input() displayModeEnum = DisplayModeEnum;
   //Outputs
 
   @Output() GridOrCard: EventEmitter<any> = new EventEmitter();
 
-
-  //displayModeEnum = DisplayModeEnum;
+  search: boolean = false;
+  submitted = false;
+     //displayModeEnum = DisplayModeEnum;
 
   constructor() {}
 
@@ -39,11 +43,12 @@ export class OryxToolbarComponent implements OnInit {
   changeDisplayMode(mode: number){
     console.log(mode.toString());
     this.GridOrCard.next(mode);
-    
-    
-    
   }
-
+ displaySearch(){
+    this.search = true;
+  }
+  onSubmit() { this.submitted = true; 
+      this.search = false;}
 }
 
 

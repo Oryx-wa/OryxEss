@@ -1,3 +1,4 @@
+<!--
 <md-toolbar color="primary">
   <span>
         <md-button id="button-id" (click)="menu.open()"
@@ -8,7 +9,7 @@
       </md-button>
       </span>
   <span><h3>{{title}}</h3></span>
-  <!-- This fills the remaining space of the current row -->
+  
   <span class="example-fill-remaining-space"></span>
   <a  *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" 
     class="btn-floating btn-small waves-effect waves-light accent">
@@ -25,3 +26,40 @@
     <span ><i class="material-icons">more_vert</i></span>
   </div>
 </md-toolbar>
+-->
+<nav>
+  <div class="nav-wrapper">
+    <div *ngIf="!search">
+    <a href="#!" class="brand-logo"><i class="material-icons">menu</i></a>
+    <ul class="right ">
+      <li><a *ngIf="showSearch" (click)="displaySearch()" ><i class="material-icons" >search</i></a></li>
+      <li>
+        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" >
+          <i class="material-icons">list</i>
+        </a>
+      </li>
+      <li>
+        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" >
+          <i class="material-icons">list</i>
+        </a>
+      </li>
+      <li>
+        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(3)" >
+          <i class="material-icons">add</i>
+        </a>
+      </li>
+      <li><a *ngIf="showRefresh" ><i class="material-icons">refresh</i></a></li>
+      <li><a *ngIf="showVert" ><i class="material-icons">more_vert</i></a></li>
+    </ul>
+    </div>
+    <form *ngIf="search" (ngSubmit)="onSubmit()" >
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+          
+        </div>
+        <button type="submit" class="btn btn-default" ><i class="material-icons" >search</i></button>
+      </form>
+  </div>
+</nav>

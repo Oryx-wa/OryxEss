@@ -1,52 +1,53 @@
 <header role="banner">
     <div class="container">
-        <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
-            <i class="material-icons">menu</i>
-        </a>
+        
         <ul id="nav-mobile" class="side-nav fixed">
             <li class="logo">
                 <a id="logo-container" href="http://materializecss.com/" class="brand-logo">
-                    <img src="app/assets/images/logo2.png" /> 
-                </a>&nbsp; 
+                    <img src="app/assets/images/logo2.png" />
+                </a>&nbsp;
             </li>
-       <br>
-       <li class="divider"></li>
-                    
-           <li class="divider"></li>
+            <br>
+            <li class="divider"></li>
+
+            <li class="divider"></li>
             <li class="cart"><a [routerLink]="['/home']" class=" waves-effect waves-purple"><i class="material-icons">home</i><span>Home</span></a></li>
-             <li class="divider"></li>
+            <li class="divider"></li>
             <li class="cart"><a [routerLink]="['/MCI']" class=" waves-effect waves-purple"><i class="material-icons">perm_device_information</i><span> MCI Form</span></a></li>
-           <li class="divider"></li>
-           <li class="cart">
-            <a *ngIf="!securityService.IsAuthorized" (click)="Login()" class=" waves-effect waves-purple"><i class="material-icons">lock_open</i> <span> Login</span></a>
-            <a *ngIf="securityService.IsAuthorized" (click)="Logout()" class=" waves-effect waves-purple"><i class="material-icons">lock</i> <span> Logout</span></a>
-          </li>
-          <li class="divider"></li>
-          <li class="divider"></li>
-          <li>
+            <li class="divider"></li>
             <li class="cart">
-                <ul materialize="collapsible" data-collapsible="accordion" id="slide-out1">
-                    <li class="">
-                        <a class="collapsible-header  waves-effect waves-purple"><i class="material-icons">settings</i><span> Settings</span></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li class="divider"></li>
-                                <li><a [routerLink]="['/agents']">Agents</a></li>
-                                <li class="divider"></li>
-                                <li class="divider"></li>
-                                <li><a [routerLink]="['/vessels']">Vessels</a></li>
-                                <li class="divider"></li>
-                                <li class="divider"></li>
-                                <li><a [routerLink]="['/berth']">Berth</a></li>
-                                <li class="divider"></li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-          </li>
- <li class="divider"></li>
+                <a *ngIf="!securityService.IsAuthorized" (click)="Login()" class=" waves-effect waves-purple"><i class="material-icons">lock_open</i> <span> Login</span></a>
+                <a *ngIf="securityService.IsAuthorized" (click)="Logout()" class=" waves-effect waves-purple"><i class="material-icons">lock</i> <span> Logout</span></a>
+            </li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+            <li>
+                <li class="cart">
+                    <ul materialize="collapsible" data-collapsible="accordion" id="slide-out1">
+                        <li class="">
+                            <a class="collapsible-header  waves-effect waves-purple"><i class="material-icons">settings</i><span> Settings</span></a>
+                            <div class="collapsible-body">
+                                <ul>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/agents']">Agents</a></li>
+                                    <li class="divider"></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/vessels']">Vessels</a></li>
+                                    <li class="divider"></li>
+                                    <li class="divider"></li>
+                                    <li><a [routerLink]="['/berth']">Berth</a></li>
+                                    <li class="divider"></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
         </ul>
-        <a materialize="collapsible" [materializeParams]="[{edge:'left', closeOnClick: true }]" href="#" data-activates="slide-out1"
+        <a href="#" materialize="collapsible" [materializeParams]="[{edge:'left', closeOnClick: true }]" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+            <i class="material-icons">menu</i>
+        </a>
+        <a materialize="collapsible"  href="#" data-activates="slide-out1"
             class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
 </header>
