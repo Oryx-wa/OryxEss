@@ -5,7 +5,8 @@ import {AgentsCardComponent} from '../agents-card.component';
 import {AgentsCreateComponent} from '../agents-create.component';
 import {AgentsEditComponent} from '../agents-edit.component';
 import {AgentsDetailsComponent} from '../agents-details.component';
-import { AuthGuard }             from '../../login/auth.guard';
+import { CanDeactivateGuard }    from '../../interfaces';
+import { AuthGuard}             from '../../login/auth.guard';
 
 export const AgentsRoutes: RouterConfig = [
     { path: '', component: AgentsComponent, pathMatch:"full"},

@@ -27,6 +27,6 @@ const appRoutes: RouterConfig = [
 
 export const APP_ROUTER_PROVIDERS = [
   provideRouter(appRoutes),,
-  //CanDeactivateGuard,
-  //AUTH_PROVIDERS
+  CanDeactivateGuard,
+  AUTH_PROVIDERS
 ];

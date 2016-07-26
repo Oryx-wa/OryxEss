@@ -1,29 +1,11 @@
 <div layout="column" style="height:600px">
-  <md-toolbar color="primary">
-    <span>
-        <md-button id="button-id" (click)="menu.open()"
-                 class="md-primary"
-                 md-ripple-size="auto"
-                 md-no-ink="true" aria-label="button-label">
-          <i class="material-icons">menu</i>
-      </md-button>
-      </span>
-    <span><h3>Agents</h3></span>
-    <!-- This fills the remaining space of the current row -->
-    <span class="example-fill-remaining-space"></span>
-    <a (click)="changeDisplayMode(displayModeEnum.Card)"  [class.active]="displayMode === displayModeEnum.Card"><span><i class="material-icons">list</i></span> </a>
-    <a (click)="changeDisplayMode(displayModeEnum.List)"  [class.active]="displayMode === displayModeEnum.List"><span><i class="material-icons">list</i></span> </a>
-    
-    <!--<a [routerLink]="['/agentsList']"><span><i class="material-icons">list</i></span> </a>
-    <a [routerLink]="['/agentCreate']"><span><i class="material-icons">add</i></span></a>
-    -->
-  
-            <span><i class="material-icons">search</i></span>
-        
-    <span><i class="material-icons">more_vert</i></span>
-  </md-toolbar>
-  <app-agents-list [agents]="agents" [hidden]="displayMode !== displayModeEnum.Grid"></app-agents-list>
 
-  <app-agents-card [agents]="agents" [hidden]="displayMode !== displayModeEnum.Card"></app-agents-card>
+  <app-oryx-toolbar [title]="title" [showVert]="showVert" [showSearch]="showSearch"
+    (GridOrCard)="changeDisplayMode($event)" [showCardorGrid]= "showCardorGrid" [displayMode]="displayModeEnum.Grid"> 
+    </app-oryx-toolbar>
+
+  <app-agents-list *ngIf="displayMode == displayModeEnum.Grid" [agents]="agents"  ></app-agents-list>
+
+  <app-agents-card *ngIf="displayMode == displayModeEnum.Card" [agents]="agents" ></app-agents-card>
 
 </div>

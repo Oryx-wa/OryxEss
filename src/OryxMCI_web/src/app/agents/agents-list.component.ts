@@ -23,6 +23,7 @@ import {ServiceBase} from '../shared/service-base';
   MdIcon, ROUTER_DIRECTIVES, FORM_DIRECTIVES ],
     providers: [MdIconRegistry],
     pipes: [PaginatePipe],
+    
 })
 export class AgentsListComponent implements OnInit {
   @Input() agents: any[] = [];

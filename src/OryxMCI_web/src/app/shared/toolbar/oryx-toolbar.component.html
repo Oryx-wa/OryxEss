@@ -1,0 +1,27 @@
+<md-toolbar color="primary">
+  <span>
+        <md-button id="button-id" (click)="menu.open()"
+                 class="md-primary"
+                 md-ripple-size="auto"
+                 md-no-ink="true" aria-label="button-label">
+          <i class="material-icons">menu</i>
+      </md-button>
+      </span>
+  <span><h3>{{title}}</h3></span>
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+  <a  *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" 
+    class="btn-floating btn-small waves-effect waves-light accent">
+    <span><i class="material-icons">list</i></span> 
+  </a>
+  <a *ngIf="showCardorGrid" (click)="changeDisplayMode(0)" 
+    class="btn-floating btn-small waves-effect waves-light accent"
+   ><span><i class="material-icons">list</i></span> 
+  </a>
+  <div *ngIf="showSearch"> 
+    <span ><i class="material-icons">search</i></span>
+  </div>
+  <div *ngIf="showVert">
+    <span ><i class="material-icons">more_vert</i></span>
+  </div>
+</md-toolbar>
