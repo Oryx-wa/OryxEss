@@ -11,13 +11,15 @@ export class ServiceBase {
     actionUrl: string;
     headers: Headers;
     model:IModelBase;
+    private _useBackEnd: boolean;
     private _actionUrl:string;
    
 
 
     constructor(private _http: Http,private _configuration: Configuration, 
     private _securityService: SecurityService ) { 
-        this._actionUrl = `${_configuration.apiServer}`;     
+        this._actionUrl = `${_configuration.apiServer}`;  
+        this._useBackEnd = _configuration.useBackend;  
     }
     private setHeaders() {
         this.headers = new Headers();
@@ -32,6 +34,7 @@ export class ServiceBase {
     }
 
     public setActionUrl(action: string){
+
             this.actionUrl = this._actionUrl + '/' +action+ '/';
     }
 
