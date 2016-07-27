@@ -8,6 +8,7 @@ import {MD_LIST_DIRECTIVES} from '@angular2-material/list';
 import {MD_INPUT_DIRECTIVES} from '@angular2-material/input';
 import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {PaginatePipe, PaginationControlsCmp, PaginationService} from 'ng2-pagination';
+import {CHART_DIRECTIVES} from 'ng2-charts/ng2-charts';
 
 import {ServiceBase} from './shared/service-base';
  import {IModelBase} from './shared/imodel-base';

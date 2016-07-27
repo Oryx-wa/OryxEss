@@ -12,6 +12,7 @@ const map: any = {
   "materialize": "vendor/materialize-css",
    "angular2-materialize": "vendor/angular2-materialize",
    'ng2-pagination': 'vendor/ng2-pagination',
+   "ng2-charts":'vendor/ng2-charts'
    
    
 };
@@ -30,6 +31,10 @@ const packages: any = {
   'angular2-materialize': {
     "main": "dist/index",
     "defaultExtension": "js"
+  },
+  'ng2-charts': {   
+    defaultExtension: 'js',
+    main: 'ng2-charts.js'
   },
 };
 
