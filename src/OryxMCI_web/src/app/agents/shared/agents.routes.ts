@@ -10,12 +10,12 @@ import { AuthGuard}             from '../../login/auth.guard';
 
 export const AgentsRoutes: RouterConfig = [
     { path: '', component: AgentsComponent, pathMatch:"full"},
-    { path: 'agents', component: AgentsComponent, canActivate: [AuthGuard] },
+    { path: 'agents', component: AgentsComponent},
     //{ path: 'agentsList', component: AgentsListComponent },
     //{ path: 'agentsCard', component: AgentsCardComponent, canActivate: [AuthGuard] },
-    { path: 'agentCreate', component: AgentsCreateComponent , canActivate: [AuthGuard]},
-    { path: 'agentEdit/:id', component: AgentsEditComponent, canActivate: [AuthGuard] },
-    { path: 'agentDetails/:id', component: AgentsDetailsComponent, canActivate: [AuthGuard] }
+    { path: 'agentCreate', component: AgentsCreateComponent },
+    { path: 'agentEdit/:id', component: AgentsEditComponent },
+    { path: 'agentDetails/:id', component: AgentsDetailsComponent}
 
 
 ]

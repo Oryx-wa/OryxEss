@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": 565,
+      "code": "NGR",
+      "name": "NigerDock",
+      "userSign": 0
+    },
+    {
+      "id": 564,
+      "code": "NN",
+      "name": "NNPC",
+      "userSign": 0
+    }
+  ],
+  "paging": {
+    "pageNo": 1,
+    "pageSize": 19,
+    "pageCount": 1,
+    "totalRecordCount": 2
+  }
+}

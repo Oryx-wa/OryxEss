@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": 568,
+      "code": "P002",
+      "name": "Calabar",
+      "userSign": 0
+    },
+    {
+      "id": 569,
+      "code": "P003",
+      "name": "Lagos",
+      "userSign": 0
+    }
+  ],
+  "paging": {
+    "pageNo": 1,
+    "pageSize": 19,
+    "pageCount": 1,
+    "totalRecordCount": 2
+  }
+}

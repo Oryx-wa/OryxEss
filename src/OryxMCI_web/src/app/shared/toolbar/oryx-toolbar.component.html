@@ -27,24 +27,24 @@
   </div>
 </md-toolbar>
 -->
-<nav>
+<nav class=" waves-effect waves-purple">
   <div class="nav-wrapper">
     <div *ngIf="!search">
     <a href="#!" class="brand-logo"><i class="material-icons">menu</i></a>
     <ul class="right ">
-      <li><a *ngIf="showSearch" (click)="displaySearch()" ><i class="material-icons" >search</i></a></li>
+      <li><a *ngIf="showSearch" (click)="displaySearch()" class=" waves-effect waves-purple"><i class="material-icons" >search</i></a></li>
       <li>
-        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" >
+        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" class=" waves-effect waves-purple">
           <i class="material-icons">list</i>
         </a>
       </li>
       <li>
-        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" >
+        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" class=" waves-effect waves-purple" >
           <i class="material-icons">list</i>
         </a>
       </li>
       <li>
-        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(3)" >
+        <a *ngIf="showCardorGrid" (click)="changeDisplayMode(3)" class=" waves-effect waves-purple" >
           <i class="material-icons">add</i>
         </a>
       </li>
@@ -54,7 +54,7 @@
     </div>
     <form *ngIf="search" (ngSubmit)="onSubmit()" >
         <div class="input-field">
-          <input id="search" type="search" required>
+          <input id="search" type="search" required class=" waves-effect waves-purple">
           <label for="search"><i class="material-icons">search</i></label>
           <i class="material-icons">close</i>
           

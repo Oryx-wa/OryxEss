@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": 570,
+      "code": "V002",
+      "name": "Voyager",
+      "userSign": 0
+    },
+    {
+      "id": 571,
+      "code": "V003",
+      "name": "TORM FREYA",
+      "userSign": 0
+    }
+  ],
+  "paging": {
+    "pageNo": 1,
+    "pageSize": 19,
+    "pageCount": 1,
+    "totalRecordCount": 2
+  }
+}

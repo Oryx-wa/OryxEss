@@ -10,16 +10,24 @@ import { SecurityService } from '../login/security.service';
 export class ServiceBase {
     actionUrl: string;
     headers: Headers;
-    model:IModelBase;
+    model: IModelBase;
     private _useBackEnd: boolean;
-    private _actionUrl:string;
-   
+    private _actionUrl: string;
 
 
-    constructor(private _http: Http,private _configuration: Configuration, 
-    private _securityService: SecurityService ) { 
-        this._actionUrl = `${_configuration.apiServer}`;  
-        this._useBackEnd = _configuration.useBackend;  
+
+    constructor(private _http: Http, private _configuration: Configuration,
+
+        private _securityService: SecurityService) {
+        this._useBackEnd = _configuration.useBackend;
+        if (this._useBackEnd) {
+            this._actionUrl = `${_configuration.apiServer}`;
+        }
+        else {
+            this._actionUrl = `${_configuration.apiLocal}`;
+        }
+
+
     }
     private setHeaders() {
         this.headers = new Headers();
@@ -33,17 +41,26 @@ export class ServiceBase {
         }
     }
 
-    public setActionUrl(action: string){
+    public setActionUrl(action: string) {
 
-            this.actionUrl = this._actionUrl + '/' +action+ '/';
+        this.actionUrl = this._actionUrl + '/' + action + '/';
     }
+
+
 
     public GetAll = (): Observable<IModelBase[]> => {
         this.setHeaders();
-        
-        return this._http.get(this.actionUrl, {
-            headers: this.headers
-        }).map(res => res.json());
+        if (this._useBackEnd) {
+            return this._http.get(this.actionUrl, {
+                headers: this.headers
+            }).map(res => res.json());
+        }
+        else {
+            return this._http.get(this.actionUrl, {
+
+            }).map(res => res.json());
+        }
+
     }
 
     public GetById = (id: number): Observable<IModelBase> => {
@@ -52,7 +69,7 @@ export class ServiceBase {
             headers: this.headers
         }).map(res => res.json());
     }
-    public Add = (itemToAdd: any): Observable<Response> => {       
+    public Add = (itemToAdd: any): Observable<Response> => {
         this.setHeaders();
         return this._http.post(this.actionUrl, JSON.stringify(itemToAdd), { headers: this.headers });
     }
@@ -70,7 +87,7 @@ export class ServiceBase {
         });
     }
 
-    public HandleError(error: any){
+    public HandleError(error: any) {
         this._securityService.HandleError(error)
     }
 

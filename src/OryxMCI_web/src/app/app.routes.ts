@@ -10,7 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { AuthGuard }          from './login/auth.guard';
 import { CanDeactivateGuard } from './interfaces';
 import {LoginRoutes, AUTH_PROVIDERS} from './login/login.routes'
-import {AgentsRoutes} from './agents/shared/agents.routes'
+import {AgentsRoutes} from './agents/shared/agents.routes';
+import {VesselsRoutes} from './vessels/shared/vessels.routes'
 
 
 const appRoutes: RouterConfig = [
@@ -18,10 +19,11 @@ const appRoutes: RouterConfig = [
    { path: '', component: HomeComponent },
     { path: 'home', component: HomeComponent },
     
-     //...LoginRoutes,
+     ...LoginRoutes,
      //...IousRoutes,
     //...IouRoutes,
-    ...AgentsRoutes,         
+    ...AgentsRoutes, 
+    ...VesselsRoutes,      
  
 ];
 
