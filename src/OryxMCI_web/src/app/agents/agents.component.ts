@@ -7,6 +7,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
  import { AuthGuard }             from '../login/auth.guard';
  import {AgentsListComponent} from './agents-list.component';
  import {AgentsCardComponent} from './agents-card.component';
+ import {MaterializeDirective} from "angular2-materialize";
 
  import {ServiceBase} from '../shared/service-base';
  import {IModelBase} from '../shared/imodel-base';
@@ -19,7 +20,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
   selector: 'app-agents',
   templateUrl: 'agents.component.html',
   styleUrls: ['agents.component.css'],
-   directives: [MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, 
+   directives: [MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, MaterializeDirective,
    MdIcon, ROUTER_DIRECTIVES, AgentsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,AgentsCardComponent],
     providers: [MdIconRegistry]
 })

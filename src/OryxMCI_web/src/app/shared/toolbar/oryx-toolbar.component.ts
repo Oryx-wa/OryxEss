@@ -26,6 +26,7 @@ export class OryxToolbarComponent implements OnInit {
   @Input() showCardorGrid: boolean = false;
   @Input() displayMode: DisplayModeEnum;
   @Input() showSeach: boolean= true;
+  @Input() showAdd: boolean=false;
 
   //@Input() displayModeEnum = DisplayModeEnum;
   //Outputs
@@ -47,8 +48,11 @@ export class OryxToolbarComponent implements OnInit {
  displaySearch(){
     this.search = true;
   }
-  onSubmit() { this.submitted = true; 
+  onSearchSubmit() { this.submitted = true; 
       this.search = false;}
+  onCloseSearch() { this.submitted = false; 
+      this.search = false;}
+  
 }
 
 
