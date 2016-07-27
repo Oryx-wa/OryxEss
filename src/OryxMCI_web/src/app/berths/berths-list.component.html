@@ -1,0 +1,48 @@
+<div>
+  
+    <form *ngIf="formActive" #OryxForm="ngForm" >
+    <table class="striped" style="width: 100%" cellspacing="0">
+      <tr>
+        <td>        
+          
+          <input type="text" class="" placeholder="berth name" style="width: 100%" [(ngModel)]="berth.name" 
+            name="id" #id="ngModel"/>
+          <button (click)="saveData()" class="wave-effect waves-light btn">Save</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <table materialize class='responsive-table highlight bordered' *ngIf='berths && berths.length'>
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let berth of berths | paginate: { itemsPerPage: 10, currentPage: page } '>
+        <td>
+          <a [routerLink]="['/berth/details',berth.id]">
+                                {{berth.code}}
+                            </a>
+        </td>
+
+        <td>{{berth.name}}</td>
+         <td><a (click)="showForm(berth.id)" class="btn-floating btn-small waves-effect waves-light accent">
+           <i class="material-icons">mode_edit</i>
+          </a>
+         </td>
+        
+        <td><a [routerLink]="['/berthEdit',berth.id]">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="is-text-centered">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

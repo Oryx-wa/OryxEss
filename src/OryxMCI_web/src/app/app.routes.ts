@@ -11,7 +11,10 @@ import { AuthGuard }          from './login/auth.guard';
 import { CanDeactivateGuard } from './interfaces';
 import {LoginRoutes, AUTH_PROVIDERS} from './login/login.routes'
 import {AgentsRoutes} from './agents/shared/agents.routes';
-import {VesselsRoutes} from './vessels/shared/vessels.routes'
+import {VesselsRoutes} from './vessels/shared/vessels.routes';
+import {BerthsRoutes} from './berths/shared/berths.routes';
+import {PortsRoutes} from './ports/shared/ports.routes';
+import {InspectorsRoutes} from './inspectors/shared/inspectors.routes'
 
 
 const appRoutes: RouterConfig = [
@@ -23,7 +26,10 @@ const appRoutes: RouterConfig = [
      //...IousRoutes,
     //...IouRoutes,
     ...AgentsRoutes, 
-    ...VesselsRoutes,      
+    ...VesselsRoutes,
+    ...BerthsRoutes,    
+    ...PortsRoutes, 
+    ...InspectorsRoutes, 
  
 ];
 

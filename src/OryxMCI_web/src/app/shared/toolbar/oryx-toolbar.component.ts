@@ -45,8 +45,8 @@ export class OryxToolbarComponent implements OnInit {
     this.GridOrCard.next(mode);
   }
  displaySearch(){
-    this.search = true;
-  }
+   this.search = true;
+ }
   onSubmit() { this.submitted = true; 
       this.search = false;}
 }

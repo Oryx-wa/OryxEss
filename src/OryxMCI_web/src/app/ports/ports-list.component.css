@@ -1,0 +1,22 @@
+.example-fill-remaining-space {
+ 
+  flex: 1 1 auto;
+}
+
+span{
+    padding: 5px
+}
+.btn-floating i {
+    width: inherit;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+     background-color: #514185;
+    font-size: 1.6rem;
+    line-height: 37px;
+}
+a {
+    color: #514185;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}

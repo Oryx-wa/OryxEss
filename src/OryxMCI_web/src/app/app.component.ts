@@ -14,7 +14,10 @@ import { Configuration } from './app.constants';
 
 import {HomeComponent} from './home'
 import {AgentsComponent} from './agents/agents.component';
-import {VesselsComponent} from './vessels/vessels.component'
+import {VesselsComponent} from './vessels/vessels.component';
+import {BerthsComponent} from './berths/berths.component';
+import {PortsComponent} from './ports/ports.component';
+import {InspectorsComponent} from './inspectors/inspectors.component';
 
 
 @Component({
