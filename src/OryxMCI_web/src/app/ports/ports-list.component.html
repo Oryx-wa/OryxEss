@@ -1,48 +1,25 @@
 <div>
-  
-    <form *ngIf="formActive" #OryxForm="ngForm" >
-    <table class="striped" style="width: 100%" cellspacing="0">
-      <tr>
-        <td>        
-          
-          <input type="text" class="" placeholder="port name" style="width: 100%" [(ngModel)]="port.name" 
-            name="id" #id="ngModel"/>
-          <button (click)="saveData()" class="wave-effect waves-light btn">Save</button>
-        </td>
-      </tr>
-    </table>
-  </form>
-
-  <table materialize class='responsive-table highlight bordered' *ngIf='ports && ports.length'>
-    <thead>
-      <tr>
-        <th>Code</th>
-        <th>Name</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor='let port of ports | paginate: { itemsPerPage: 10, currentPage: page } '>
-        <td>
-          <a [routerLink]="['/port/details',port.id]">
-                                {{port.code}}
-                            </a>
-        </td>
-
-         <td>{{port.name}}</td>
-         <td><a (click)="showForm(port.id)" class="btn-floating btn-small waves-effect waves-light accent">
-           <i class="material-icons">mode_edit</i>
-          </a>
-         </td>
+  <form #OryxForm="ngForm">
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor='let port of ports  | paginate: { itemsPerPage: 10, currentPage: page }; #i = index'>
+      
+        <div class="switch left" >
+          <label>           
+          <input type="checkbox" id="c_{{ i }}" checked="checked"  />
+          <span class="lever"></span>           
+          </label>
+        </div>    
+          <div style="float:left">
+        <span class="title">{{port.name}}</span>
+        <p>{{port.code}}
+        </p>
+        </div>  
+        <a (click)="showForm(port.id)" class="secondary-content btn-floating btn-small waves-effect waves-light accent">
+          <i class="material-icons">mode_edit</i>
+        </a>
         
-        <td><a [routerLink]="['/portEdit',port.id]">Edit</a></td>
-      </tr>
-    </tbody>
-  </table>
-
-</div>
-
-<div class="is-text-centered">
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        
+      </li>
+    </ul>
+  </form>
 </div>
