@@ -1,49 +1,33 @@
+
 <div>
-  
-    <form *ngIf="formActive" #OryxForm="ngForm" >
-    <table class="striped" style="width: 100%" cellspacing="0">
-      <tr>
-        <td>        
-          
-          <input type="text" class="" placeholder="inspector name" style="width: 100%" [(ngModel)]="inspector.name" 
-            name="id" #id="ngModel"/>
-          <button (click)="saveData()" class="wave-effect waves-light btn">Save</button>
-        </td>
-      </tr>
-    </table>
-  </form>
-
-  <table materialize class='responsive-table highlight bordered' *ngIf='inspectors && inspectors.length'>
-    <thead>
-      <tr>
-        <th>Code</th>
-        <th>Name</th>
-        <th>current</th>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor='let inspector of inspectors | paginate: { itemsPerPage: 10, currentPage: page } '>
-        <td>
-          <a [routerLink]="['/inspector/details',inspector.id]">
-                                {{inspector.code}}
-                            </a>
-        </td>
-
-        <td>{{inspector.name}}</td>
-        <td>{{inspector.current}}</td>
-         <td><a (click)="showForm(inspector.id)" class="btn-floating btn-small waves-effect waves-light accent">
-           <i class="material-icons">mode_edit</i>
-          </a>
-         </td>
+  <form #OryxForm="ngForm">
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor='let inspector of inspectors  | paginate: { itemsPerPage: 10, currentPage: page }; #i = index'>
+         <div class="switch left" >
+          <label>           
+          <input type="checkbox" id="c_{{ i }}" checked="checked"  />
+          <span class="lever"></span>           
+          </label>
+        </div>  
         
-        <td><a [routerLink]="['/inspectorEdit',inspector.id]">Edit</a></td>
-      </tr>
-    </tbody>
-  </table>
-
+        
+        <div style="float:left">
+        <span class="title">{{inspector.name}}</span>
+        <p>{{inspector.code}}
+        </p>
+        </div>
+           
+        <a (click)="showForm(inspector.id)" class="secondary-content btn-floating btn-small waves-effect waves-light accent">
+          <i class="material-icons">mode_edit</i>
+        </a>
+        
+        
+      </li>
+    </ul>
+  </form>
 </div>
+
+
 
 <div class="is-text-centered">
   <pagination-controls (pageChange)="page = $event"></pagination-controls>
