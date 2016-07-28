@@ -27,7 +27,7 @@
   </div>
 </md-toolbar>
 -->
-<<<<<<< HEAD
+
 <nav class=" waves-effect waves-purple">
   <div class="nav-wrapper">
     <div *ngIf="!search">
@@ -37,7 +37,7 @@
         <li><a *ngIf="showSearch" (click)="displaySearch()" class=" waves-effect waves-purple"><i class="material-icons" >search</i></a></li>
         <li>
           <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" class=" waves-effect waves-purple">
-=======
+          </a></li>
 <nav *ngIf="!search">
   <div  class="nav-wrapper">
     <div>
@@ -51,32 +51,32 @@
         <li><a *ngIf="showSearch" (click)="displaySearch()"><i class="material-icons" >search</i></a></li>
         <li>
           <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)">
->>>>>>> 3d311eba091b1cec4ab447e6c7e9d44f1e592bed
+
             <i class="material-icons">list</i>
           </a>
         </li>
         <li>
-<<<<<<< HEAD
-          <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" class=" waves-effect waves-purple">
-=======
+
+          <a *ngIf="showCardorGrid" (click)="changeDisplayMode(1)" class=" waves-effect waves-purple"></a>
+
           <a *ngIf="showCardorGrid" (click)="changeDisplayMode(0)">
->>>>>>> 3d311eba091b1cec4ab447e6c7e9d44f1e592bed
+
             <i class="material-icons">list</i>
           </a>
         </li>
         <li>
-<<<<<<< HEAD
-          <a *ngIf="showCardorGrid" (click)="changeDisplayMode(3)" class=" waves-effect waves-purple">
-=======
+
+          <a *ngIf="showCardorGrid" (click)="changeDisplayMode(3)" class=" waves-effect waves-purple"></a>
+
           <a *ngIf="showAdd" (click)="changeDisplayMode(3)">
->>>>>>> 3d311eba091b1cec4ab447e6c7e9d44f1e592bed
+
             <i class="material-icons">add</i>
           </a>
         </li>
         <li><a *ngIf="showRefresh"><i class="material-icons">refresh</i></a></li>
         <li><a *ngIf="showVert"><i class="material-icons">more_vert</i></a></li>
       </ul>
-<<<<<<< HEAD
+
 
     </div>
     <form *ngIf="search" (ngSubmit)="onSubmit()">
@@ -88,10 +88,9 @@
       </div>
       <button type="submit" class="btn btn-default"><i class="material-icons" >search</i></button>
     </form>
-=======
-    </div>
 
-  </div>
+  
+</div>
   <!--
   <div *ngIf="search" class="nav-wrapper">
     <form *ngIf="search" (ngSubmit)="onSubmit()">
@@ -128,6 +127,6 @@
         </ul>
       </div>
     </div>
->>>>>>> 3d311eba091b1cec4ab447e6c7e9d44f1e592bed
+
   </div>
 </nav>

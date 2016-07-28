@@ -10,7 +10,7 @@
             <br>
             <li class="divider"></li>
 
-            <li class="divider"></li>
+           
             <li class="cart"><a [routerLink]="['/home']" class=" waves-effect waves-purple"><i class="material-icons">home</i><span>Home</span></a></li>
             <li class="divider"></li>
             <li class="cart"><a [routerLink]="['/MCI']" class=" waves-effect waves-purple"><i class="material-icons">perm_device_information</i><span> MCI Form</span></a></li>
@@ -20,7 +20,7 @@
                 <a *ngIf="securityService.IsAuthorized" (click)="Logout()" class=" waves-effect waves-purple"><i class="material-icons">lock</i> <span> Logout</span></a>
             </li>
             <li class="divider"></li>
-            <li class="divider"></li>
+           
             <li>
                 <li class="cart">
                     <ul materialize="collapsible" data-collapsible="accordion" id="slide-out1">
@@ -31,12 +31,15 @@
                                     <li class="divider"></li>
                                     <li><a [routerLink]="['/agents']" class=" waves-effect waves-purple">Agents</a></li>
                                     <li class="divider"></li>
-                                    <li class="divider"></li>
+                                    
                                     <li><a [routerLink]="['/vessels']" class=" waves-effect waves-purple">Vessels</a></li>
                                     <li class="divider"></li>
-                                    <li class="divider"></li>
+                                    
                                     <li><a [routerLink]="['/berths']" class=" waves-effect waves-purple">Berth</a></li>
+                                   <li class="divider"></li>
+                                   <li class="divider"></li>
                                     <li><a [routerLink]="['/ports']" class=" waves-effect waves-purple">Port</a></li>
+                                   <li class="divider"></li>
                                     <li><a [routerLink]="['/inspectors']" class=" waves-effect waves-purple">Inspector</a></li>
                                     <li class="divider"></li>
                                 </ul>

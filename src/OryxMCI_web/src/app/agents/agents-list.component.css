@@ -20,3 +20,12 @@ a {
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
 }
+.btn, .btn-large {
+    text-decoration: none;
+    color: #fff;
+    background-color: #514185;
+    text-align: center;
+    letter-spacing: .5px;
+    transition: .2s ease-out;
+    cursor: pointer;
+}
