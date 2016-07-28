@@ -20,6 +20,7 @@ a {
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
 }
+<<<<<<< HEAD
 .btn, .btn-large {
     text-decoration: none;
     color: #fff;
@@ -28,4 +29,21 @@ a {
     letter-spacing: .5px;
     transition: .2s ease-out;
     cursor: pointer;
+=======
+
+.collection .collection-item.avatar {
+    min-height: 55px;
+     padding-left: 0px; 
+    position: relative;
+}
+.collection .collection-item {
+    background-color: #fff;
+    line-height: 1.5rem;
+     padding: 0px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+.switch label input[type=checkbox]:checked + .lever {
+    background-color: #514185;
+>>>>>>> feature/changelist
 }
