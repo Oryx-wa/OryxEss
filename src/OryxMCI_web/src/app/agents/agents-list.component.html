@@ -1,12 +1,11 @@
+<!--
 <div>
-  
-    <form *ngIf="formActive" #OryxForm="ngForm" >
+  <form *ngIf="formActive" #OryxForm="ngForm">
     <table class="striped" style="width: 100%" cellspacing="0">
       <tr>
-        <td>        
-          
-          <input type="text" class="" placeholder="agent name" style="width: 100%" [(ngModel)]="agent.name" 
-            name="id" #id="ngModel"/>
+        <td>
+          <input type="text" class="" placeholder="agent name" style="width: 100%" [(ngModel)]="agent.name" name="id" #id="ngModel"
+          />
           <button (click)="saveData()" class="wave-effect waves-light btn">Save</button>
         </td>
       </tr>
@@ -31,17 +30,45 @@
         </td>
 
         <td>{{agent.name}}</td>
-         <td><a (click)="showForm(agent.id)" class="btn-floating btn-small waves-effect waves-light accent">
-           <i class="material-icons">mode_edit</i>
+        <td>
+          <a (click)="showForm(agent.id)" class="btn-floating btn-small waves-effect waves-light accent">
+            <i class="material-icons">mode_edit</i>
           </a>
-         </td>
-        
+        </td>
+
         <td><a [routerLink]="['/agentEdit',agent.id]">Edit</a></td>
       </tr>
     </tbody>
   </table>
 
 </div>
+
+-->
+<div>
+  <form #OryxForm="ngForm">
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor='let agent of agents  | paginate: { itemsPerPage: 10, currentPage: page }; #i = index'>
+        
+        <span class="title">{{agent.name}}</span>
+        <p>{{agent.code}}
+        </p>
+        <div class="switch">
+          <label>           
+          <input type="checkbox" id="c_{{ i }}" checked="checked"  />
+          <span class="lever"></span>           
+          </label>
+        </div>      
+        <a (click)="showForm(agent.id)" class="secondary-content btn-floating btn-small waves-effect waves-light accent">
+          <i class="material-icons">mode_edit</i>
+        </a>
+        
+        
+      </li>
+    </ul>
+  </form>
+</div>
+
+
 
 <div class="is-text-centered">
   <pagination-controls (pageChange)="page = $event"></pagination-controls>

@@ -10,15 +10,17 @@ const map: any = {
   '@angular2-material': 'vendor/@angular2-material',
   "jquery": "vendor/jquery",
   "materialize": "vendor/materialize-css",
-   "angular2-materialize": "vendor/angular2-materialize",
-   'ng2-pagination': 'vendor/ng2-pagination',
-   
-   
+  "angular2-materialize": "vendor/angular2-materialize",
+  'ng2-pagination': 'vendor/ng2-pagination',
+  "ng2-charts": 'vendor/ng2-charts',
+  '@ngrx': 'vendor/@ngrx'
+
+
 };
 
 /** User packages configuration. */
 const packages: any = {
-  'ng2-pagination': {   
+  'ng2-pagination': {
     defaultExtension: 'js',
     main: 'index.js'
   },
@@ -31,10 +33,22 @@ const packages: any = {
     "main": "dist/index",
     "defaultExtension": "js"
   },
+  'ng2-charts': {
+    defaultExtension: 'js',
+    main: 'ng2-charts.js'
+  },
+  '@ngrx/core': {
+    main: 'index.js',
+    format: 'cjs'
+  },
+  '@ngrx/store':       {
+    main: 'index.js',
+    format: 'cjs'
+  }
 };
 
 // put the names of any of your Material components here
-const materialPkgs:string[] = [
+const materialPkgs: string[] = [
   'core',
   'button',
   'card',
@@ -47,7 +61,7 @@ const materialPkgs:string[] = [
 ];
 
 materialPkgs.forEach((pkg) => {
-  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
+  packages[`@angular2-material/${pkg}`] = { main: `${pkg}.js` };
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -63,10 +77,10 @@ const barrels: string[] = [
   '@angular/forms',
   '@angular/router',
   '@angular/platform-browser',
-  '@angular/platform-browser-dynamic' ,
+  '@angular/platform-browser-dynamic',
 
   // Thirdparty barrels.
-  'rxjs', 
+  'rxjs',
 
   // App specific barrels.
   'app',
@@ -86,7 +100,7 @@ declare var System: any;
 System.config({
   map: {
     '@angular': 'vendor/@angular',
-    'rxjs': 'vendor/rxjs',    
+    'rxjs': 'vendor/rxjs',
     'main': 'main.js'
   },
   packages: cliSystemConfigPackages

@@ -29,15 +29,17 @@ export class AgentsListComponent implements OnInit {
   @Input() agents: any[] = [];
   agent: IModelBase;
   formActive:Boolean = false;
+  selectedId: number = 0;
   constructor() {};
 
 
   ngOnInit() {
   }
 
-  showForm(id:number){
+  showForm(id:number, sId:number){
      this.agent = this.agents.find(t => t.id == id);
     this.formActive = true;
+    this.selectedId = sId;
     console.log(id);
     
   }
