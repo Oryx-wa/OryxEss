@@ -23,7 +23,7 @@ module.exports = function(defaults) {
       'ng2-pagination/**/*.js',
       'chart.js/dist/**/*.js',
       'ng2-charts/**/*.js',
-      
+       '@ngrx/**/*.+(js|js.map)'
       
      
     ]
