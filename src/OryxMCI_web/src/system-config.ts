@@ -38,12 +38,13 @@ const packages: any = {
     main: 'ng2-charts.js'
   },
   '@ngrx/core': {
-    main: 'index.js',
-    format: 'cjs'
+    main: 'index'
   },
   '@ngrx/store':       {
-    main: 'index.js',
-    format: 'cjs'
+    main: 'index'
+  },
+  '@ngrx/devtools':       {
+    main: 'index'
   }
 };
 
