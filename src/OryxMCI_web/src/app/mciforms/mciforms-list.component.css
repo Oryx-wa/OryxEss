@@ -20,7 +20,6 @@ a {
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
 }
-
 .btn, .btn-large {
     text-decoration: none;
     color: #fff;
@@ -31,7 +30,7 @@ a {
     cursor: pointer;
 }
 .collection .collection-item.avatar {
-    min-height: 55px;
+    min-height: 84px;
      padding-left: 0px; 
     position: relative;
 }
@@ -44,5 +43,4 @@ a {
 }
 .switch label input[type=checkbox]:checked + .lever {
     background-color: #514185;
-
 }

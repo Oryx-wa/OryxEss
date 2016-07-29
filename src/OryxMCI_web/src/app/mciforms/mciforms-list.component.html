@@ -1,0 +1,93 @@
+<!--<div>
+  
+    <form *ngIf="formActive" #OryxForm="ngForm" >
+    <table class="striped" style="width: 100%" cellspacing="0">
+      <tr>
+        <td>        
+          
+          <input type="text" class="" placeholder="mciform name" style="width: 100%" [(ngModel)]="mciform.name" 
+            name="id" #id="ngModel"/>
+          <button (click)="saveData()" class="wave-effect waves-light btn">Save</button>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <table materialize class='responsive-table highlight bordered' *ngIf='mciforms && mciforms.length'>
+    <thead>
+      <tr>
+        <th>MciNumber</th>
+                        <th>Port</th>
+
+                        <th>GrossTonnage</th>
+                        <th>CargoTonnage</th>
+                        <th>CargoOut</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let mciform of mciforms | paginate: { itemsPerPage: 10, currentPage: page } '>
+        <td>
+         <a [routerLink]="['/mciform/details',mciform.id]">
+                                {{mciform.code}}
+                            </a>
+        </td>
+
+       <td>{{ MciForm. MciNumber }}</td>
+                        <td>
+                            
+                         
+                            {{ MciForm.Port }}
+                            
+                        </td>
+                        
+                        <td>{{ MciForm.GrossTonnage }}</td>
+                        <td>{{ MciForm.CargoTonnage }}</td>
+                        <td>{{ MciForm.CargoOut }}</td>
+                        
+         <td><a (click)="showForm(MciForm.Id)" class="btn-floating btn-small waves-effect waves-light accent">
+           <i class="material-icons">mode_edit</i>
+          </a>
+         </td>
+        
+        <td><a [routerLink]="['/mciformEdit',mciform.id]">Edit</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="is-text-centered">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>-->
+
+<div>
+  <form #OryxForm="ngForm">
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor='let mciform of mciforms  | paginate: { itemsPerPage: 10, currentPage: page }; #i = index'>
+      
+        <div class="switch left" >
+          <label>           
+          <input type="checkbox" id="c_{{ i }}" checked="checked"  />
+          <span class="lever"></span>           
+          </label>
+        </div>    
+          <div style="float:left">
+        <span class="title">{{ mciform.GrossTonnage }}</span>
+        <p>{{ mciform.CargoOut }}
+        </p>
+        </div>  
+        <a (click)="showForm(mciform.id)" class="secondary-content btn-floating btn-small waves-effect waves-light accent">
+          <i class="material-icons">mode_edit</i>
+        </a>
+        
+        
+      </li>
+    </ul>
+  </form>
+</div>
+
+
+
+<div class="is-text-centered">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
