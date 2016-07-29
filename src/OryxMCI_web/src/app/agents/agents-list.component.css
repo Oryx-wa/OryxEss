@@ -20,7 +20,6 @@ a {
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
 }
-<<<<<<< HEAD
 .btn, .btn-large {
     text-decoration: none;
     color: #fff;
@@ -29,8 +28,7 @@ a {
     letter-spacing: .5px;
     transition: .2s ease-out;
     cursor: pointer;
-=======
-
+}
 .collection .collection-item.avatar {
     min-height: 55px;
      padding-left: 0px; 
@@ -45,5 +43,4 @@ a {
 }
 .switch label input[type=checkbox]:checked + .lever {
     background-color: #514185;
->>>>>>> feature/changelist
 }
