@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {IModelBase} from '../shared/imodel-base';
 
 @Component({
   moduleId: module.id,
@@ -7,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['agents-create.component.css']
 })
 export class AgentsCreateComponent implements OnInit {
-
-  constructor() {}
+  @Input() agent: IModelBase;
+  formActive: Boolean = false;
+  selectedId: number = 0;
+  constructor() { }
 
   ngOnInit() {
   }
