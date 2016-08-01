@@ -1,0 +1,18 @@
+[
+  {
+    "Id": 568,
+    "MciNumber" :101 ,
+    "Port" : "Apapa port",
+    "GrossTonnage" :1000,
+    "CargoTonnage" : 900,
+    "CargoOut" :200 
+  },
+  {
+    "Id": 569,
+   "MciNumber" :101 ,
+    "Port" : "Apapa port",
+    "GrossTonnage" :1000,
+    "CargoTonnage" : 900,
+    "CargoOut" :200 
+  }
+]

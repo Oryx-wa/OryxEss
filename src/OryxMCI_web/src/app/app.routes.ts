@@ -14,7 +14,9 @@ import {AgentsRoutes} from './agents/shared/agents.routes';
 import {VesselsRoutes} from './vessels/shared/vessels.routes';
 import {BerthsRoutes} from './berths/shared/berths.routes';
 import {PortsRoutes} from './ports/shared/ports.routes';
-import {InspectorsRoutes} from './inspectors/shared/inspectors.routes'
+import {InspectorsRoutes} from './inspectors/shared/inspectors.routes';
+import {MciFormsRoutes} from './mciforms/shared/mciforms.routes';
+
 
 
 const appRoutes: RouterConfig = [
@@ -30,6 +32,7 @@ const appRoutes: RouterConfig = [
     ...BerthsRoutes,    
     ...PortsRoutes, 
     ...InspectorsRoutes, 
+    ...MciFormsRoutes,
  
 ];
 
