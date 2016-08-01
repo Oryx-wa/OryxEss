@@ -8,14 +8,14 @@ import {MaterializeDirective} from "angular2-materialize";
  import {MD_TOOLBAR_DIRECTIVES} from '@angular2-material/toolbar';
  import {DisplayModeEnum} from '../shared-enum.enum';
  import { NgForm }    from '@angular/forms';
+ import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 
 @Component({
   moduleId: module.id,
   selector: 'app-oryx-toolbar',
   templateUrl: 'oryx-toolbar.component.html',
   styleUrls: ['oryx-toolbar.component.css'],
-   directives: [MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, MaterializeDirective,
-   MdIcon, ROUTER_DIRECTIVES, CORE_DIRECTIVES,]  
+   directives: [ MaterializeDirective, ROUTER_DIRECTIVES, CORE_DIRECTIVES]  
 })
 export class OryxToolbarComponent implements OnInit {
 
