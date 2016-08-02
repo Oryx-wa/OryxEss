@@ -1,11 +1,14 @@
 <div layout="column" style="height:600px">
 
-  <app-oryx-toolbar [title]="title" [showVert]="showVert" [showSearch]="showSearch"
+  <app-oryx-toolbar [title]="title" [showVert]="showVert" [showSearch]="showSearch" [showAdd]="showAdd"
     (GridOrCard)="changeDisplayMode($event)" [showCardorGrid]= "showCardorGrid" [displayMode]="displayModeEnum.Grid"> 
     </app-oryx-toolbar>
 
   <app-berths-list *ngIf="displayMode == displayModeEnum.Grid" [berths]="berths"  ></app-berths-list>
 
   <app-berths-card *ngIf="displayMode == displayModeEnum.Card" [berths]="berths" ></app-berths-card>
+
+    <app-berths-create *ngIf="displayMode == displayModeEnum.Create" [berths]="berths" ></app-berths-create>
+
 
 </div>

@@ -7,6 +7,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
  import { AuthGuard }             from '../login/auth.guard';
  import {InspectorsListComponent} from './inspectors-list.component';
  import {InspectorsCardComponent} from './inspectors-card.component';
+ import {InspectorsCreateComponent} from './inspectors-create.component';
 
  import {ServiceBase} from '../shared/service-base';
  import {IModelBase} from '../shared/imodel-base';
@@ -20,7 +21,8 @@ import { CORE_DIRECTIVES } from '@angular/common';
   templateUrl: 'inspectors.component.html',
   styleUrls: ['inspectors.component.css'],
    directives: [MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, 
-   MdIcon, ROUTER_DIRECTIVES, InspectorsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,InspectorsCardComponent],
+   MdIcon, ROUTER_DIRECTIVES, InspectorsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,InspectorsCardComponent,
+   InspectorsCreateComponent],
     providers: [MdIconRegistry]
 })
 export class InspectorsComponent implements OnInit {
@@ -34,6 +36,7 @@ export class InspectorsComponent implements OnInit {
     showVert: boolean = true;
     showSearch: boolean = true;
     showCardorGrid: boolean = true;
+    showAdd: boolean = true;
   constructor(private _InspectorService: ServiceBase, public securityService: SecurityService) {}
 
   ngOnInit() {

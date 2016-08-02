@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {IModelBase} from '../shared/imodel-base';
 
 @Component({
   moduleId: module.id,
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['mciforms-create.component.css']
 })
 export class MciFormsCreateComponent implements OnInit {
-
+@Input() mciform: IModelBase;
+  formActive: Boolean = false;
+  selectedId: number = 0;
   constructor() {}
 
   ngOnInit() {
