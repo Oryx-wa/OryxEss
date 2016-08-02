@@ -44,10 +44,3 @@ a {
 .switch label input[type=checkbox]:checked + .lever {
     background-color: #514185;
 }
-.card.small {
-    height: 80px;
-    width: 296px;
-}
-.teal {
-    background-color: white !important;
-}
