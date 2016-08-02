@@ -8,6 +8,6 @@
 
   <app-mciforms-card *ngIf="displayMode == displayModeEnum.Card" [mciforms]="mciforms" ></app-mciforms-card>
 
-  <app-mciforms-create *ngIf="displayMode == displayModeEnum.Create" [mciform]="mciform" ></app-mciforms-create>
+  <app-mciforms-create *ngIf="displayMode == displayModeEnum.Create" [ports]= "ports" ></app-mciforms-create>
 
 </div>

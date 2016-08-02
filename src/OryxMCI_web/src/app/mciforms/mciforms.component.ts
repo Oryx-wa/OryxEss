@@ -38,6 +38,7 @@ export class MciFormsComponent implements OnInit {
     showSearch: boolean = true;
     showCardorGrid: boolean = true;
     showAdd: boolean = true;
+    ports: IModelBase[] = [];
   constructor(private _MciFormService: ServiceBase, public securityService: SecurityService) {}
 
   ngOnInit() {
@@ -45,6 +46,7 @@ export class MciFormsComponent implements OnInit {
       
     this.displayMode = DisplayModeEnum.Grid;
     this.getData();
+    this.getPorts();
   }
 changeDisplayMode(mode: DisplayModeEnum) {
   console.log(mode.toString());
@@ -60,6 +62,17 @@ changeDisplayMode(mode: DisplayModeEnum) {
             error => this.securityService.HandleError(error),
             () => console.log('Get all completed'));
           console.log(this.mciforms.length.toString());
+    }
+
+    private getPorts() {
+        console.log('mciform :Ports starting...');
+        this._MciFormService.setActionUrl("Port.json");
+        this._MciFormService
+            .GetAll()
+            .subscribe(data => this.ports = data,
+            error => this.securityService.HandleError(error),
+            () => console.log('Get Ports completed'));
+          console.log(this.ports.length.toString());
     }
 
      private getDataById(id: number) {

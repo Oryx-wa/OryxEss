@@ -1,22 +1,23 @@
-export interface IMciForm {
-    Id: number;
-    MciNumber : number;
-    Port : string; 
-     GrossTonnage : number;
-    CargoTonnage : number;
-    CargoOut : number;
+import {IModelBase} from '../shared/imodel-base';
+
+export interface IMciForm extends IModelBase{
+    id: number;
+    mciNumber : number;
+    port : string; 
+    grossTonnage : number;
+    cargoTonnage : number;
+    cargoOut : number;
     userSign: number; 
 }
 
-export class MciForm {
-  constructor(
-    public Id: number,
-    public  MciNumber : number,
-    public Port : string,
-    public GrossTonnage : number,
-     public CargoTonnage : number,
-      public CargoOut : number,
-     public userSign: number
-  
-  ) {  }
-}
+export class MciForm  {
+    
+    id: number;
+    mciNumber : number;
+    port : string; 
+    grossTonnage : number;
+    cargoTonnage : number;
+    cargoOut : number;
+    userSign: number; 
+    
+  }
