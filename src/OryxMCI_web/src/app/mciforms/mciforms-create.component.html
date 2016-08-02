@@ -1,19 +1,20 @@
-<div class="row">
-  <form materialize class="col s12" >
+<div materialize class="row">
+  <form  materialize="updateTextFields" class="col s12" >
     <div class="row" >
-      <div class="input-field col s6">
-        
+    <h3>Add New MCI</h3>
+      <div class="input-field col s6">        
         <input type="text" class="validate"  
-          [(ngModel)]="mciform.id"  class="active"
-            name="id"  #id="ngModel" id="id" materialize="updateTextFields">
+          [(ngModel)]="mciform.id"  
+            name="id"  #id="ngModel"  >
         <label for="id" class="active" >Id</label>        
       </div>
       
-      <div class="input-field col s6">        
+      <div class="input-field col s6">    
+        <label for="port" class="active" >Port</label>    
         <select materialize="material_select" [materializeSelectOptions]="selectOptions" id="port">
           <option *ngFor="let p of ports" [value]="p.code">{{p.name}}</option>
         </select>
-        <label for="port" class="active" >Port</label>
+        
       </div>
     </div>
   </form>

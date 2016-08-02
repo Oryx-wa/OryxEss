@@ -27,14 +27,14 @@ import { CORE_DIRECTIVES } from '@angular/common';
     providers: [MdIconRegistry]
 })
 export class MciFormsComponent implements OnInit {
-    title: string = "MciForms";
+    title: string = "Mci Forms";
     filterText: string;
     mciforms: IModelBase[] = [];
     mciform: IModelBase;
     //filteredCustomers: ICustomer[] = [];
     displayMode: DisplayModeEnum;
     displayModeEnum = DisplayModeEnum;
-    showVert: boolean = true;
+    showVert: boolean = false;
     showSearch: boolean = true;
     showCardorGrid: boolean = true;
     showAdd: boolean = true;
