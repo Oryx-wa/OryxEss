@@ -7,6 +7,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
  import { AuthGuard }             from '../login/auth.guard';
  import {MciFormsListComponent} from './mciforms-list.component';
  import {MciFormsCardComponent} from './mciforms-card.component';
+ import {MciFormsCreateComponent} from './mciforms-create.component';
  import {MaterializeDirective} from "angular2-materialize";
 
  import {ServiceBase} from '../shared/service-base';
@@ -21,7 +22,8 @@ import { CORE_DIRECTIVES } from '@angular/common';
   templateUrl: 'mciforms.component.html',
   styleUrls: ['mciforms.component.css'],
    directives: [MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, MaterializeDirective,
-   MdIcon, ROUTER_DIRECTIVES, MciFormsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,MciFormsCardComponent],
+   MdIcon, ROUTER_DIRECTIVES, MciFormsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,MciFormsCardComponent,
+   MciFormsCreateComponent],
     providers: [MdIconRegistry]
 })
 export class MciFormsComponent implements OnInit {
@@ -35,6 +37,7 @@ export class MciFormsComponent implements OnInit {
     showVert: boolean = true;
     showSearch: boolean = true;
     showCardorGrid: boolean = true;
+    showAdd: boolean = true;
   constructor(private _MciFormService: ServiceBase, public securityService: SecurityService) {}
 
   ngOnInit() {

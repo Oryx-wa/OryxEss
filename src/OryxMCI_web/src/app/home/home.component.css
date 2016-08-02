@@ -2,3 +2,32 @@
       width: 100%;
       margin: 60px auto
       }
+ @media only screen and (max-width : 992px) {
+      header, main, footer {
+        padding-left: 0;
+      }
+    }
+   .cart{
+     font-style: bold;
+   } 
+   ul li span {
+    display: initial;
+    float: left;
+    margin-top: .2rem;
+    text-align: center;
+}
+ul li a i {
+    font-size: 2em;
+    display: inline-block;
+    float: left;
+    margin: 1rem .9rem 0 1.8rem;
+}
+li ul li a i {
+    font-size: 2em;
+    display: inline-block;
+    float: left;
+    margin: 1rem .9rem 0 1.8rem;
+}
+.chart {
+  display: block
+}

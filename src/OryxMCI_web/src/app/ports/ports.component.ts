@@ -7,6 +7,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
  import { AuthGuard }             from '../login/auth.guard';
  import {PortsListComponent} from './ports-list.component';
  import {PortsCardComponent} from './ports-card.component';
+ import {PortsCreateComponent} from './ports-create.component'
 
  import {ServiceBase} from '../shared/service-base';
  import {IModelBase} from '../shared/imodel-base';
@@ -20,7 +21,8 @@ import { CORE_DIRECTIVES } from '@angular/common';
   templateUrl: 'ports.component.html',
   styleUrls: ['ports.component.css'],
    directives: [MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, 
-   MdIcon, ROUTER_DIRECTIVES, PortsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,PortsCardComponent],
+   MdIcon, ROUTER_DIRECTIVES, PortsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,PortsCardComponent,
+   PortsCreateComponent],
     providers: [MdIconRegistry]
 })
 export class PortsComponent implements OnInit {
@@ -34,6 +36,7 @@ export class PortsComponent implements OnInit {
     showVert: boolean = true;
     showSearch: boolean = true;
     showCardorGrid: boolean = true;
+    showAdd: boolean = true;
   constructor(private _PortService: ServiceBase, public securityService: SecurityService) {}
 
   ngOnInit() {
