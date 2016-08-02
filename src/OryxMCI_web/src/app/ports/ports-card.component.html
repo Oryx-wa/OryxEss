@@ -1,3 +1,34 @@
-<p>
-  Ports-card works!
-</p>
+<div class="row " >
+       <form #OryxForm="ngForm">
+        
+    
+   
+     
+        <div class="col s4 m3 l6" *ngFor='let port of ports  | paginate: { itemsPerPage: 10, currentPage: page }; #i = index' style="float:left">
+         <div class="card small teal" >
+        <div class="switch left" >
+          <label>           
+          <input type="checkbox" id="c_{{ i }}" checked="checked"  />
+          <span class="lever"></span>           
+          </label>
+        </div>    
+          <div style="float:left">
+        <span class="title">{{port.name}}</span>
+        <p>{{port.code}}
+        </p>
+        </div>  
+        <a (click)="showForm(port.id)" class="secondary-content btn-floating btn-small waves-effect waves-light accent">
+          <i class="material-icons">mode_edit</i>
+        </a>
+      
+         </div>
+         </div>
+
+
+     
+ 
+  </form>
+    </div>
+  <div class="is-text-centered">
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>

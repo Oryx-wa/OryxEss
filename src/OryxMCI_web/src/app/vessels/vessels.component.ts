@@ -7,6 +7,8 @@ import { CORE_DIRECTIVES } from '@angular/common';
  import { AuthGuard }             from '../login/auth.guard';
  import {VesselsListComponent} from './vessels-list.component';
  import {VesselsCardComponent} from './vessels-card.component';
+ import {VesselsCreateComponent} from './vessels-create.component';
+ 
 
  import {ServiceBase} from '../shared/service-base';
  import {IModelBase} from '../shared/imodel-base';
@@ -20,7 +22,8 @@ import { CORE_DIRECTIVES } from '@angular/common';
   templateUrl: 'vessels.component.html',
   styleUrls: ['vessels.component.css'],
    directives: [MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, 
-   MdIcon, ROUTER_DIRECTIVES,VesselsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,VesselsCardComponent],
+   MdIcon, ROUTER_DIRECTIVES,VesselsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,VesselsCardComponent,
+   VesselsCreateComponent],
     providers: [MdIconRegistry]
 })
 export class VesselsComponent implements OnInit {
@@ -34,6 +37,7 @@ export class VesselsComponent implements OnInit {
     showVert: boolean = true;
     showSearch: boolean = true;
     showCardorGrid: boolean = true;
+    showAdd: boolean = true;
   constructor(private _VesselService: ServiceBase, public securityService: SecurityService) {}
 
   ngOnInit() {

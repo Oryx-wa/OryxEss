@@ -7,6 +7,7 @@ import { CORE_DIRECTIVES } from '@angular/common';
  import { AuthGuard }             from '../login/auth.guard';
  import {BerthsListComponent} from './berths-list.component';
  import {BerthsCardComponent} from './berths-card.component';
+  import {BerthsCreateComponent} from './berths-create.component';
 
  import {ServiceBase} from '../shared/service-base';
  import {IModelBase} from '../shared/imodel-base';
@@ -20,7 +21,8 @@ import { CORE_DIRECTIVES } from '@angular/common';
   templateUrl: 'berths.component.html',
   styleUrls: ['berths.component.css'],
    directives: [MD_TOOLBAR_DIRECTIVES, MD_BUTTON_DIRECTIVES, 
-   MdIcon, ROUTER_DIRECTIVES, BerthsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,BerthsCardComponent],
+   MdIcon, ROUTER_DIRECTIVES, BerthsListComponent, CORE_DIRECTIVES, OryxToolbarComponent,BerthsCardComponent,
+   BerthsCreateComponent],
     providers: [MdIconRegistry]
 })
 export class BerthsComponent implements OnInit {
@@ -34,6 +36,7 @@ export class BerthsComponent implements OnInit {
     showVert: boolean = true;
     showSearch: boolean = true;
     showCardorGrid: boolean = true;
+    showAdd: boolean = true;
   constructor(private _BerthService: ServiceBase, public securityService: SecurityService) {}
 
   ngOnInit() {
