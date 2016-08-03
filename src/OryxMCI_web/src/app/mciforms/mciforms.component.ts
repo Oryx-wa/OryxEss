@@ -60,6 +60,10 @@ export class MciFormsComponent implements OnInit {
     this.displayMode = mode;
   }
 
+  onSearch(searchString: string){
+    console.log(searchString);
+  }
+
   onPageChange(page: any) {
     this.pageCount = this._MciFormService.GetPageCount();
     this.totalRecordCount = this._MciFormService.GetRecordCount();

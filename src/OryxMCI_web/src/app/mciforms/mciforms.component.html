@@ -1,7 +1,8 @@
 <div layout="column" style="height:600px">
 
   <app-oryx-toolbar [title]="title" [showVert]="showVert" [showSearch]="showSearch" [showAdd]="showAdd"
-    (GridOrCard)="changeDisplayMode($event)" [showCardorGrid]= "showCardorGrid" [displayMode]="displayModeEnum.Grid"> 
+    (GridOrCard)="changeDisplayMode($event)" [showCardorGrid]= "showCardorGrid" 
+    [displayMode]="displayModeEnum.Grid" (onSearch)="onSearch($event)"> 
     </app-oryx-toolbar>
 
   <app-mciforms-list *ngIf="displayMode == displayModeEnum.Grid" [mciforms]="mciforms" [pageNumber]="pageNumber"

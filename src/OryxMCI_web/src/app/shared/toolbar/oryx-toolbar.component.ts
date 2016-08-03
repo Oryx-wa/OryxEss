@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FORM_DIRECTIVES,NgForm } from '@angular/forms';
 
 import { CORE_DIRECTIVES } from '@angular/common';
 import {MaterializeDirective} from "angular2-materialize";
@@ -7,7 +8,7 @@ import {MdIcon, MdIconRegistry} from '@angular2-material/icon';
 import {MD_BUTTON_DIRECTIVES} from '@angular2-material/button';
 import {MD_TOOLBAR_DIRECTIVES} from '@angular2-material/toolbar';
 import {DisplayModeEnum} from '../shared-enum.enum';
-import { NgForm }    from '@angular/forms';
+
 import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
 
 @Component({
@@ -15,7 +16,7 @@ import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
   selector: 'app-oryx-toolbar',
   templateUrl: 'oryx-toolbar.component.html',
   styleUrls: ['oryx-toolbar.component.css'],
-  directives: [MaterializeDirective, ROUTER_DIRECTIVES, CORE_DIRECTIVES]
+  directives: [MaterializeDirective, ROUTER_DIRECTIVES, CORE_DIRECTIVES, FORM_DIRECTIVES]
 })
 export class OryxToolbarComponent implements OnInit {
 
@@ -32,9 +33,11 @@ export class OryxToolbarComponent implements OnInit {
   //Outputs
 
   @Output() GridOrCard: EventEmitter<any> = new EventEmitter();
+  @Output() onSearch: EventEmitter<any> = new EventEmitter();
 
   search: boolean = false;
-  submitted = false;
+  submitted:boolean = false;
+  searchString: string= "";
   //displayModeEnum = DisplayModeEnum;
 
   constructor() { }
@@ -57,6 +60,8 @@ export class OryxToolbarComponent implements OnInit {
   onSearchSubmit() {
     this.submitted = true;
     this.search = false;
+    console.log(this.searchString);
+    this.onSearch.next(this.searchString);
   }
 
   onCloseSearch() {
