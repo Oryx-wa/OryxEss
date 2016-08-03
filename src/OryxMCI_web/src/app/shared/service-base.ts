@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, RequestMethod } from '@angular/http';
+import { Http, Response, Headers, RequestOptions, RequestMethod, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 
 import { IModelBase } from './imodel-base';
@@ -9,10 +9,15 @@ import { SecurityService } from '../login/security.service';
 @Injectable()
 export class ServiceBase {
     actionUrl: string;
+    actionUrlPaged: string;
     headers: Headers;
     model: IModelBase;
+    api: string;
+    totalRecordCount:number;
+    pageCount:number;
     private _useBackEnd: boolean;
     private _actionUrl: string;
+    
 
 
 
@@ -46,7 +51,10 @@ export class ServiceBase {
         this.actionUrl = this._actionUrl + '/' + action + '/';
     }
 
+    public setActionUrlPaged(action: string) {
 
+        this.actionUrlPaged = this._actionUrl + '/' + action + '/';
+    }
 
     public GetAll = (): Observable<IModelBase[]> => {
         this.setHeaders();
@@ -85,6 +93,33 @@ export class ServiceBase {
         return this._http.delete(this.actionUrl + id, {
             headers: this.headers
         });
+    }
+
+    public GetPage = (page:number, pageSize:number, orderBy:string): Observable<IModelBase[]> => {
+        this.setHeaders();
+        if (this._useBackEnd) {
+             let params: URLSearchParams = new URLSearchParams();
+            params.set('page', page.toString() );
+            params.set('pageSize', pageSize.toString());
+            params.set('orderBy', orderBy);
+
+            return this._http.get(this.actionUrl , {
+                headers: this.headers,
+                search:params
+
+            }).do((res:any ) => {
+                this.totalRecordCount = res.json().paging.totalRecordCount;
+                this.pageCount = res.json().paging.totalRecordCount;       
+            })
+            .map(res => res.json().data);
+        }
+        else {
+           
+            return this._http.get(this.actionUrlPaged, {
+
+            }).map(res => res.json());
+        }
+
     }
 
     public HandleError(error: any) {

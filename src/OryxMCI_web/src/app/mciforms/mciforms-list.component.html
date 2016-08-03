@@ -63,7 +63,7 @@
 <div>
   <form #OryxForm="ngForm">
     <ul class="collection">
-      <li class="collection-item avatar" *ngFor='let mciform of mciforms  | paginate: { itemsPerPage: 10, currentPage: page }; #i = index'>
+      <li class="collection-item avatar" *ngFor='let mciform of mciforms   | paginate: { itemsPerPage: 10, currentPage: page }; #i = index'>
       
         <div class="switch left" >
           <label>           
@@ -72,8 +72,8 @@
           </label>
         </div>    
           <div style="float:left">
-       <span class="title"> <label >GrossTonnage:</label>{{ mciform.GrossTonnage }}</span>
-        <p><label >CargoOut:</label>{{ mciform.CargoOut }}
+       <span class="title"> <label >GrossTonnage:</label>{{ mciform.grossTonnage }}</span>
+        <p><label >CargoOut:</label>{{ mciform.cargoOut }}
         </p>
         </div>  
         <a (click)="showForm(mciform.id)" class="secondary-content btn-floating btn-small waves-effect waves-light accent">
@@ -88,6 +88,7 @@
 
 
 
-<div class="is-text-centered">
+<div class="center-align">
   <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  <a class="waves-effect waves-light btn">Load Next 50</a>
 </div>

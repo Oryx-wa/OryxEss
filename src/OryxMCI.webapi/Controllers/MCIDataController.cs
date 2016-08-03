@@ -121,10 +121,28 @@ namespace OryxMCI.webapi.Controllers
         //{
         //    throw new NotImplementedException();
         //}
-
+        [HttpGet]
+        [Route("GetPaged")]
+        //[Route("{pageNo:int}/{pageSize:int}")]
         public override JsonResult GetPaged(int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
         {
-            throw new NotImplementedException();
+            try
+            {
+                int total = _repository.Count();
+                var MCIDatas = _repository.GetPaged(pageNo, pageSize, orderBy);
+                var MCIDatasVm = MCIDatas.Select(x => MCIDataViewModel.FromEntity(x));
+                if (MCIDatasVm == null)
+                {
+                    return Json(null);
+                }
+                return Json(new PagedResult<MCIDataViewModel>(MCIDatasVm.ToList(), pageNo, pageSize, total));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get MCI data", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Failed to get MCI Data");
+            }
         }
     }
 }

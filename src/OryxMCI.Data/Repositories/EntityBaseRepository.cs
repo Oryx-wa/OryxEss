@@ -92,7 +92,7 @@ namespace OryxMCI.Data.Repositories
             
 
             IQueryable<T> query = DbContext.Set<T>()
-                .OrderBy(orderBy)
+                .OrderByDescending(orderBy)
                 .Skip(skip)
                 .Take(pageSize);
 

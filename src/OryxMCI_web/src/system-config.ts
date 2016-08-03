@@ -86,6 +86,7 @@ const barrels: string[] = [
   // App specific barrels.
   'app',
   'app/shared',
+  'app/shared/pagination/oryx-paging',
   /** @cli-barrel */
 ];
 

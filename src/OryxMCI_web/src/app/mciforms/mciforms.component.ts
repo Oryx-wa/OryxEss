@@ -39,13 +39,19 @@ export class MciFormsComponent implements OnInit {
     showCardorGrid: boolean = true;
     showAdd: boolean = true;
     ports: IModelBase[] = [];
+    totalRecordCount:number;
+    pageCount:number;
+    pageNumber:number = 1;
+    pageSize:number=50;
+    orderBy:string="DateInspected";
+
   constructor(private _MciFormService: ServiceBase, public securityService: SecurityService) {}
 
   ngOnInit() {
-    this._MciFormService.setActionUrl("MciForm.json");
+    this._MciFormService.setActionUrl("Mcidata");
       
     this.displayMode = DisplayModeEnum.Grid;
-    this.getData();
+    this.getPaged();
     this.getPorts();
   }
 changeDisplayMode(mode: DisplayModeEnum) {
@@ -64,13 +70,26 @@ changeDisplayMode(mode: DisplayModeEnum) {
           console.log(this.mciforms.length.toString());
     }
 
+    private getPaged() {
+        console.log('mciform :getPager starting...');
+        this._MciFormService.setActionUrl("Mcidata/GetPaged");
+        this._MciFormService
+            .GetPage(this.pageNumber,this.pageSize,this.orderBy)
+            .subscribe(data => this.mciforms = data,
+            error => this.securityService.HandleError(error),            
+            () => console.log('Get Paged completed'));
+            this.pageCount = this._MciFormService.pageCount;
+            this.totalRecordCount = this._MciFormService.totalRecordCount;
+          //console.log(this.totalRecordCount);
+    }
     private getPorts() {
         console.log('mciform :Ports starting...');
-        this._MciFormService.setActionUrl("Port.json");
+        this._MciFormService.setActionUrl("Port");
         this._MciFormService
             .GetAll()
             .subscribe(data => this.ports = data,
             error => this.securityService.HandleError(error),
+            
             () => console.log('Get Ports completed'));
           console.log(this.ports.length.toString());
     }
