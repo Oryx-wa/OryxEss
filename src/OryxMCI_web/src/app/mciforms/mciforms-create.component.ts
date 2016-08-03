@@ -19,7 +19,7 @@ export class MciFormsCreateComponent implements OnInit {
   selectedId: number = 0;
   @Input() ports:any[] = [];
   @Input() agents:any[] = [];
-  @Input() vessles:any[] = [];
+  @Input() vessels:any[] = [];
   @Input() inspectors:any[] = [];
   @Input() berths:any[] = [];
   types:any[] = [{ code: 40, name: 'Garbage' },{ code: 22, name: 'Oil' },{ code: 23, name: 'Garbage & Oil' }];

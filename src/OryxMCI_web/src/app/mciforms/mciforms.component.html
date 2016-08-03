@@ -10,6 +10,7 @@
 
   <app-mciforms-card *ngIf="displayMode == displayModeEnum.Card" [mciforms]="mciforms" ></app-mciforms-card>
 
-  <app-mciforms-create *ngIf="displayMode == displayModeEnum.Create" [ports]= "ports" ></app-mciforms-create>
+  <app-mciforms-create *ngIf="displayMode == displayModeEnum.Create" [ports]= "ports" 
+    [vessels]="vessels" [inspectors]="inspectors" [berths]="berths" [agents]="agents" ></app-mciforms-create>
 
 </div>

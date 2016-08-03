@@ -41,11 +41,22 @@
           <input type="text" placeholder="" class="validate" [(ngModel)]="mciform.CargoOut" name="CargoOut" #CargoOut="ngModel">
           <label for="CargoOut" class="active">CargoOut</label>
         </div>
-        <div class="input-field col s12 m3 l3">
+        <!--<div class="input-field col s12 m3 l3">
           <label for="agent" class="active">Agent</label>
           <select materialize="material_select" [materializeSelectOptions]="selectOptions" id="agent">
           <option *ngFor="let a of agents" [value]="a.Code">{{a.name}}</option>
         </select>
+        </div>-->
+        <div class="row">
+          <div class="col s12 m3 l3">
+            <div class="row">
+              <div class="input-field col s12 m3 l3">
+                <i class="material-icons prefix">textsms</i>
+                <input type="text" id="autocomplete" materialize="autocomplete" >
+                <label for="autocomplete">Autocomplete</label>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="input-field col s12 m3 l3">
           <input type="date" placeholder="" class="validate" [(ngModel)]="mciform.dateInspected" name="dateInspected" #dateInspected="ngModel">
