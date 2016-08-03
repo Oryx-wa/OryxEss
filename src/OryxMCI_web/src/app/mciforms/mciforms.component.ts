@@ -39,6 +39,10 @@ export class MciFormsComponent implements OnInit {
   showCardorGrid: boolean = true;
   showAdd: boolean = true;
   ports: IModelBase[] = [];
+  vessels: IModelBase[] = [];
+  inspectors: IModelBase[] = [];
+  berths: IModelBase[] = [];
+  agents: IModelBase[] = [];
   totalRecordCount: number;
   pageCount: number = 0;
   pageNumber: number = 1;
@@ -54,6 +58,10 @@ export class MciFormsComponent implements OnInit {
     this.pageNumber = 1;
     this.getPaged();
     this.getPorts();
+    this.getAgents();
+    this.getBerths();
+    this.getInspectors();
+    this.getVessels();
   }
   changeDisplayMode(mode: DisplayModeEnum) {
     console.log(mode.toString());
@@ -99,6 +107,17 @@ export class MciFormsComponent implements OnInit {
       error => this.securityService.HandleError(error),
       () => console.log('Get Paged completed'));    
   }
+
+   private getAgents() {
+    console.log('mciform :getAgents starting...');
+    this._MciFormService.setActionUrl("Agent");
+    this._MciFormService
+      .GetAll()
+      .subscribe(data => this.agents = data,
+      error => this.securityService.HandleError(error),
+      () => console.log('Get agents completed'));
+    console.log(this.ports.length.toString());
+  }
   
   private getPorts() {
     console.log('mciform :Ports starting...');
@@ -110,6 +129,42 @@ export class MciFormsComponent implements OnInit {
 
       () => console.log('Get Ports completed'));
     console.log(this.ports.length.toString());
+  }
+
+   private getVessels() {
+    console.log('mciform :Vessel starting...');
+    this._MciFormService.setActionUrl("Vessel");
+    this._MciFormService
+      .GetAll()
+      .subscribe(data => this.vessels = data,
+      error => this.securityService.HandleError(error),
+
+      () => console.log('Get Vessels completed'));
+    console.log(this.vessels.length.toString());
+  }
+
+  private getInspectors() {
+    console.log('mciform :Inspectors starting...');
+    this._MciFormService.setActionUrl("Inspector");
+    this._MciFormService
+      .GetAll()
+      .subscribe(data => this.inspectors = data,
+      error => this.securityService.HandleError(error),
+
+      () => console.log('Get Inspectors completed'));
+    console.log(this.inspectors.length.toString());
+  }
+
+  private getBerths() {
+    console.log('mciform :Berths starting...');
+    this._MciFormService.setActionUrl("Berth");
+    this._MciFormService
+      .GetAll()
+      .subscribe(data => this.berths = data,
+      error => this.securityService.HandleError(error),
+
+      () => console.log('Get Berths completed'));
+    console.log(this.berths.length.toString());
   }
 
   private getDataById(id: number) {
