@@ -70,7 +70,7 @@ namespace OryxMCI.webapi
             });
 
             services.AddMvcCore(config =>
-            {                
+            {
                config.Filters.Add(new AuthorizeFilter(MCIPolicy));
             })
            .AddJsonFormatters(opt =>
@@ -81,14 +81,14 @@ namespace OryxMCI.webapi
             services.AddMvc();
 
             string conString = Configuration["Data:DefaultConnection:OryxMCIConnectionString"];
-           
+
             services.AddDbContext<OryxMCIContext>(options => options.UseSqlServer(conString, opt => opt.UseRowNumberForPaging()));
 
-            
+
 
             var builder = new ContainerBuilder();
 
-            services.AddLogging();            
+            services.AddLogging();
             //services.AddTransient<SeedData>();
 
             var opt1 = new DbContextOptionsBuilder();
@@ -117,7 +117,7 @@ namespace OryxMCI.webapi
 
 
 
-            builder.RegisterType<SeedData>();         
+            builder.RegisterType<SeedData>();
 
             builder.Populate(services);
 
