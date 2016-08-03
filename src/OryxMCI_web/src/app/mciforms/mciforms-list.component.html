@@ -63,7 +63,7 @@
 <div>
   <form #OryxForm="ngForm">
     <ul class="collection">
-      <li class="collection-item avatar" *ngFor='let mciform of mciforms   | paginate: { itemsPerPage: 10, currentPage: page }; #i = index'>
+      <li class="collection-item avatar" *ngFor='let mciform of mciforms   | paginate: { itemsPerPage: 10, currentPage: page }; let i = index'>
       
         <div class="switch left" >
           <label>           
@@ -90,5 +90,7 @@
 
 <div class="center-align">
   <pagination-controls (pageChange)="page = $event"></pagination-controls>
-  <a class="waves-effect waves-light btn">Load Next 50</a>
+  <a class="waves-effect waves-light btn" (click)="onPageChange(false)">Load Previous</a>
+  <a class="waves-effect waves-light btn" (click)="onPageChange(true)">Load more</a>
+ 
 </div>

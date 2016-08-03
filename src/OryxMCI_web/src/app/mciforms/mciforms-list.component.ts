@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute,  ROUTER_DIRECTIVES } from '@angular/router';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { FORM_DIRECTIVES,NgForm } from '@angular/forms';
@@ -27,8 +27,11 @@ import {ServiceBase} from '../shared/service-base';
 })
 export class MciFormsListComponent implements OnInit {
   @Input() mciforms: any[] = [];
+  @Input() pageNumber:number;
   mciform: IModelBase;
   formActive:Boolean = false;
+
+  @Output() PageChange: EventEmitter<any> = new EventEmitter();
   constructor() {};
 
 
@@ -42,6 +45,12 @@ export class MciFormsListComponent implements OnInit {
     
   }
 
+  onPageChange ( more:boolean){
+    console.log(this.pageNumber);
+    this.PageChange.next({page:this.pageNumber, more:more});
+  }
+
+ 
   saveData(){
     console.log(JSON.stringify(this.mciform));
   }
