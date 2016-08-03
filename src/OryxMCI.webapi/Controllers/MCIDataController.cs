@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using OryMCI.webapi.Infrastructure.Core;
 using OryxMCI.Data.Infrastructure;
 using OryxMCI.Data.Repositories;
+using OryxMCI.Data.Repositories.mci;
 using OryxMCI.Entities;
 using OryxMCI.webapi.ViewModels;
 using System;
@@ -19,9 +20,9 @@ namespace OryxMCI.webapi.Controllers
     public class MCIDataController : BaseController
     {
         private ILogger<MCIDataController> _logger;
-        private IEntityBaseRepository<MCIData> _repository;
+        private IMCIRepository<MCIData> _repository;
 
-        public MCIDataController(IEntityBaseRepository<MCIData> repository,
+        public MCIDataController(IMCIRepository<MCIData> repository,
             IEntityBaseRepository<Error> _errorsRepository, IUnitOfWork _unitOfWork,
             ILogger<MCIDataController> logger)
             : base(_errorsRepository, _unitOfWork)
@@ -130,6 +131,30 @@ namespace OryxMCI.webapi.Controllers
             {
                 int total = _repository.Count();
                 var MCIDatas = _repository.GetPaged(pageNo, pageSize, orderBy);
+                var MCIDatasVm = MCIDatas.Select(x => MCIDataViewModel.FromEntity(x));
+                if (MCIDatasVm == null)
+                {
+                    return Json(null);
+                }
+                return Json(new PagedResult<MCIDataViewModel>(MCIDatasVm.ToList(), pageNo, pageSize, total));
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to get MCI data", ex);
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                return Json("Failed to get MCI Data");
+            }
+        }
+        [HttpGet]
+        [Route("search")]
+        //[Route("{pageNo:int}/{pageSize:int}")]
+        public  JsonResult Search(string searchString, int pageNo = 1, int pageSize = 50, string orderBy = "CreateDate")
+        {
+            try
+            {
+                int total = _repository.Count();
+                
+                var MCIDatas = _repository.Search(searchString, pageNo, pageSize, orderBy);
                 var MCIDatasVm = MCIDatas.Select(x => MCIDataViewModel.FromEntity(x));
                 if (MCIDatasVm == null)
                 {

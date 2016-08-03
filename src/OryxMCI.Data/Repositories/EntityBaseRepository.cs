@@ -105,5 +105,13 @@ namespace OryxMCI.Data.Repositories
             int total = DbContext.Set<T>().Count();
             return total;
         }
+
+        public virtual IQueryable<T> Search(string searchString) {
+            throw new NotImplementedException();
+        }
+        public virtual IQueryable<T> Search(string searchString,int pageNo = 1, int pageSize = 20, string orderBy = "CreateDate")
+        {
+            throw new NotImplementedException();
+        }
     }
 }
