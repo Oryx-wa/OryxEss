@@ -9,6 +9,12 @@
           <input id="name" type="text" class="validate">
           <label for="name">Name</label>
         </div>
+        <div class="input-field col s6">        
+        <input type="text" placeholder="" class="validate" readonly  
+          [(ngModel)]="vessel.id"  
+            name="id"  #id="ngModel"  >
+        <label for="id" class="active" >Id</label>        
+      </div>
       </div>
       <div class="row">
         <div class="input-field col s12">

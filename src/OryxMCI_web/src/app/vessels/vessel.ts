@@ -1,4 +1,5 @@
-export interface IVessel {
+import {IModelBase} from '../shared/imodel-base';
+export interface IVessel extends IModelBase{
     id: number;
     code: string;
     name: string;  
@@ -6,11 +7,11 @@ export interface IVessel {
 }
 
 export class Vessel {
-  constructor(
-    public id: number,
-    public code: string,
-    public name: string,
-    public userSign: number
+ 
+     id: number;
+     code: string;
+     name: string;
+    userSign: number;
   
-  ) {  }
+  
 }
