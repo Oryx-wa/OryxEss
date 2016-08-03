@@ -48,6 +48,7 @@ export class MciFormsComponent implements OnInit {
   pageNumber: number = 1;
   pageSize: number = 50;
   orderBy: string = "DateInspected";
+  searchString: string;
 
   constructor(private _MciFormService: ServiceBase, public securityService: SecurityService) { }
 
@@ -121,6 +122,16 @@ export class MciFormsComponent implements OnInit {
       error => this.securityService.HandleError(error),
       () => console.log('Get agents completed'));
     console.log(this.ports.length.toString());
+  }
+
+  private search() {
+    console.log('mciform :getPager starting...' + this.pageNumber);
+    this._MciFormService.setActionUrl("Mcidata/search");
+    this._MciFormService
+      .search(this.searchString,this.pageNumber, this.pageSize, this.orderBy)
+      .subscribe(data => this.mciforms = data,
+      error => this.securityService.HandleError(error),
+      () => console.log('Get Paged completed'));    
   }
   
   private getPorts() {
