@@ -14,6 +14,10 @@ namespace OryxMCI.Data.Repositories
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         IQueryable<T> GetChild(int id);
 
+        IQueryable<T> Search(string searchString, int pageNo = 1, int pageSize = 20, string orderBy = "CreateDate");
+
+        IQueryable<T> Search(string searchString);
+
         IQueryable<T> GetPaged(int pageNo = 1, int pageSize = 20, string orderBy="CreateDate");
 
         int Count();

@@ -13,6 +13,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using OryxMCI.Data.Repositories;
 using OryxMCI.Data.Repositories.defitem;
+using OryxMCI.Data.Repositories.mci;
 using OryxMCI.Entities;
 using OryxMCI.Data.Infrastructure;
 using System;
@@ -115,7 +116,9 @@ namespace OryxMCI.webapi
                   .As(typeof(IDefItemRepository<>))
                   .InstancePerLifetimeScope();
 
-
+            builder.RegisterGeneric(typeof(MCIRepository<>))
+                  .As(typeof(IMCIRepository<>))
+                  .InstancePerLifetimeScope();
 
             builder.RegisterType<SeedData>();         
 

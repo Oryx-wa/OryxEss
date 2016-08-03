@@ -113,17 +113,41 @@ export class ServiceBase {
                  
                 console.log(this.pageCount);   
             })
-            .map(res => res.json().data);
-            
+            .map(res => res.json().data);           
             
         }
-        else {
-           
+        else {           
             return this._http.get(this.actionUrlPaged, {
-
             }).map(res => res.json());
         }
+    }
 
+    public search = (search:string,page:number, pageSize:number, orderBy:string): Observable<IModelBase[]> => {
+        this.setHeaders();
+        if (this._useBackEnd) {
+             let params: URLSearchParams = new URLSearchParams();
+            params.set('searchString', search);
+            params.set('pageNo', page.toString() );
+            params.set('pageSize', pageSize.toString());
+            params.set('orderBy', orderBy);
+
+            return this._http.get(this.actionUrl , {
+                headers: this.headers,
+                search:params
+
+            }).do((res:any ) => {
+                this.pageCount = res.json().paging.pageCount;   
+                this.totalRecordCount = res.json().paging.totalRecordCount;
+                 
+                console.log(this.pageCount);   
+            })
+            .map(res => res.json().data);           
+            
+        }
+        else {           
+            return this._http.get(this.actionUrlPaged, {
+            }).map(res => res.json());
+        }
     }
 
     public GetPageCount ():number  {return this.pageCount;}
