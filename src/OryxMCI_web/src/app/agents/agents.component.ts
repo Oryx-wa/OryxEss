@@ -37,13 +37,22 @@ export class AgentsComponent implements OnInit {
   showSearch: boolean = true;
   showCardorGrid: boolean = true;
   showAdd: boolean = true;
+  ports: IModelBase[] = [];
+  totalRecordCount: number;
+  pageCount: number = 0;
+  pageNumber: number = 1;
+  pageSize: number = 50;
+  orderBy: string = "DateInspected";
   constructor(private _AgentService: ServiceBase, public securityService: SecurityService) { }
 
   ngOnInit() {
     this._AgentService.setActionUrl("Agent.json");
 
     this.displayMode = DisplayModeEnum.Grid;
-    this.getData();
+        this.getData();
+   this.pageNumber = 1;
+    this.getPaged();
+    this.getPorts();
   }
   changeDisplayMode(mode: DisplayModeEnum) {
     console.log(mode.toString());
@@ -74,5 +83,49 @@ export class AgentsComponent implements OnInit {
 
 
   }
-}
+  private getPaged() {
+    console.log('agentform :getPager starting...' + this.pageNumber);
+    this._AgentService.setActionUrl("agent/GetPaged");
+    this._AgentService
+      .GetPage(this.pageNumber, this.pageSize, this.orderBy)
+      .subscribe(data => this.agents = data,
+      error => this.securityService.HandleError(error),
+      () => console.log('Get Paged completed'));    
+  }
+  
+  private getPorts() {
+    console.log('agentform :Ports starting...');
+    this._AgentService.setActionUrl("Port");
+    this._AgentService
+      .GetAll()
+      .subscribe(data => this.ports = data,
+      error => this.securityService.HandleError(error),
 
+      () => console.log('Get Ports completed'));
+    console.log(this.ports.length.toString());
+  }
+
+   onSearch(searchString: string){
+    console.log(searchString);
+  }
+  onPageChange(page: any) {
+    this.pageCount = this._AgentService.GetPageCount();
+    this.totalRecordCount = this._AgentService.GetRecordCount();
+    
+    //console.log(this.pageCount);
+    
+    if (this.pageCount > page.page && this.pageCount > 1) {
+      if (page.more) {        
+       
+        this.pageNumber += 1;
+      }
+      else {
+        this.pageNumber-=1;
+      }
+      this.getPaged();
+    }
+
+  }
+
+
+}
