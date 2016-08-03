@@ -60,10 +60,11 @@
 <nav *ngIf="search">
   <div class="nav-wrapper">
     
-      <form>
+      <form (ngSubmit)="onSearchSubmit()" #searchForm="ngForm">
         <div class="input-field">
             
-            <input id="search" placeholder="Search" type="search"/>
+            <input id="search" placeholder="Search"  [(ngModel)]="searchString" type="search"
+              name="search"  #search="ngModel"/>
             <label for="search"><i class="material-icons">search</i></label>
              <i class="mdi-navigation-close material-icons" (click)="onCloseSearch()">close</i>
         </div>
