@@ -66,5 +66,6 @@ input-field {
     transition: .3s color
 }
 
-
-
+ @media only screen and (max-width : 500) {
+   body{    color: black;   }
+ }
