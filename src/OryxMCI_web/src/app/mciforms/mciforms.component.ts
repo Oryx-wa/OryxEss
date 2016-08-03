@@ -71,6 +71,8 @@ export class MciFormsComponent implements OnInit {
 
   onSearch(searchString: string){
     console.log(searchString);
+    this.searchString = searchString;
+    this.search()
   }
 
   onPageChange(page: any) {
