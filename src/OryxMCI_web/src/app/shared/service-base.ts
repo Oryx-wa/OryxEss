@@ -13,8 +13,8 @@ export class ServiceBase {
     headers: Headers;
     model: IModelBase;
     api: string;
-    totalRecordCount:number;
-    pageCount:number;
+    public totalRecordCount:number;
+    public pageCount:number;
     private _useBackEnd: boolean;
     private _actionUrl: string;
     
@@ -99,7 +99,7 @@ export class ServiceBase {
         this.setHeaders();
         if (this._useBackEnd) {
              let params: URLSearchParams = new URLSearchParams();
-            params.set('page', page.toString() );
+            params.set('pageNo', page.toString() );
             params.set('pageSize', pageSize.toString());
             params.set('orderBy', orderBy);
 
@@ -108,10 +108,14 @@ export class ServiceBase {
                 search:params
 
             }).do((res:any ) => {
+                this.pageCount = res.json().paging.pageCount;   
                 this.totalRecordCount = res.json().paging.totalRecordCount;
-                this.pageCount = res.json().paging.totalRecordCount;       
+                 
+                console.log(this.pageCount);   
             })
             .map(res => res.json().data);
+            
+            
         }
         else {
            
@@ -121,6 +125,9 @@ export class ServiceBase {
         }
 
     }
+
+    public GetPageCount ():number  {return this.pageCount;}
+    public GetRecordCount ():number {return this.totalRecordCount}
 
     public HandleError(error: any) {
         this._securityService.HandleError(error)
