@@ -64,23 +64,26 @@
   <form #OryxForm="ngForm">
     <ul class="collection">
       <li class="collection-item avatar" *ngFor='let mciform of mciforms   | paginate: { itemsPerPage: 10, currentPage: page }; let i = index'>
-      
-        <div class="switch left" >
+
+        <div class="switch left">
           <label>           
           <input type="checkbox" id="c_{{ i }}" checked="checked"  />
           <span class="lever"></span>           
           </label>
-        </div>    
-          <div style="float:left">
-       <span class="title"> <label >GrossTonnage:</label>{{ mciform.grossTonnage }}</span>
-        <p><label >CargoOut:</label>{{ mciform.cargoOut }}
-        </p>
-        </div>  
+        </div>
+        <div style="float:left">
+          <span class="title"> <label >GrossTonnage:</label>{{ mciform.grossTonnage }}</span>
+          <span class="title"> <label >VesselName:</label>{{ mciform.vesselName }}</span>
+          <span class="title"> <label >Agent:</label>{{ mciform.agent }}</span>
+          <span class="title"> <label >Type:</label>{{ mciform.type }}</span>
+          <span class="title"> <label >GrossTonnage:</label>{{ mciform.grossTonnage }}</span>
+          <p><label>CargoOut:</label>{{ mciform.cargoOut }}</p>
+        </div>
         <a (click)="showForm(mciform.id)" class="secondary-content btn-floating btn-small waves-effect waves-light accent">
           <i class="material-icons">mode_edit</i>
         </a>
-        
-        
+
+
       </li>
     </ul>
   </form>
@@ -92,5 +95,5 @@
   <pagination-controls (pageChange)="page = $event"></pagination-controls>
   <a class="waves-effect waves-light btn" (click)="onPageChange(false)">Load Previous</a>
   <a class="waves-effect waves-light btn" (click)="onPageChange(true)">Load more</a>
- 
+
 </div>
