@@ -16,6 +16,7 @@ import {BerthsRoutes} from './berths/shared/berths.routes';
 import {PortsRoutes} from './ports/shared/ports.routes';
 import {InspectorsRoutes} from './inspectors/shared/inspectors.routes';
 import {MciFormsRoutes} from './mciforms/shared/mciforms.routes';
+import {ReportsRoutes} from './reports/shared/report.routes';
 
 
 
@@ -33,6 +34,7 @@ const appRoutes: RouterConfig = [
     ...PortsRoutes, 
     ...InspectorsRoutes, 
     ...MciFormsRoutes,
+    ...ReportsRoutes
  
 ];
 

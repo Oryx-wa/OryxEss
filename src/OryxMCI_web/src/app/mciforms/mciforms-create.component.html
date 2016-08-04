@@ -1,11 +1,33 @@
+<div >
 <div materialize class="row">
   <form materialize="updateTextFields" class="col s12">
     <div class="row">
-      <h3>Add New MCI</h3>
-      <div class="input-field col s12 m4 l4">
-        <input type="text" placeholder="" class="validate" [(ngModel)]="mciform.id" name="id" #id="ngModel">
-        <label for="id" class="active">Id</label>
+     <center>
+      <div class="input-field col s12 m12 l12" >
+        <h3>Add New MCI</h3>
       </div>
+      </center>
+      </div>
+ <div class="row">
+        <div class="input-field col s12 m4 l4">
+          <input type="checkbox" [(ngModel)]="mciform.waste" name="waste" #waste="ngModel">
+          <label for="waste" class="active">Waste</label>
+        </div>
+        <div class="input-field col s12 m4 l4">
+          <input type="checkbox" [(ngModel)]="mciform.archive" name="archive" #archive="ngModel">
+          <label for="Archive" class="active">Archive</label>
+        </div>
+        <div class="input-field col s12 m4 l4">
+          <label for="type" class="active">Type</label>
+          <select materialize="material_select" [materializeSelectOptions]="selectOptions" id="type" >
+          <option *ngFor="let t of types" [value]="t.code">{{t.name}}</option>
+          </select>
+        </div>
+        
+      </div>
+
+       <div class="row">
+      
       <div class="input-field col s12 m4 l4">
         <label for="port" class="active">Port</label>
         <select materialize="material_select" [materializeSelectOptions]="selectOptions" id="port">
@@ -24,12 +46,14 @@
           </typeahead>
         
       </div>
-      <div class="row">
-        <div class="input-field col s12 m4 l4">
+       <div class="input-field col s12 m4 l4">
           <input type="text" placeholder="" class="validate" [(ngModel)]="mciform.wasteTransferNoteOil" name="wasteTransferNoteOil"
             #wasteTransferNoteOil="ngModel">
           <label for="WasteFtransferNoteOil" class="active">Waste Transfer Note Oil</label>
         </div>
+      </div>
+      <div class="row">
+       
         <div class="input-field col s12 m4 l4">
           <input type="text" placeholder="" class="validate" [(ngModel)]="mciform.wasteTransferNoteGarbage" name="wasteTransferNoteGarbage"
             #wasteTransferNoteGarbage="ngModel">
@@ -41,35 +65,39 @@
           <option *ngFor="let v of inspectors" [value]="v.code">{{v.name}}</option>
         </select>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12 m3 l3">
+        <div class="input-field col s12 m4 l4">
           <input type="text" placeholder="" class="validate" [(ngModel)]="mciform.CargoOut" name="CargoOut" #CargoOut="ngModel">
           <label for="CargoOut" class="active">CargoOut</label>
         </div>
+      </div>
+      <div class="row">
+        
         <!--<div class="input-field col s12 m3 l3">
           <label for="agent" class="active">Agent</label>
           <select materialize="material_select" [materializeSelectOptions]="selectOptions" id="agent">
           <option *ngFor="let a of agents" [value]="a.Code">{{a.name}}</option>
         </select>
         </div>-->
-        <div class="input-field col s12 m3 l3">
+        <div class="input-field col s12 m4 l4">
           <label class="active">Agent</label>
           <typeahead [list]="agents" [searchProperty]="'name'" [displayProperty]="'name'" [maxSuggestions]="2" (suggestionSelected)="agentSelected($event)"
             placeholder="Select an agent">
           </typeahead>
         </div>
-        <div class="input-field col s12 m3 l3">
+        <div class="input-field col s12 m4 l4">
           <input type="date" placeholder="" class="validate" [(ngModel)]="mciform.dateInspected" name="dateInspected" #dateInspected="ngModel">
           <label for="dateInspected" class="active">DateInspected</label>
         </div>
-        <div class="input-field col s12 m3 l3">
+        <div class="input-field col s12 m4 l4">
           <input type="text" placeholder="" class="validate" [(ngModel)]="mciform.wasteCollectionNoteYear" name="wasteCollectionNoteYear"
             #wasteCollectionNoteYear="ngModel">
           <label for="wasteCollectionNoteYear" class="active">WasteCollectionNoteYear</label>
         </div>
-      </div>
+        </div>
+       
+     
       <div class="row">
+         
         <div class="input-field col s12 m4 l4">
           <input type="text" placeholder="" class="validate" [(ngModel)]="mciform.wasteCollectionNoteNo" name="wasteCollectionNoteNo"
             #wasteCollectionNoteNo="ngModel">
@@ -84,26 +112,13 @@
           <label for="cargoTonnage" class="active">CargoTonnage</label>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12 m4 l4">
-          <input type="checkbox" [(ngModel)]="mciform.waste" name="waste" #waste="ngModel">
-          <label for="waste" class="active">Waste</label>
-        </div>
-        <div class="input-field col s12 m4 l4">
-          <label for="type" class="active">Type</label>
-          <select materialize="material_select" [materializeSelectOptions]="selectOptions" id="type">
-          <option *ngFor="let t of types" [value]="t.code">{{t.name}}</option>
-          </select>
-        </div>
-        <div class="input-field col s12 m4 l4">
-          <input type="checkbox" [(ngModel)]="mciform.archive" name="archive" #archive="ngModel">
-          <label for="Archive" class="active">Archive</label>
-        </div>
-      </div>
+
+     
+   
       <div class="row">
         <a class="wave-effect wave-light btn">Save</a>
         <a class="wave-effect wave-light btn">Cancel</a>
       </div>
-    </div>
+  
   </form>
-</div>
+</div></div>
