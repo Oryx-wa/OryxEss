@@ -1,3 +1,4 @@
+import {IModelBase} from '../shared/imodel-base';
 export interface IAgent {
     id: number;
     code: string;
@@ -6,11 +7,10 @@ export interface IAgent {
 }
 
 export class Agent {
-  constructor(
-    public id: number,
-    public code: string,
-    public name: string,
-    public userSign: number
-  
-  ) {  }
+
+    public id: number;
+    public code: string;
+    public name: string;
+    public userSign: number;
+
 }

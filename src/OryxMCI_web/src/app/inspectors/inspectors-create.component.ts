@@ -16,11 +16,12 @@ export class InspectorsCreateComponent implements OnInit {
 inspector: Inspector;
   formActive: Boolean = false;
   selectedId: number = 0;
-  @Input() ports:any[] = [];
+  @Input() inspectors:any[] = [];
   constructor() {}
 
    ngOnInit() {
-    
+    this.inspector = new Inspector( );
+    this.inspector.id= 1;
   }
 
 
