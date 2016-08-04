@@ -1,4 +1,5 @@
-export interface IBerth {
+import {IModelBase} from '../shared/imodel-base';
+export interface IBerth extends IModelBase {
     id: number;
     code: string;
     name: string;  
@@ -6,11 +7,10 @@ export interface IBerth {
 }
 
 export class Berth {
-  constructor(
-    public id: number,
-    public code: string,
-    public name: string,
-    public userSign: number
-  
-  ) {  }
+
+    public id: number;
+    public code: string;
+    public name: string;
+    public userSign: number;
+
 }
