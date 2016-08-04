@@ -13,10 +13,16 @@
         </select>
       </div>
       <div class="input-field col s12 m4 l4">
-        <label for="vessel" class="active">Vessel</label>
+        <!--<label for="vessel" class="active">Vessel</label>
         <select materialize="material_select" [materializeSelectOptions]="selectOptions" id="vessel">
           <option *ngFor="let v of vessels" [value]="v.code">{{v.name}}</option>
-        </select>
+        </select>-->
+         
+          <label class="active">Vessel</label>
+          <typeahead [list]="vessels" [searchProperty]="'name'" [displayProperty]="'name'" [maxSuggestions]="4" (suggestionSelected)="vesselSelected($event)"
+            placeholder="Select a vessel">
+          </typeahead>
+        
       </div>
       <div class="row">
         <div class="input-field col s12 m4 l4">
@@ -47,16 +53,11 @@
           <option *ngFor="let a of agents" [value]="a.Code">{{a.name}}</option>
         </select>
         </div>-->
-        <div class="row">
-          <div class="col s12 m3 l3">
-            <div class="row">
-              <div class="input-field col s12 m3 l3">
-                <i class="material-icons prefix">textsms</i>
-                <input type="text" id="autocomplete" materialize="autocomplete" >
-                <label for="autocomplete">Autocomplete</label>
-              </div>
-            </div>
-          </div>
+        <div class="input-field col s12 m3 l3">
+          <label class="active">Agent</label>
+          <typeahead [list]="agents" [searchProperty]="'name'" [displayProperty]="'name'" [maxSuggestions]="2" (suggestionSelected)="agentSelected($event)"
+            placeholder="Select an agent">
+          </typeahead>
         </div>
         <div class="input-field col s12 m3 l3">
           <input type="date" placeholder="" class="validate" [(ngModel)]="mciform.dateInspected" name="dateInspected" #dateInspected="ngModel">

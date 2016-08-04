@@ -13,8 +13,8 @@ const map: any = {
   "angular2-materialize": "vendor/angular2-materialize",
   'ng2-pagination': 'vendor/ng2-pagination',
   "ng2-charts": 'vendor/ng2-charts',
-  '@ngrx': 'vendor/@ngrx'
-
+  '@ngrx': 'vendor/@ngrx',
+   "ng2-typeahead": 'vendor/ng2-typeahead'
 
 };
 
@@ -45,7 +45,12 @@ const packages: any = {
   },
   '@ngrx/devtools':       {
     main: 'index'
+  },
+  'ng2-typeahead':{ 
+    main: 'ng2-typeahead.js', 
+    defaultExtension: 'js', 
   }
+
 };
 
 // put the names of any of your Material components here

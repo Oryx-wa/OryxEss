@@ -17,8 +17,9 @@ import { Configuration } from './app.constants';
 import { DialogService }  from './services/dialog.service';
 import { AuthGuard }          from './login/auth.guard';
 
-//import {PaginatePipe, PaginationControlsCmp, PaginationService} from 'ng2-pagination';
-//import {ServiceBase} from './shared/service-base';
+import {Typeahead} from 'ng2-typeahead'
+
+
 
 
 
@@ -34,6 +35,7 @@ export const APP_PROVIDERS = [
     AuthGuard,
     PaginationService,
     ServiceBase,
+    //Typeahead
    
    
    

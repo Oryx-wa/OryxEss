@@ -10,6 +10,8 @@ import {MciFormsCardComponent} from './mciforms-card.component';
 import {MciFormsCreateComponent} from './mciforms-create.component';
 import {MaterializeDirective} from "angular2-materialize";
 
+import {CompleterCmp, CompleterService, CompleterData, COMPLETER_DATA_PROVIDERS} from 'ng2-completer';
+
 import {ServiceBase} from '../shared/service-base';
 import {IModelBase} from '../shared/imodel-base';
 import {SecurityService} from '../login/security.service';
@@ -49,6 +51,7 @@ export class MciFormsComponent implements OnInit {
   pageSize: number = 50;
   orderBy: string = "DateInspected";
   searchString: string;
+  
 
   constructor(private _MciFormService: ServiceBase, public securityService: SecurityService) { }
 
@@ -63,9 +66,11 @@ export class MciFormsComponent implements OnInit {
     this.getBerths();
     this.getInspectors();
     this.getVessels();
+   
+    
   }
   changeDisplayMode(mode: DisplayModeEnum) {
-    console.log(mode.toString());
+    
     this.displayMode = mode;
   }
 
