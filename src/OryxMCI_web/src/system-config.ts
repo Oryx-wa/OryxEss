@@ -16,7 +16,7 @@ const map: any = {
   '@ngrx': 'vendor/@ngrx',
    "ng2-typeahead": 'vendor/ng2-typeahead',
    'ng2-pdf-viewer': 'vendor/ng2-pdf-viewer',
-   'pdfjs-dist':'vendor/pdfjs-dist'
+   'pdfjs-dist':'/vendor/pdfjs-dist/build'
 
 };
 
@@ -55,7 +55,7 @@ const packages: any = {
     'ng2-pdf-viewer': { main: 'dist/pdf-viewer.component.min' ,
     defaultExtension: "js"    
   },
-  'pdfjs-dist': { main: 'build/pdf.js' ,
+  'pdfjs-dist': { main: 'pdf.combined.js' ,
     defaultExtension: "js"    
   }
 

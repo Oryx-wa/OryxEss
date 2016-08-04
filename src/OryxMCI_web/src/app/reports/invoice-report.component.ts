@@ -10,11 +10,12 @@ import { PdfViewerComponent } from 'ng2-pdf-viewer';
   directives: [PdfViewerComponent]
 })
 export class InvoiceReportComponent implements OnInit {
-  pdfSrc: string = '/api/test.pdf';
+  pdfSrc: string ;
   page: number = 1;
   constructor() {}
 
   ngOnInit() {
+    this.pdfSrc = '/api/InvoiceForTheMonth.pdf'
   }
 
 }
