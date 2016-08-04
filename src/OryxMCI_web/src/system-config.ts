@@ -14,7 +14,9 @@ const map: any = {
   'ng2-pagination': 'vendor/ng2-pagination',
   "ng2-charts": 'vendor/ng2-charts',
   '@ngrx': 'vendor/@ngrx',
-   "ng2-typeahead": 'vendor/ng2-typeahead'
+   "ng2-typeahead": 'vendor/ng2-typeahead',
+   'ng2-pdf-viewer': 'vendor/ng2-pdf-viewer',
+   'pdfjs-dist':'vendor/pdfjs-dist'
 
 };
 
@@ -49,6 +51,12 @@ const packages: any = {
   'ng2-typeahead':{ 
     main: 'ng2-typeahead.js', 
     defaultExtension: 'js', 
+  },
+    'ng2-pdf-viewer': { main: 'dist/pdf-viewer.component.min' ,
+    defaultExtension: "js"    
+  },
+  'pdfjs-dist': { main: 'build/pdf.js' ,
+    defaultExtension: "js"    
   }
 
 };

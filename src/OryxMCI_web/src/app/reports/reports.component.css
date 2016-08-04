@@ -1,0 +1,9 @@
+.tabs .tab a {
+    background-color: #514185;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    transition: color .28s ease;
+}

@@ -24,8 +24,9 @@ module.exports = function(defaults) {
       'chart.js/dist/**/*.js',
       'ng2-charts/**/*.js',
        '@ngrx/**/*.+(js|js.map)',
-       "ng2-typeahead/**/*"
-     
+       "ng2-typeahead/**/*",
+       'ng2-pdf-viewer/dist/**/*',
+       'pdfjs-dist/build/**/*.js'    
     ]
   });
 };
